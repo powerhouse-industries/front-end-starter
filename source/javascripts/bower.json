@@ -1,0 +1,25 @@
+{
+  "name": "frontend-common-js",
+  "dependencies": {
+    "modernizr": "2.8.3",
+    "yepnope": "1.5.4",
+    "jquery-easing-original": "1.3.0",
+    "picturefill": "1.2.0",
+    "fastclick": "1.0.3",
+    "media-match": "2.0.2",
+    "jquery-placeholder": "2.0.8",
+    "inline-svg": "1.0.4",
+    "cookie-disclaimer": "1.0.1"
+  },
+  "install": {
+    "path": "libraries",
+    "ignore": ["inline-svg", "jquery-placeholder", "jquery"],
+    "sources": {
+      "modernizr": "components/modernizr/modernizr.js",
+      "jquery-easing-original": "components/jquery-easing-original/jquery.easing.1.3.min.js",
+      "media-match": "components/media-match/media.match.min.js",
+      "picturefill": "components/picturefill/picturefill.js",
+      "yepnope": "components/yepnope/yepnope.js"
+    }
+  }
+}

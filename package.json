@@ -33,10 +33,11 @@
     "through2": "^0.6.1",
     "uglify-js": "^2.4.16",
     "vinyl-fs": "^0.3.7",
-    "watch": "0.13.0"
+    "watch": "0.13.0",
+    "bower-installer": "1.1.0"
   },
   "scripts": {
-    "js": "jshint source/javascripts/**.js | mkdir build/javascripts/templates | cp source/javascripts/modules/**/*.html build/javascripts/templates | uglifyjs source/javascripts/helpers.js source/javascripts/modules/**/*.js source/javascripts/main.js -o build/javascripts/application.min.js --source-map build/javascripts/application.min.js.map --source-map-url /build/javascripts/application.min.js.map | cp source/javascripts/libraries/* build/javascripts/",
+    "js": "jshint source/javascripts/**.js | mkdir build/javascripts/templates | cp source/javascripts/modules/**/*.html build/javascripts/templates | uglifyjs source/javascripts/helpers.js source/javascripts/modules/**/*.js source/javascripts/libraries/**/*.js source/javascripts/main.js -o build/javascripts/application.min.js --source-map build/javascripts/application.min.js.map --source-map-url /build/javascripts/application.min.js.map | cp source/javascripts/libraries/*.js build/javascripts/",
     "lint-sass": "/usr/bin/scss-lint source/scss",
     "postlint-sass": "",
     "sass": "node-sass source/scss/main.scss --output-style compressed build/css/main.css | node-sass source/scss/print.scss --output-style compressed build/css/print.css | node-sass source/scss/ie/ie8.scss --output-style compressed build/css/ie8.css | autoprefixer build/css/main.css",
