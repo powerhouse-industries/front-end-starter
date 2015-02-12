@@ -6,30 +6,30 @@ This document outlines best practices, guidelines and methodologies that should 
 
 ## Content
 * General Guidelines
-  * Editor Setup
-  * Project Structure & Setup
-  * Build Tools
-  * Readability vs Compression
+    * Editor Setup
+    * Project Structure & Setup
+* Build Tools
+    * Readability vs Compression
 * Browser Support
 * Markup
-  * General Guidelines
-  * Quoting Attributes
-  * Schema.org
-  * Images
-  * Accessibility
+    * General Guidelines
+    * Quoting Attributes
+    * Schema.org
+    * Images
+    * Accessibility
 * CSS
-  * Syntax and Formatting
-  * Validation
-  * OOCSS
-  * Typography
-  * Resets
-  * Comments
-  * Conditional Stylesheets
-  * Images
+    * Syntax and Formatting
+    * Validation
+    * OOCSS
+    * Typography
+    * Resets
+    * Comments
+    * Conditional Stylesheets
+    * Images
 * Sass
-  * Nesting
-  * Extends
-  * Mobile First
+    * Nesting
+    * Extends
+    * Mobile First
 
 ## General Guidelines
 All front-end code should be well written, semantically correct and generally valid to W3C Standards. Progressive enhancement should be considered when implementing Javascript functionality and unsupported technologies such as `box-shadow` and geolocation, should degrade gracefully using feature detection through [Modernizr](http://modernizr.com/).
