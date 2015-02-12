@@ -1,6 +1,5 @@
 /**
- * A series of helper methods that can
- * be reused across a project.
+ * An example module
  */
 
 var Lightbox = (function () {
