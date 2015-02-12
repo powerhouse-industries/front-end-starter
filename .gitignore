@@ -7,10 +7,7 @@ Thumbs.db
 Desktop.ini
 .sass-cache
 node_modules
-build
 scss-lint-report.xml
 *.log
 tmp
-*.map
 .vagrant
-src/components
