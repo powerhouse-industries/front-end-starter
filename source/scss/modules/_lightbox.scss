@@ -1,0 +1,96 @@
+/*------------------------------------*\
+  $Lightbox
+
+  <div class="lightbox">
+    <h2 class="lightbox__title"></h2>
+    <p class="lightbox__intro"></p>
+    <img src="" alt="" class="lightbox__img" />
+  </div>
+  <!-- /.lightbox -->
+\*------------------------------------*/
+
+.lightbox {
+  &__title {
+
+  }
+
+  &__intro {
+
+  }
+
+  &__img {
+
+  }
+}
+
+@include mq(mq480) {
+  .lightbox {
+    color: crimson;
+  }
+}
+
+@include mq(mq600) {
+  .lightbox {
+    color: red;
+  }
+}
+
+@include mq(mq768) {
+  .lightbox {
+    color: green;
+  }
+}
+
+@include mq(mq960) {
+  .lightbox {
+    color: blue;
+  }
+}
+
+@include mq(mq1200) {
+  .lightbox {
+    color: yellow;
+  }
+}
+
+
+
+
+
+/**
+ * Javascript Disabled
+ */
+
+.no-js {
+  .lightbox {
+
+  }
+}
+
+
+
+
+
+/**
+ * IE 8 Fixes
+ */
+
+.ie8 {
+  .lightbox {
+
+  }
+}
+
+
+
+
+
+/**
+ * IE 9 Fixes
+ */
+
+.ie9 {
+  .lightbox {
+
+  }
+}

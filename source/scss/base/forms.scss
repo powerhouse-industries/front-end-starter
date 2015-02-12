@@ -1,0 +1,39 @@
+/*------------------------------------*\
+  $FORMS
+\*------------------------------------*/
+
+fieldset {
+  border: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: em(5);
+  cursor: pointer;
+}
+
+input {
+  display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+input[type="number"],
+input[type="date"],
+input[type="url"],
+input[type="password"],
+textarea {
+  @include font-size(16px);
+  padding: 10px;
+  width: 100%;
+  color: $dark-grey;
+  border: 1px solid;
+  -webkit-appearance: none;
+}
+
+input[type="submit"],
+button {
+  -webkit-appearance: none;
+}

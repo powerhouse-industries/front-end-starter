@@ -1,0 +1,47 @@
+/*------------------------------------*\
+  $MESSAGES
+\*------------------------------------*/
+
+.message-box {
+  margin-bottom: em(10);
+  padding: em(10);
+
+  p {
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+
+  &--error {
+    color: darken($error, 40%);
+    background-color: $error;
+    border: 1px solid darken($error, 40%);
+  }
+
+  &--warning {
+    color: darken($warning, 60%);
+    background-color: $warning;
+    border: 1px solid darken($warning, 60%);
+  }
+
+  &--success {
+    color: darken($success, 40%);
+    background-color: $success;
+    border: 1px solid darken($success, 20%);
+  }
+}
+
+.message-text {
+  font-weight: bold;
+
+  &--error {
+    color: darken($error, 40%);
+  }
+
+  &--warning {
+    color: darken($warning, 60%);
+  }
+
+  &--success {
+    color: darken($success, 40%);
+  }
+}

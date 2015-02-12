@@ -1,0 +1,66 @@
+/*------------------------------------*\
+  $MIXINS
+\*------------------------------------*/
+
+/**
+ * Font family
+ */
+
+@mixin font($family: 'open-sans', $weight: 'regular') {
+  @if($family == 'Open Sans') {
+    @if($weight == 'regular') {
+      font: { family: 'Open Sans', sans-serif; weight: 400; }
+    } @elseif($weight == 'medium') {
+      font: { family: 'Open Sans', sans-serif; weight: 600; }
+    } @elseif($weight == 'medium') {
+      font: { family: 'Open Sans', sans-serif; weight: 700; }
+    }
+  } @elseif($family == 'georgia') {
+    @if($weight == 'regular') {
+      font-family: Georgia, Times, 'Times New Roman', serif;
+    } @elseif($weight == 'bold') {
+      font-family: Georgia, Times, 'Times New Roman', serif;
+    }
+  }
+}
+
+/**
+ * Font sizing in rems
+ */
+
+@mixin font-size($font-size, $line-height: false) {
+  font-size: $font-size;
+  font-size: ($font-size / 10px) * 1rem;
+  @if $line-height {
+    line-height: $line-height;
+  }
+}
+
+
+/**
+ * Target devices based on pixel ratio
+ */
+
+@mixin device-pixel-ratio($ratio: 2) {
+  @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
+  only screen and (min--moz-device-pixel-ratio: $ratio),
+  only screen and (-o-min-device-pixel-ratio: #{($ratio*10)}/10),
+  only screen and (min-device-pixel-ratio: $ratio),
+  only screen and (min-resolution: #{($ratio*96)}dpi),
+  only screen and (min-resolution: #{$ratio}dppx) {
+    @content;
+  }
+}
+
+
+/**
+ * Link states
+ */
+
+@mixin states() {
+  &:hover,
+  &:active,
+  &:focus {
+    @content;
+  }
+}

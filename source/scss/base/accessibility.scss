@@ -1,0 +1,30 @@
+/*------------------------------------*\
+  $ACCESSIBILITY
+\*------------------------------------*/
+
+.skip-content {
+  position: absolute;
+  padding: 1em;
+  top: -3.5em;
+  left: 2em;
+  z-index: 100;
+  color: $white;
+
+  &:focus {
+    position: absolute;
+    top: 0;
+    background-color: $black;
+  }
+}
+
+.visually-hidden,
+%visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  margin: -1px;
+  padding: 0;
+  height: 1px;
+  width: 1px;
+  clip: rect(0 0 0 0);
+  border: 0;
+}

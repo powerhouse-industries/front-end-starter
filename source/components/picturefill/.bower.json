@@ -1,0 +1,14 @@
+{
+  "name": "picturefill",
+  "homepage": "https://github.com/scottjehl/picturefill",
+  "version": "1.2.0",
+  "_release": "1.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.0",
+    "commit": "a948179521e18d56bc45e57ceec1b93f23ba34a2"
+  },
+  "_source": "git://github.com/scottjehl/picturefill.git",
+  "_target": "1.2.0",
+  "_originalSource": "picturefill"
+}
