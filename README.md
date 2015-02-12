@@ -5,31 +5,31 @@ Last Updated: 11th February 2015
 This document outlines best practices, guidelines and methodologies that should be considered and in most cases adhered to when building web applications at Ledgard Jepson. It is a forever evolving document and should be regularly reviewed to keep up with changes and best practices.
 
 ## Content
-- General Guidelines
-  - Editor Setup
-  - Project Structure & Setup
-  - Build Tools
-  - Readability vs Compression
-- Browser Support
-- Markup
-  - General Guidelines
-  - Quoting Attributes
-  - Schema.org
-  - Images
-  - Accessibility
-- CSS
-  - Syntax and Formatting
-  - Validation
-  - OOCSS
-  - Typography
-  - Resets
-  - Comments
-  - Conditional Stylesheets
-  - Images
-- Sass
-  - Nesting
-  - Extends
-  - Mobile First
+* General Guidelines
+  * Editor Setup
+  * Project Structure & Setup
+  * Build Tools
+  * Readability vs Compression
+* Browser Support
+* Markup
+  * General Guidelines
+  * Quoting Attributes
+  * Schema.org
+  * Images
+  * Accessibility
+* CSS
+  * Syntax and Formatting
+  * Validation
+  * OOCSS
+  * Typography
+  * Resets
+  * Comments
+  * Conditional Stylesheets
+  * Images
+* Sass
+  * Nesting
+  * Extends
+  * Mobile First
 
 ## General Guidelines
 All front-end code should be well written, semantically correct and generally valid to W3C Standards. Progressive enhancement should be considered when implementing Javascript functionality and unsupported technologies such as `box-shadow` and geolocation, should degrade gracefully using feature detection through [Modernizr](http://modernizr.com/).
@@ -303,3 +303,5 @@ Most of our web applications are built mobile first, in that we specify mobile s
 The problem with doing this is that Internet Explorer 8 and earlier don’t support media queries and so ignore them and just renders the mobile styles. There is a way of solving this problem using JavaScript, but our preferred solution is to use Sass.
 
 We use [The Guardian’s Sass MQ](https://github.com/sass-mq/sass-mq) library of mixins to create our various media queries and set a default static breakpoint for Internet Explorer 8. The mixins rasterise the breakpoints so browsers rely on the cascade itself.
+
+## JavaScript
