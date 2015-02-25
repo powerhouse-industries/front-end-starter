@@ -26,12 +26,9 @@
 @import 'layout/grid';
 
 // modules
+@import 'modules/cookies';
 @import 'modules/messages';
 @import 'modules/lightbox';
 
 // trumps
 @import 'trumps';
-
-.this {
-    display: flex;
-}

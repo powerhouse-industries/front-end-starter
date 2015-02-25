@@ -1,5 +1,5 @@
 /*------------------------------------*\
-  $Lightbox
+  $LIGHTBOX
 
   <div class="lightbox">
     <h2 class="lightbox__title"></h2>
@@ -10,6 +10,18 @@
 \*------------------------------------*/
 
 .lightbox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+
+  padding: 20px;
+
+  background: {
+    color: $white;
+  }
+
   &__title {
 
   }
@@ -20,6 +32,22 @@
 
   &__img {
 
+  }
+
+  &__close {
+    cursor: pointer;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  background: {
+    color: rgba(0,0,0,.4);
   }
 }
 

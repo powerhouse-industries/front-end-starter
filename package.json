@@ -37,9 +37,7 @@
     "bower-installer": "1.1.0"
   },
   "scripts": {
-    "js": "jshint source/javascripts/**.js | mkdir build/javascripts/templates | cp source/javascripts/modules/**/*.html build/javascripts/templates | uglifyjs source/javascripts/helpers.js source/javascripts/modules/**/*.js source/javascripts/libraries/**/*.js source/javascripts/main.js -o build/javascripts/application.min.js --source-map build/javascripts/application.min.js.map --source-map-url /build/javascripts/application.min.js.map | cp source/javascripts/libraries/*.js build/javascripts/",
-    "lint-sass": "/usr/bin/scss-lint source/scss",
-    "postlint-sass": "",
+    "js": "jshint source/javascripts/**.js | mkdir build/javascripts/templates | cp source/javascripts/modules/**/*.html build/javascripts/templates | cp source/javascripts/libraries/**/*.js build/javascripts/libraries | uglifyjs source/javascripts/helpers.js source/javascripts/modules/**/*.js source/javascripts/libraries/**/*.js source/javascripts/main.js -o build/javascripts/application.min.js --source-map build/javascripts/application.min.js.map --source-map-url /build/javascripts/application.min.js.map | cp source/javascripts/libraries/*.js build/javascripts/",
     "sass": "node-sass source/scss/main.scss --output-style compressed build/css/main.css | node-sass source/scss/print.scss --output-style compressed build/css/print.css | node-sass source/scss/ie/ie8.scss --output-style compressed build/css/ie8.css | autoprefixer build/css/main.css",
     "imagemin": "imagemin source/images/template/* build/images/template",
     "build:sass": "npm run sass",

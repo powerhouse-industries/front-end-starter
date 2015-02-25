@@ -1,0 +1,52 @@
+/*------------------------------------*\
+  $COOKIES
+\*------------------------------------*/
+
+$banner-color: $black;
+$banner-text-color: $white;
+$banner-link-color: $white;
+$banner-btn-color: $white;
+$banner-btn-text-color: $black;
+
+#cookies {
+  padding: 15px 0;
+  background: {
+    color: $banner-color;
+  }
+
+  .wrap {
+    overflow: hidden;
+  }
+
+  p {
+    line-height: 1.3;
+    color: $banner-text-color;
+  }
+
+  a {
+    color: $banner-link-color;
+  }
+
+  .btn {
+    padding: 10px 15px;
+    float: left;
+    text-decoration: none;
+    color: $banner-btn-text-color;
+    background: {
+      color: $banner-btn-color;
+    }
+  }
+}
+
+@include mq(mq600) {
+  #cookies {
+    p {
+      @include span(14 of 16);
+      margin: 0;
+    }
+
+    .btn {
+      float: right;
+    }
+  }
+}

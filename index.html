@@ -20,9 +20,6 @@
 
   <link rel="stylesheet" href="/build/css/main.css" />
   <link rel="stylesheet" href="/build/css/print.css" media="print" />
-  <!--[if (IE 9) & (!IEMobile)]>
-    <link rel="stylesheet" href="/build/css/ie9.css" />
-  <![endif]-->
   <!--[if (lt IE 9) & (!IEMobile)]>
     <link rel="stylesheet" href="/build/css/ie8.css" />
   <![endif]-->
@@ -36,11 +33,13 @@
   <script src="/build/javascripts/application.min.js"></script>
 
   <link rel="shortcut icon" href="/build/images/icon.png" />
+  
   <link rel="apple-touch-icon-precomposed" href="/build/images/icon.png" />
   <meta name="application-name" content="Site Name" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="">
   <meta name="msapplication-TileColor" content="#000" />
+
   <meta name="msapplication-TileImage" content="/build/img/ms-tile.png" />
 
 </head>
@@ -48,7 +47,8 @@
 
   <a href="#content" class="skip-content">skip to main content</a>
 
-  <div class="wrap">
+  <div class="wrap" id="container">
+    <a rel="lightbox" data-title="Lightbox Title" data-description="A short description of the lightbox">Show</a>
   </div>
   <!-- /.wrap -->
 

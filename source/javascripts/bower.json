@@ -13,9 +13,10 @@
   },
   "install": {
     "path": "libraries",
-    "ignore": ["inline-svg", "jquery-placeholder", "jquery"],
+    "ignore": ["jquery-placeholder", "jquery"],
     "sources": {
       "modernizr": "components/modernizr/modernizr.js",
+      "yepnope": "components/inline-svg/inlineSVG.js",
       "jquery-easing-original": "components/jquery-easing-original/jquery.easing.1.3.min.js",
       "media-match": "components/media-match/media.match.min.js",
       "picturefill": "components/picturefill/picturefill.js",

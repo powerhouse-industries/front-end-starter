@@ -5,7 +5,7 @@ Helpers.ready(function() {
   yepnope({
     test : Modernizr.inlinesvg,
     yep: [
-      './libraries/inline-svg/inline-svg.js'
+      'build/javascripts/libraries/inlineSVG.js'
     ],
     callback: function (url, result, key) {
       if (result) {
@@ -23,7 +23,7 @@ Helpers.ready(function() {
   yepnope({
     test : Modernizr.input.placeholder,
     nope: [
-      '/source/components/jquery-placeholder/jquery.placeholder.js'
+      'build/javascripts/libraries/jquery.placeholder.js'
     ],
     callback: function (url, result, key) {
       if (!result) {
