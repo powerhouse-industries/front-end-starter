@@ -6,30 +6,30 @@ This document outlines best practices, guidelines and methodologies that should 
 
 ## Content
 * General Guidelines
-    * Editor Setup
-    * Project Structure & Setup
-* Build Tools
-    * Readability vs Compression
+	* Editor Setup
+	* Project Structure & Setup
+	* Build Tools
+	* Readability vs Compression 
 * Browser Support
 * Markup
-    * General Guidelines
-    * Quoting Attributes
-    * Schema.org
-    * Images
-    * Accessibility
+	* General Guidelines
+  * Quoting Attributes
+  * Schema.org
+  * Images
+  * Accessibility
 * CSS
-    * Syntax and Formatting
-    * Validation
-    * OOCSS
-    * Typography
-    * Resets
-    * Comments
-    * Conditional Stylesheets
-    * Images
+  * Syntax and Formatting
+  * Validation
+  * OOCSS
+  * Typography
+  * Resets
+  * Comments
+  * Conditional Stylesheets
+  * Images
 * Sass
-    * Nesting
-    * Extends
-    * Mobile First
+	* Nesting
+	* Extends
+	* Mobile First
 
 ## General Guidelines
 All front-end code should be well written, semantically correct and generally valid to W3C Standards. Progressive enhancement should be considered when implementing Javascript functionality and unsupported technologies such as `box-shadow` and geolocation, should degrade gracefully using feature detection through [Modernizr](http://modernizr.com/).
@@ -69,19 +69,19 @@ Where testing is concerned we split web browsers into two main categories. A Gra
 A-grade support is the highest support level. By taking full advantage of the capabilities of modern web standards, the A-grade experience provides advanced functionality and visual fidelity.
 
 |Desktop | Versions |
-|:---:| ----:|
+|:—:| ——:|
 |Internet Explorer | 9, 10 and 11 |
 |Safari | 8 |
 |Chrome | 39 and 40 |
 |Firefox | Latest |
 
 |Tablet | Versions |
-|:---:| ----:|
+|:—:| ——:|
 |Chrome | Latest |
 |Safari | Latest |
 
 |Mobile | Versions |
-|:---:| ----:|
+|:—:| ——:|
 |Chrome | Latest |
 |Safari | Latest |
 
@@ -89,19 +89,19 @@ A-grade support is the highest support level. By taking full advantage of the ca
 C-grade is the base level of support, providing core content and functionality.
 
 |Desktop | Versions |
-|:---:| ----:|
+|:—:| ——:|
 |Internet Explorer | 8 |
 |Safari | 7 |
 |Chrome | 38 |
 |Firefox | 34 |
 
 |Tablet | Versions |
-|:---:| ----:|
+|:—:| ——:|
 |Opera | N/A |
 |Firefox | N/A |
 
 |Mobile | Versions |
-|:---:| ----:|
+|:—:| ——:|
 |Chrome | N/A |
 |Safari | N/A |
 
@@ -120,10 +120,10 @@ The following are general guidelines for structuring your HTML markup. We are re
 * Consider placing HTML comments around block element that contain larger amounts of markup to indicate the element being closed. It makes skim-reading code much easier.
 ```html
 <div class=“my-element”>
-  <p>This is my element</p>
+	<p>This is my element</p>
 </div><!-- /.my-element -->
 ```
-* Each `input` inside of a form should always have an associated `<label>` and the `placeholder` attribute should never be used as a substitute.
+* Each `<input>` inside of a form should always have an associated `<label>` and the `placeholder` attribute should never be used as a substitute.
 * Always use CSS to transform text to uppercase or lowercase. Never enter content in ALL CAPS or lowercase.
 * Use Schema where appropriate, specifically for organisation details (logo, address, telephone numbers etc). Refer to the [Scheme]() section of this document for more details.
 
@@ -145,11 +145,11 @@ While support for `<picture>` and `srcset` are limited we’ve opted for [Pictur
 
 ```html
 <span data-picture data-alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia">
-  <span data-src="small.jpg"></span>
-  <span data-src="medium.jpg" data-media="(min-width: 400px)"></span>
-  <span data-src="large.jpg" data-media="(min-width: 800px)"></span>
-  <span data-src="extralarge.jpg" data-media="(min-width: 1000px)"></span>
-  <noscript><img src="small.jpg" alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia"></noscript>
+	<span data-src="small.jpg"></span>
+	<span data-src="medium.jpg" data-media="(min-width: 400px)"></span>
+	<span data-src="large.jpg" data-media="(min-width: 800px)"></span>
+	<span data-src="extralarge.jpg" data-media="(min-width: 1000px)"></span>
+	<noscript><img src="small.jpg" alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia"></noscript>
 </span>
 ```
 
@@ -161,13 +161,13 @@ We utilise WAI-ARIA in all web applications to ensure that users with visual imp
 You should always strive to make your applications accessible and therefore should include aria wherever possible.
 
 ## CSS
-We use Sass to write compose our stylesheet, but more on that further into this document. We always avoid writing CSS inline – it might make quick and dirty fixes easy, but in the long run it makes our code impossible to maintain.
+We use Sass to compose our stylesheet, but more on that further into this document. We always avoid writing CSS inline – it might make quick and dirty fixes easy, but in the long run it makes our code impossible to maintain. The only time we do inline CSS is where it’s necessary to apply user customisations.
 
 ### Validation
 We don’t validate our CSS to W3C Standards.
 
 ### Syntax and Formatting
-We write CSS using the BEM (Block, Element, Modifier) naming convention and opt for multi-line CSS declarations. Where possible you should try to group related rulesets together, for examples: all positional rules together, all font rules together etc.
+We write CSS using the BEM (Block, Element, Modifier) naming convention and opt for multi-line CSS declarations. Where possible you should try to group related rulesets together, for example: all positional rules together, all font rules together etc.
 
 All CSS rules should have a space after the selector colon and a trailing semi-colon. The closing brace should be inline with the start of the selector it closes.
 
@@ -204,7 +204,7 @@ Some examples of good rulesets:
 a { color: red; }
 ```
 
-Class names should always be lowercase and where necessary separated with a dash. It is always preferable to name an ID or class by the nature of what it is rather than by what it looks like.
+Class names should always be lowercase and where necessary separated with a dash. It is always preferable to name an ID or class by the nature of what it is rather than by what it looks like. 
 
 Our use of IDs are limited to major containers and in most cases are avoid to prevent specificity issues.
 
@@ -222,7 +222,7 @@ In an effort to make our code reusable and to help us build easily maintainable 
 
 When building components, or modules, try and keep a DRY, object oriented mindset.
 
-Following an OOCSS approach means that we don't need to build lots of unique components and instead can spot similarities and repeated patterns that can be reused elsewhere. In short, save specific classes for theming a module and use generic classes to construct it.
+Following an OOCSS approach means that we don't need to build lots of unique components and instead can spot similarities and repeated patterns that can be reused elsewhere. In short, save specific classes for theming a module and use generic classes to construct them.
 
 ### Typography
 Where it’s necessary for us to use a non-standard typeface we look to TypeKit or Fonts.com to provide web fonts for use in our web applications. When choosing web fonts for a project be sure to only select the exact families and weights required, loading in non-essential fonts will add bloat and harm page load speeds.
@@ -238,13 +238,11 @@ All CSS is minified before it is deployed so don't worry about bloating code wit
 ### Conditional Stylesheets
 When building mobile first responsive websites, it’s necessary to generate a separate stylesheet for older versions of Internet Explorer to ensure they aren't left with the mobile version of a website because they cannot read media queries. This can be done using SASS and is covered in the SASS section of this documentation.
 
-We utilise two specific stylesheets for IE 8 and IE 9. The only styles that should be added to these files are fixes identified during testing.
-
 ### Images
 Image names should use dashes and be named so that their use is clear e.g. `icon-facebook.svg`. There are a number of options for how we might choose to deal with images in CSS:
 
-* CSS Sprites:
-* Data URIs:
+* CSS Sprites: 
+* Data URIs: 
 
 When possible we choose SVGs over any other file format for icons and other vector based imagery and provide a fallback for browsers that don't support SVG in the following manner:
 
@@ -254,7 +252,7 @@ When possible we choose SVGs over any other file format for icons and other vect
 }
 
 .no-svg .thing {
-  background-image: url('bear.png');
+	background-image: url('bear.png');
 }
 ```
 
@@ -264,11 +262,17 @@ The `.no-svg` class is added to the body by Modernizr. To quickly generate PNG f
 We use Sass as our preprocessor of choice and choose to separate our CSS into separate files for easier maintainability. A typical Sass structure looks something like this:
 
 ```
-Sass folder structure to go here when it’s done
+|- base
+|- layout
+|- helpers
+|- modules
+|- _vars.scss
+|- _trumps.scss
+|- print.scss
+|- main.scss
 ```
 
 There are some downsides to using preprocessors and these should be fully understood before contributing CSS to a project.
-
 
 ### Nesting
 When nesting selectors don’t nest more than three levels deep. Don’t use Sass’ ability to nest infinitely to do just that. Only nest selectors as you would with vanilla CSS.
@@ -277,11 +281,11 @@ The following Sass is unnecessary and overly specific meaning the styles will be
 
 ```scss
 .global-header {
-  .site-nav {
-    li {
-      a {}
-    }
-  }
+	.site-nav {
+		li {
+			a {}	
+		}	
+	}
 }
 ```
 
@@ -289,13 +293,13 @@ Instead we would write the following:
 
 ```scss
 .site-nav {
-  li {}
-  a {}
+	li {}
+	a {}
 }
 ```
 
 ### Extends
-Use caution when using the `@extend` operator. When used incorrectly it can bloat compiled CSS. Instead use classes that can be added to markup.
+Employ caution when using the `@extend` operator. When used incorrectly it can bloat compiled CSS. Instead use classes that can be added to markup.
 
 ### Mobile First
 Most of our web applications are built mobile first, in that we specify mobile styles as our base and then, using media queries, enhance the user experience for larger devices and screens.
@@ -305,3 +309,32 @@ The problem with doing this is that Internet Explorer 8 and earlier don’t supp
 We use [The Guardian’s Sass MQ](https://github.com/sass-mq/sass-mq) library of mixins to create our various media queries and set a default static breakpoint for Internet Explorer 8. The mixins rasterise the breakpoints so browsers rely on the cascade itself.
 
 ## JavaScript
+The majority of our Javascript should be written in external JavaScript files. Similar to our approach with CSS we promote the use of comments, our build tools will take care of stripping those out before our code hits the production server.
+
+We take a modular approach to writing JavaScript to ensure our code is maintainable and easy to understand. A typical module structure looks something like this.
+
+```javascript
+var Module = (function () {
+
+	var _privateMethod = function () {
+    // private method
+  };
+
+  var publicMethod = function () {
+    _privateMethod();
+  };
+  
+  return {
+    publicMethod: publicMethod
+  };
+
+})();
+```
+
+We can then call a particular method like so:
+
+```Module.publicMethod();```
+
+We prefer feature detection over browser sniffing and utilise Modernizr to take care of it.
+
+Functions and variables should be named logically and in camelCase. Sensible names that are long are preferred to short names that make no sense.
