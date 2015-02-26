@@ -37,17 +37,16 @@
     "bower-installer": "1.1.0"
   },
   "scripts": {
-    "js": "jshint source/javascripts/**.js | mkdir build/javascripts/templates | cp source/javascripts/modules/**/*.html build/javascripts/templates | cp source/javascripts/libraries/**/*.js build/javascripts/libraries | uglifyjs source/javascripts/helpers.js source/javascripts/modules/**/*.js source/javascripts/libraries/**/*.js source/javascripts/main.js -o build/javascripts/application.min.js --source-map build/javascripts/application.min.js.map --source-map-url /build/javascripts/application.min.js.map | cp source/javascripts/libraries/*.js build/javascripts/",
-    "sass": "node-sass source/scss/main.scss --output-style compressed build/css/main.css | node-sass source/scss/print.scss --output-style compressed build/css/print.css | node-sass source/scss/ie/ie8.scss --output-style compressed build/css/ie8.css | autoprefixer build/css/main.css",
-    "imagemin": "imagemin source/images/template/* build/images/template",
+    "js": "jshint source/javascripts/**.js | mkdir build/javascripts | mkdir build/javascripts/templates | mkdir build/javascripts/libraries | cp source/javascripts/modules/**/*.html build/javascripts/templates | cp source/javascripts/libraries/*/*.js build/javascripts/libraries | uglifyjs source/javascripts/*.js source/javascripts/modules/**/*.js source/javascripts/libraries/**/*.js source/javascripts/main.js -o build/javascripts/application.min.js --source-map build/javascripts/application.min.js.map --source-map-url /build/javascripts/application.min.js.map",
+    "sass": "mkdir build/css | touch build/css/main.css | node-sass source/scss/main.scss --output-style compressed build/css/main.css | node-sass source/scss/print.scss --output-style compressed build/css/print.css | node-sass source/scss/ie/ie8.scss --output-style compressed build/css/ie8.css | autoprefixer build/css/main.css",
+    "imagemin": "imagemin source/images/template/**/* build/images/template",
     "build:sass": "npm run sass",
     "watch:sass": "watch 'npm run build:sass' source/scss",
     "build:js": "npm run js",
     "watch:js": "watch 'npm run build:js' source/javascripts",
-    "build:html": "npm run js",
     "build:images": "npm run imagemin",
-    "watch:images": "watch 'npm run build:images' source/images/template",
+    "watch:images": "watch 'npm run build:images' source/images",
     "build": "npm run build:sass && npm run build:js && npm run build:images",
-    "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:images'"
+    "build:watch": "mkdir build | mkdir build/images | mkdir build/images/template | parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:images'"
   }
 }

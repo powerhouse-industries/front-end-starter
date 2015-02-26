@@ -1,6 +1,6 @@
 # Ledgard Jepson Front-End Best Practice and Methodology
 Authors: Oliver Farrell & Jonny Haynes
-Last Updated: 11th February 2015
+Last Updated: 26th February 2015
 
 This document outlines best practices, guidelines and methodologies that should be considered and in most cases adhered to when building web applications at Ledgard Jepson. It is a forever evolving document and should be regularly reviewed to keep up with changes and best practices.
 
@@ -9,7 +9,7 @@ This document outlines best practices, guidelines and methodologies that should 
 	* Editor Setup
 	* Project Structure & Setup
 	* Build Tools
-	* Readability vs Compression 
+	* Readability vs Compression
 * Browser Support
 * Markup
 	* General Guidelines
@@ -204,7 +204,7 @@ Some examples of good rulesets:
 a { color: red; }
 ```
 
-Class names should always be lowercase and where necessary separated with a dash. It is always preferable to name an ID or class by the nature of what it is rather than by what it looks like. 
+Class names should always be lowercase and where necessary separated with a dash. It is always preferable to name an ID or class by the nature of what it is rather than by what it looks like.
 
 Our use of IDs are limited to major containers and in most cases are avoid to prevent specificity issues.
 
@@ -241,8 +241,8 @@ When building mobile first responsive websites, it’s necessary to generate a s
 ### Images
 Image names should use dashes and be named so that their use is clear e.g. `icon-facebook.svg`. There are a number of options for how we might choose to deal with images in CSS:
 
-* CSS Sprites: 
-* Data URIs: 
+* CSS Sprites:
+* Data URIs:
 
 When possible we choose SVGs over any other file format for icons and other vector based imagery and provide a fallback for browsers that don't support SVG in the following manner:
 
@@ -283,8 +283,8 @@ The following Sass is unnecessary and overly specific meaning the styles will be
 .global-header {
 	.site-nav {
 		li {
-			a {}	
-		}	
+			a {}
+		}
 	}
 }
 ```
@@ -323,7 +323,7 @@ var Module = (function () {
   var publicMethod = function () {
     _privateMethod();
   };
-  
+
   return {
     publicMethod: publicMethod
   };

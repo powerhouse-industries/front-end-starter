@@ -4,6 +4,11 @@
 
 var Lightbox = (function (Helpers) {
 
+  var options = {
+    template: 'lightbox.html',
+    selector: '[rel="lightbox"]'
+  }
+
   /**
    * Build lightbox
    */
@@ -12,9 +17,15 @@ var Lightbox = (function (Helpers) {
 
     // grab the contents of the template
     // and insert it into the DOM
-    Helpers.getFileContents('/build/javascripts/templates/lightbox.html', function (response) {
-      document.body.innerHTML += response;
-      document.body.innerHTML += '<div class="overlay"></div>';
+    Helpers.getFileContents('/build/javascripts/templates/' + options.template, function (response) {
+      if(document.body != null) {
+        document.body.appendChild(response);
+        document.body.appendChild('<div class="overlay"></div>');
+      }
+
+      // add a click event for the close icon
+      var close = document.getElementById('close');
+      close.onclick = _destroyLightbox;
     });
 
   }
@@ -35,41 +46,28 @@ var Lightbox = (function (Helpers) {
     }
   }
 
-  /**
-   * Show lightbox
-   */
-
-  var showLightbox = function () {
-    _buildLightbox();
-
-    setTimeout(function() {
-      var close = document.getElementById('close');
-      close.onclick = _destroyLightbox;
-    }, 100);
-  };
 
   /**
-   * Hide lightbox
+   * Init
    */
 
-  var hideLightbox = function () {
-    _destroyLightbox();
-    console.log('hide');
+  var init = function () {
+    var links = document.querySelectorAll(options.selector);
+    for(var i = 0; i < links.length; i++) {
+      // links[i].addEventListener('click', _buildLightbox, false);
+      links[i].addEventListener('click', _buildLightbox, false)
+    }
+
+    document.onkeydown = function(evt) {
+      evt = evt || window.event;
+      if (evt.keyCode == 27) {
+        _destroyLightbox();
+      }
+    };
   };
 
   return {
-    show: showLightbox,
-    hide: hideLightbox
+    init: init
   };
 
 })(Helpers);
-
-
-Helpers.ready(function() {
-  var links = document.querySelectorAll('[rel="lightbox"]');
-  for(var i = 0; i < links.length; i++) {
-    links[i].addEventListener('click', function() {
-      Lightbox.show();
-    });
-  }
-});

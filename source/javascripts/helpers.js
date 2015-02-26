@@ -41,7 +41,7 @@ var Helpers = (function () {
         handler.call(el);
       });
     }
-  }
+  };
 
 
   /**
@@ -54,7 +54,7 @@ var Helpers = (function () {
       if (request.readyState == 4 && request.status == 200) {
         callback(request.responseText);
       }
-    }
+    };
     request.open('GET', template, true);
     request.send();
   };

@@ -14,6 +14,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 500px;
+  max-width: 95%;
+  height: 500px;
   z-index: 2;
 
   padding: 20px;
@@ -45,7 +48,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  
+
   background: {
     color: rgba(0,0,0,.4);
   }
@@ -77,7 +80,7 @@
 
 @include mq(mq1200) {
   .lightbox {
-    color: yellow;
+    color: darkred;
   }
 }
 
@@ -105,7 +108,7 @@
 
 .ie8 {
   .lightbox {
-
+    top: 5%;
   }
 }
 

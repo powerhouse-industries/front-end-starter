@@ -3,19 +3,13 @@
 \*------------------------------------*/
 
 table {
-  margin-bottom: em(16);
   width: 100%;
-  border: 1px solid $grey;
+  border: 1px solid;
   border-collapse: collapse;
-}
-
-caption {
-  padding: em(16);
 }
 
 th,
 td {
-  padding: em(16);
-  border: 1px solid $grey;
+  border: 1px solid;
   text-align: left;
 }
