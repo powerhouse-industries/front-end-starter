@@ -15,8 +15,6 @@ $light-grey: #ddd;
 $dark-grey: #212121;
 
 $brand: #ffce00;
-$link-colour: $brand;
-$link-colour-hover: #686868;
 
 $error: #fe6565;
 $warning: #fdfdcc;
@@ -37,5 +35,7 @@ $base-font-size: 16px;
 $base-line-height: 24px;
 
 // link options
+$link-colour: $brand;
 $link-underlined: true;
+$link-colour-hover: #686868;
 $link-underlined-hover: false;

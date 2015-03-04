@@ -80,3 +80,29 @@
     @content;
   }
 }
+
+
+/**
+ * Vertically align
+ */
+
+@mixin verically-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+/**
+ * SVG background images with fallback
+ */
+
+ @mixin svg-background($image) {
+  background: file-url(#{$image} + '.svg');
+
+  .no-svg & {
+    background: {
+      image: file-url(#{$image} + '.png');
+    }
+  }
+}

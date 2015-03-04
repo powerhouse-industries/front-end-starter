@@ -34,6 +34,9 @@ Helpers.ready(function() {
 
   picturefill();
 
-  Lightbox.init();
+  Lightbox.init({
+    template: 'lightbox.html',
+    selector: '[rel="lightbox"]'
+  });
 
 });

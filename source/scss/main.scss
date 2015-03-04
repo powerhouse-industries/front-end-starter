@@ -32,3 +32,8 @@
 
 // trumps
 @import 'trumps';
+
+
+body {
+  @include svg-background(icon-red);
+}

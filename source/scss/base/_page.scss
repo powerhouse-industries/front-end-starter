@@ -3,10 +3,7 @@
 \*------------------------------------*/
 
 /**
- * [1] Modify the base font-size on the body
- *     using a percentage so that 1em equals 10px,
- *     instead of the default 16px.
- * [2] Fonts on OSX will look more consistent with
+ * [1] Fonts on OSX will look more consistent with
  *     other systems that do not render text using
  *     sub-pixel anti-aliasing.
  */
@@ -14,10 +11,9 @@
 html {
   overflow-y: scroll;
   min-height: 100%;
-  font-size: 62.5%; /* 1 */
   text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale; /* 2 */
-  -webkit-font-smoothing: antialiased; /* 2 */
+  -moz-osx-font-smoothing: grayscale; /* 1 */
+  -webkit-font-smoothing: antialiased; /* 1 */
   color: $base-font-colour;
   background: {
     color: $base-background-colour;
