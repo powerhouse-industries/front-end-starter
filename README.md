@@ -118,8 +118,9 @@ The following are general guidelines for structuring your HTML markup. We are re
 * Use `<p>` elements for paragraph delimiters as opposed to multiple `<br />` tags.
 * Items in list form should always be housed in a `<ul>`, `<ol>`, or `<dl>`.
 * Consider placing HTML comments around block element that contain larger amounts of markup to indicate the element being closed. It makes skim-reading code much easier.
+
 ```html
-<div class=“my-element”>
+<div class="my-element">
 	<p>This is my element</p>
 </div><!-- /.my-element -->
 ```
@@ -141,16 +142,15 @@ Schema.org can be used to markup addresses, organisation details such as logos, 
 We strive to incorporate Schema markup where possible – check out a full list of supported Schemas [here](http://schema.org/docs/schemas.html).
 
 ### Images
-While support for `<picture>` and `srcset` are limited we’ve opted for [Picturefill 1.2](https://github.com/scottjehl/picturefill) as a Polyfill for responsive images.
+While support for `<picture>` and `srcset` are limited we’ve opted for [Picturefill](https://github.com/scottjehl/picturefill) as a Polyfill for responsive images.
 
 ```html
-<span data-picture data-alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia">
-	<span data-src="small.jpg"></span>
-	<span data-src="medium.jpg" data-media="(min-width: 400px)"></span>
-	<span data-src="large.jpg" data-media="(min-width: 800px)"></span>
-	<span data-src="extralarge.jpg" data-media="(min-width: 1000px)"></span>
-	<noscript><img src="small.jpg" alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia"></noscript>
-</span>
+<picture>
+	<!--[if IE 9]><video style="display: none;"><![endif]-->
+	<source srcset="examples/images/large.jpg, examples/images/extralarge.jpg 2x" media="(min-width: 800px)">
+	<!--[if IE 9]></video><![endif]-->
+	<img srcset="examples/images/small.jpg, examples/images/medium.jpg 2x" alt="A giant stone face at The Bayon temple in Angkor Thom, Cambodia">
+</picture>
 ```
 
 All images (including SVGs) should be optimised before hitting a production server. Our build tools usually take care of this.
@@ -200,6 +200,14 @@ Some examples of good rulesets:
   display: block;
 }
 
+.is-hidden {
+	display: none;
+}
+
+.is-collapsed {
+	height: 0;
+}
+
 // single rule selectors can look like this
 a { color: red; }
 ```
@@ -209,7 +217,8 @@ Class names should always be lowercase and where necessary separated with a dash
 Our use of IDs are limited to major containers and in most cases are avoid to prevent specificity issues.
 
 Don’t over qualify selectors:
-```
+
+```css
 // bad
 div.content {}
 
