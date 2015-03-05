@@ -7,7 +7,7 @@ var Lightbox = (function (Helpers) {
   var config = {
     template: 'lightbox.html',
     selector: '[rel="lightbox"]'
-  }
+  };
 
   /**
    * Build lightbox
@@ -19,16 +19,23 @@ var Lightbox = (function (Helpers) {
     Helpers.getFileContents('/build/javascripts/templates/' + config.template, function (response) {
 
       // create the lightbox
-      var element = document.createElement('div');
-      element.className = 'lightbox';
-      element.innerHTML += response;
+      var el = document.createElement('div');
+      if (el.classList)
+        el.classList.add('lightbox');
+      else
+        el.className += ' ' + 'lightbox';
+
+      el.innerHTML += response;
 
       // create the overlay
       var overlay = document.createElement('div');
-      overlay.className = 'overlay';
+      if (overlay.classList)
+        overlay.classList.add('overlay');
+      else
+        overlay.className += ' ' + 'overlay';
 
       // append both to the body
-      document.body.appendChild(element);
+      document.body.appendChild(el);
       document.body.appendChild(overlay);
 
       // add a click event for the close icon
@@ -36,30 +43,30 @@ var Lightbox = (function (Helpers) {
       close.onclick = _destroyLightbox;
 
       // add a click event for the overlay
-      var overlayClose = document.getElementsByClassName('overlay');
+      var overlayClose = document.querySelectorAll('.overlay');
       for(var i = 0; i < overlayClose.length; i++) {
         overlayClose[i].onclick = _destroyLightbox;
       }
 
     });
 
-  }
+  };
 
   /**
    * Destroy lightbox
    */
 
   var _destroyLightbox = function () {
-    var lightbox = document.getElementsByClassName('lightbox');
+    var lightbox = document.querySelectorAll('.lightbox');
     for(var i = 0; i < lightbox.length; i++) {
       lightbox[i].parentNode.removeChild(lightbox[i]);
     }
 
-    var overlay = document.getElementsByClassName('overlay');
+    var overlay = document.querySelectorAll('.overlay');
     for(var i = 0; i < overlay.length; i++) {
       overlay[i].parentNode.removeChild(overlay[i]);
     }
-  }
+  };
 
 
   /**
@@ -77,8 +84,9 @@ var Lightbox = (function (Helpers) {
 
     // link up all instances of the selector
     var links = document.querySelectorAll(config.selector);
+    alert(links);
     for(var i = 0; i < links.length; i++) {
-      links[i].addEventListener('click', _buildLightbox, false)
+      Helpers.addEventListener(links[i], 'click', _buildLightbox);
     }
 
     // close the lightbox when user hits 'esc'

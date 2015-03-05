@@ -10,15 +10,19 @@
   <!-- /.lightbox -->
 \*------------------------------------*/
 
+$lightbox-width:  500px;
+$lightbox-height: 500px;
+
 .lightbox {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
+  width: $lightbox-width;
   max-width: 95%;
-  height: 500px;
-  z-index: 2;
+  height: $lightbox-height;
+  max-height: 95%;
+  z-index: 9999;
 
   padding: 20px;
 
@@ -49,6 +53,8 @@
   left: 0;
   right: 0;
   bottom: 0;
+
+  @include position('fixed', 0, 0, 0, 0);
 
   background: {
     color: rgba(0,0,0,.4);

@@ -33,7 +33,7 @@ var Helpers = (function () {
    * A vanilla JS alternative to $().on('click');
    */
 
-  var addEvent = function(el, eventName, handler) {
+  var addEventListener = function(el, eventName, handler) {
     if (el.addEventListener) {
       el.addEventListener(eventName, handler);
     } else {
@@ -61,7 +61,7 @@ var Helpers = (function () {
 
   return {
     ready: ready,
-    addEvent: addEvent,
+    addEventListener: addEventListener,
     getFileContents: getFileContents
   };
 

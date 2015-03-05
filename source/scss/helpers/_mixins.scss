@@ -30,7 +30,7 @@
 
 @mixin font-size($font-size, $line-height: false) {
   font-size: $font-size;
-  font-size: ($font-size / 10px) * 1rem;
+  font-size: ($font-size / $base-font-size) * 1rem;
   @if $line-height {
     line-height: $line-height;
   }
@@ -83,7 +83,8 @@
 
 
 /**
- * Vertically align
+ * Vertically align and element
+ * inside its container
  */
 
 @mixin verically-align {
@@ -95,6 +96,8 @@
 
 /**
  * SVG background images with fallback
+ *
+ * .thing { @include svg-background(icon-red); }
  */
 
  @mixin svg-background($image) {
@@ -105,4 +108,19 @@
       image: file-url(#{$image} + '.png');
     }
   }
+}
+
+
+/**
+ * Set the position and top, right, bottom, left values
+ *
+ * .thing {  @include position(relative, 0, 1px, 10px, 0); }
+ */
+
+@mixin position($position, $top, $right, $bottom, $left) {
+  position: $position;
+  @if $top { top: $top; }
+  @if $right { right: $right; }
+  @if $bottom { bottom: $bottom; }
+  @if $left { left: $left; }
 }

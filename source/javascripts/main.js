@@ -20,17 +20,17 @@ Helpers.ready(function() {
     }
   });
 
-  yepnope({
-    test : Modernizr.input.placeholder,
-    nope: [
-      'build/javascripts/libraries/jquery.placeholder.js'
-    ],
-    callback: function (url, result, key) {
-      if (!result) {
-        document.getElementsByTagName('input, textarea').placeholder();
-      }
-    }
-  });
+  // yepnope({
+  //   test : Modernizr.input.placeholder,
+  //   nope: [
+  //     'build/javascripts/libraries/jquery.placeholder.js'
+  //   ],
+  //   callback: function (url, result, key) {
+  //     if (!result) {
+  //       document.getElementsByTagName('input, textarea').placeholder();
+  //     }
+  //   }
+  // });
 
   picturefill();
 

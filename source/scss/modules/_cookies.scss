@@ -2,7 +2,7 @@
   $COOKIES
 \*------------------------------------*/
 
-$banner-color: $black;
+$banner-background-color: $black;
 $banner-text-color: $white;
 $banner-link-color: $white;
 $banner-btn-color: $white;
@@ -11,7 +11,7 @@ $banner-btn-text-color: $black;
 #cookies {
   padding: 15px 0;
   background: {
-    color: $banner-color;
+    color: $banner-background-color;
   }
 
   .wrap {
