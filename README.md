@@ -342,7 +342,9 @@ var Module = (function () {
 
 We can then call a particular method like so:
 
-```Module.publicMethod();```
+```
+Module.publicMethod();
+```
 
 We prefer feature detection over browser sniffing and utilise Modernizr to take care of it.
 
