@@ -6,8 +6,11 @@ var Lightbox = (function (Helpers) {
 
   var config = {
     template: 'lightbox.html',
-    selector: '[rel="lightbox"]'
+    selector: '[rel="lightbox"]',
+    hashURL:  'lightbox-one'
   };
+
+  var visible;
 
   /**
    * Build lightbox
@@ -48,6 +51,12 @@ var Lightbox = (function (Helpers) {
         overlayClose[i].onclick = _destroyLightbox;
       }
 
+      // change the URL so it's directly accessible
+      history.replaceState({}, '', '#!' + config.hashURL);
+
+      // set a variable so we detect if the lightbox is visible or not
+      visible == true
+
     });
 
   };
@@ -66,7 +75,44 @@ var Lightbox = (function (Helpers) {
     for(var i = 0; i < overlay.length; i++) {
       overlay[i].parentNode.removeChild(overlay[i]);
     }
+
+    history.replaceState({}, '', location.pathname);
+
+    visible == true
   };
+
+
+  /**
+   * Check URL
+   */
+  function checkURL() {
+
+    // grab the hash
+    var hash = window.location.hash,
+        lightboxHash = '#!' + config.hashURL;
+
+    console.log('hash: ' + hash);
+    console.log('lightbox hash: ' + lightboxHash);
+
+    Helpers.addEventListener(window, 'popstate', function() {
+      hash = window.location.hash;
+
+      if(hash == lightboxHash)
+        _buildLightbox();
+      else
+        _destroyLightbox();
+    });
+
+    Helpers.addEventListener(window, 'load', function() {
+      hash = window.location.hash;
+
+      if(hash == lightboxHash)
+        _buildLightbox();
+      else
+        _destroyLightbox();
+    });
+
+  }
 
 
   /**
@@ -74,6 +120,10 @@ var Lightbox = (function (Helpers) {
    */
 
   var init = function (options) {
+
+    // check the URL and decide whether to show
+    // the lightbox or not based on the hash
+    checkURL();
 
     // override the default config
     for(var prop in options) {
@@ -84,18 +134,15 @@ var Lightbox = (function (Helpers) {
 
     // link up all instances of the selector
     var links = document.querySelectorAll(config.selector);
-    alert(links);
     for(var i = 0; i < links.length; i++) {
       Helpers.addEventListener(links[i], 'click', _buildLightbox);
     }
 
     // close the lightbox when user hits 'esc'
-    document.onkeydown = function(evt) {
-      evt = evt || window.event;
-      if (evt.keyCode == 27) {
+    Helpers.addEventListener(window, 'keydown', function(e) {
+      if (e.keyCode == 27)
         _destroyLightbox();
-      }
-    };
+    });
   };
 
   return {

@@ -15,8 +15,8 @@ window.CookieDisclaimer = (function (jQuery) {
 
   function test() {
     if (!read(CookieDisclaimer.cookieName)) {
-      var theDiv = '<div id="cookies"><div class="wrap"><p class="float-l">' + this.message +
-      '</p><p class="float-r"><a id="close-cookies" class="button button-light" href="#">Close</a></p></div></div>';
+      var theDiv = '<div id="cookies"><div class="wrap"><p>' + this.message +
+      '</p><a id="close-cookies" class="btn" href="#">Close</a></div></div>';
       jQuery('body').addClass('cookie').prepend(theDiv);
     }
   }
