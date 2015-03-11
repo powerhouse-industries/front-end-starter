@@ -161,7 +161,9 @@ All images (including SVGs) should be optimised before hitting a production serv
 ### Accessibility
 We utilise WAI-ARIA in all web applications to ensure that users with visual impairments or others disabilities are able to access our applications via a screen reader or other assistive technology.
 
-You should always strive to make your applications accessible and therefore should include aria wherever possible.
+You should always strive to make your applications accessible and therefore should include WAI-ARIA wherever possible.
+
+All of our code strives to adhere to the W3C's WCAG 2.0 AA standard where possible.
 
 ## CSS
 We use Sass to compose our stylesheet, but more on that further into this document. We always avoid writing CSS inline – it might make quick and dirty fixes easy, but in the long run it makes our code impossible to maintain. The only time we do inline CSS is where it’s necessary to apply user customisations.
