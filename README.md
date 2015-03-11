@@ -1,5 +1,7 @@
 # Ledgard Jepson Front-End Best Practice and Methodology
 
+[![Join the chat at https://gitter.im/ledgardjepson/front-end-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ledgardjepson/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/ledgardjepson/front-end-starter.svg)](https://travis-ci.org/ledgardjepson/front-end-starter) [![Code Climate](https://codeclimate.com/github/ledgardjepson/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/ledgardjepson/front-end-starter)
 
 Authors: Oliver Farrell & Jonny Haynes
