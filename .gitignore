@@ -11,4 +11,4 @@ scss-lint-report.xml
 *.log
 tmp
 .vagrant
-components
+*/javascripts/components

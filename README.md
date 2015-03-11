@@ -1,6 +1,9 @@
 # Ledgard Jepson Front-End Best Practice and Methodology
+
+[![Build Status](https://travis-ci.org/ledgardjepson/front-end-starter.svg)](https://travis-ci.org/ledgardjepson/front-end-starter) [![Code Climate](https://codeclimate.com/github/ledgardjepson/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/ledgardjepson/front-end-starter) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ledgardjepson/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 Authors: Oliver Farrell & Jonny Haynes
-Last Updated: 26th February 2015
+Last Updated: 11 March 2015
 
 This document outlines best practices, guidelines and methodologies that should be considered and in most cases adhered to when building web applications at Ledgard Jepson. It is a forever evolving document and should be regularly reviewed to keep up with changes and best practices. It is inspired by the great work of [TMW](http://tech.tmw.co.uk/code/TMW-frontend-guidelines), [Isobar](http://isobar-idev.github.io/code-standards/) and [Sass Guidelines](http://sass-guidelin.es/).
 
@@ -40,7 +43,7 @@ We understand everyone has a preference when it comes to their text editor/IDE o
 EditorConfig helps us define and maintain consistent coding styles between different editors and IDEs. You should [install the EditorConfig plugin](http://editorconfig.org/#download) for your editor of choice.
 
 ### Project Structure and Setup
-All our projects use the [FES] as a starting point. You can clone the repo from here: [https://bitbucket.org/...](http://bitbucket.org).
+All our projects use the [FES] as a starting point. You can clone the repo from here: [https://bitbucket.org/…](http://bitbucket.org).
 
 The typical folder structure looks something like this:
 
@@ -68,42 +71,42 @@ Where testing is concerned we split web browsers into two main categories. A Gra
 ### A Grade Browsers
 A-grade support is the highest support level. By taking full advantage of the capabilities of modern web standards, the A-grade experience provides advanced functionality and visual fidelity.
 
-|Desktop | Versions |
-|:—:| ——:|
-|Internet Explorer | 9, 10 and 11 |
-|Safari | 8 |
-|Chrome | 39 and 40 |
-|Firefox | Latest |
+| Desktop            | Versions      |
+| ------------------ | ------------- |
+| Internet Explorer  | 9, 10 and 11  |
+| Safari             | 8             |
+| Chrome             | 30 and 40     |
+| Firefox            | Latest        |
 
-|Tablet | Versions |
-|:—:| ——:|
-|Chrome | Latest |
-|Safari | Latest |
+| Tablet             | Versions      |
+| ------------------ | ------------- |
+| Chrome             | Latest        |
+| Safari             | Latest        |
 
-|Mobile | Versions |
-|:—:| ——:|
-|Chrome | Latest |
-|Safari | Latest |
+| Mobile             | Versions      |
+| ------------------ | ------------- |
+| Chrome             | Latest        |
+| Safari             | Latest        |
 
 ### C Grade Browsers
 C-grade is the base level of support, providing core content and functionality.
 
-|Desktop | Versions |
-|:—:| ——:|
-|Internet Explorer | 8 |
-|Safari | 7 |
-|Chrome | 38 |
-|Firefox | 34 |
+| Desktop            | Versions      |
+| ------------------ | ------------- |
+| Internet Explorer  | 8             |
+| Safari             | 7             |
+| Chrome             | 38            |
+| Firefox            | 34            |
 
-|Tablet | Versions |
-|:—:| ——:|
-|Opera | N/A |
-|Firefox | N/A |
+| Tablet             | Versions      |
+| ------------------ | ------------- |
+| Opera              | N/A           |
+| Firefox            | N/A           |
 
-|Mobile | Versions |
-|:—:| ——:|
-|Chrome | N/A |
-|Safari | N/A |
+| Tablet             | Versions      |
+| ------------------ | ------------- |
+| Chrome             | N/A           |
+| Safari             | N/A           |
 
 ## Markup
 We use HTML5 as standard on all our web applications. To ensure backwards compatibility with older, unsupported, web browsers we  used [Modernizr](http://modernizr.com/).
@@ -158,7 +161,9 @@ All images (including SVGs) should be optimised before hitting a production serv
 ### Accessibility
 We utilise WAI-ARIA in all web applications to ensure that users with visual impairments or others disabilities are able to access our applications via a screen reader or other assistive technology.
 
-You should always strive to make your applications accessible and therefore should include aria wherever possible.
+You should always strive to make your applications accessible and therefore should include WAI-ARIA wherever possible.
+
+All of our code strives to adhere to the W3C's WCAG 2.0 AA standard where possible.
 
 ## CSS
 We use Sass to compose our stylesheet, but more on that further into this document. We always avoid writing CSS inline – it might make quick and dirty fixes easy, but in the long run it makes our code impossible to maintain. The only time we do inline CSS is where it’s necessary to apply user customisations.
