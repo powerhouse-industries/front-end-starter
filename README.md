@@ -71,42 +71,42 @@ Where testing is concerned we split web browsers into two main categories. A Gra
 ### A Grade Browsers
 A-grade support is the highest support level. By taking full advantage of the capabilities of modern web standards, the A-grade experience provides advanced functionality and visual fidelity.
 
-|Desktop | Versions |
-|:—:| ——:|
-|Internet Explorer | 9, 10 and 11 |
-|Safari | 8 |
-|Chrome | 39 and 40 |
-|Firefox | Latest |
+| Desktop            | Versions      |
+| ------------------ | ------------- |
+| Internet Explorer  | 9, 10 and 11  |
+| Safari             | 8             |
+| Chrome             | 30 and 40     |
+| Firefox            | Latest        |
 
-|Tablet | Versions |
-|:—:| ——:|
-|Chrome | Latest |
-|Safari | Latest |
+| Tablet             | Versions      |
+| ------------------ | ------------- |
+| Chrome             | Latest        |
+| Safari             | Latest        |
 
-|Mobile | Versions |
-|:—:| ——:|
-|Chrome | Latest |
-|Safari | Latest |
+| Mobile             | Versions      |
+| ------------------ | ------------- |
+| Chrome             | Latest        |
+| Safari             | Latest        |
 
 ### C Grade Browsers
 C-grade is the base level of support, providing core content and functionality.
 
-|Desktop | Versions |
-|:—:| ——:|
-|Internet Explorer | 8 |
-|Safari | 7 |
-|Chrome | 38 |
-|Firefox | 34 |
+| Desktop            | Versions      |
+| ------------------ | ------------- |
+| Internet Explorer  | 8             |
+| Safari             | 7             |
+| Chrome             | 38            |
+| Firefox            | 34            |
 
-|Tablet | Versions |
-|:—:| ——:|
-|Opera | N/A |
-|Firefox | N/A |
+| Tablet             | Versions      |
+| ------------------ | ------------- |
+| Opera              | N/A           |
+| Firefox            | N/A           |
 
-|Mobile | Versions |
-|:—:| ——:|
-|Chrome | N/A |
-|Safari | N/A |
+| Tablet             | Versions      |
+| ------------------ | ------------- |
+| Chrome             | N/A           |
+| Safari             | N/A           |
 
 ## Markup
 We use HTML5 as standard on all our web applications. To ensure backwards compatibility with older, unsupported, web browsers we  used [Modernizr](http://modernizr.com/).
