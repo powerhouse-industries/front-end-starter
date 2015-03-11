@@ -1,4 +1,7 @@
 # Ledgard Jepson Front-End Best Practice and Methodology
+
+[![Build Status](https://travis-ci.org/ledgardjepson/front-end-starter.svg)](https://travis-ci.org/ledgardjepson/front-end-starter) [![Code Climate](https://codeclimate.com/github/ledgardjepson/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/ledgardjepson/front-end-starter)
+
 Authors: Oliver Farrell & Jonny Haynes
 Last Updated: 26th February 2015
 
