@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/ledgardjepson/front-end-starter.svg)](https://travis-ci.org/ledgardjepson/front-end-starter) [![Code Climate](https://codeclimate.com/github/ledgardjepson/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/ledgardjepson/front-end-starter) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ledgardjepson/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Authors: Oliver Farrell & Jonny Haynes
-Last Updated: 26th February 2015
+Last Updated: 11 March 2015
 
 This document outlines best practices, guidelines and methodologies that should be considered and in most cases adhered to when building web applications at Ledgard Jepson. It is a forever evolving document and should be regularly reviewed to keep up with changes and best practices. It is inspired by the great work of [TMW](http://tech.tmw.co.uk/code/TMW-frontend-guidelines), [Isobar](http://isobar-idev.github.io/code-standards/) and [Sass Guidelines](http://sass-guidelin.es/).
 
@@ -43,7 +43,7 @@ We understand everyone has a preference when it comes to their text editor/IDE o
 EditorConfig helps us define and maintain consistent coding styles between different editors and IDEs. You should [install the EditorConfig plugin](http://editorconfig.org/#download) for your editor of choice.
 
 ### Project Structure and Setup
-All our projects use the [FES] as a starting point. You can clone the repo from here: [https://bitbucket.org/...](http://bitbucket.org).
+All our projects use the [FES] as a starting point. You can clone the repo from here: [https://bitbucket.org/…](http://bitbucket.org).
 
 The typical folder structure looks something like this:
 
