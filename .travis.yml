@@ -6,9 +6,16 @@ notifications:
   email: false
 
 notifications:
-webhooks:
-  urls:
-    - https://webhooks.gitter.im/e/88db25fbb9f1886702c7
-  on_success: always  # options: [always|never|change] default: always
-  on_failure: always  # options: [always|never|change] default: always
-  on_start: false     # default: false
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/88db25fbb9f1886702c7
+    on_success: always  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+    on_start: false     # default: false
+
+addons:
+  code_climate:
+    repo_token: CODECLIMATE_REPO_TOKEN=98379058f34ee18b0d1a348eb5322a0633c9de8f521e485de461545504a7154e
+
+after_script:
+  - cat lcov.info | codeclimate
