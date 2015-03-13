@@ -2,8 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ledgardjepson/front-end-starter.svg)](https://travis-ci.org/ledgardjepson/front-end-starter) [![Code Climate](https://codeclimate.com/github/ledgardjepson/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/ledgardjepson/front-end-starter) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ledgardjepson/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-Authors: Oliver Farrell & Jonny Haynes
-Last Updated: 11 March 2015
+Authors: Oliver Farrell & Jonny Haynes | Last Updated: 12th March 2015
 
 This document outlines best practices, guidelines and methodologies that should be considered and in most cases adhered to when building web applications at Ledgard Jepson. It is a forever evolving document and should be regularly reviewed to keep up with changes and best practices. It is inspired by the great work of [TMW](http://tech.tmw.co.uk/code/TMW-frontend-guidelines), [Isobar](http://isobar-idev.github.io/code-standards/) and [Sass Guidelines](http://sass-guidelin.es/).
 
@@ -25,7 +24,7 @@ This document outlines best practices, guidelines and methodologies that should 
   * Validation
   * OOCSS
   * Typography
-  * Resets
+  * Reset
   * Comments
   * Conditional Stylesheets
   * Images
@@ -33,6 +32,8 @@ This document outlines best practices, guidelines and methodologies that should 
 	* Nesting
 	* Extends
 	* Mobile First
+* Javascript
+	* jQuery vs Vanilla JavaScript
 
 ## General Guidelines
 All front-end code should be well written, semantically correct and generally valid to W3C Standards. Progressive enhancement should be considered when implementing Javascript functionality and unsupported technologies such as `box-shadow` and geolocation, should degrade gracefully using feature detection through [Modernizr](http://modernizr.com/).
@@ -51,20 +52,20 @@ The typical folder structure looks something like this:
 Folder structure breakdown will go here once it’s finalised
 ```
 
-When you first clone a project you should run `npm install` to download all the Node dependencies listed in `package.json`. You should then run `bower install` to download all other project dependencies.
+When you first clone a project you should run `npm install` to download all the Node dependencies listed in `package.json`. You should then run `bower-installer` inside both `source/javascripts` and `source/scss` to download all other project dependencies.
 
 ### Build Tools
-We don’t use a build tool such as Grunt or Gulp. Instead we opt for a slimline set of native NPM commands and packages. Open up `package.json` and you’ll find a number of build commands under “scripts”.
+We don’t use a build tool such as Grunt or Gulp. Instead we opt for a slimline set of native NPM commands and packages. Open up `package.json` and you’ll find a number of build commands under "scripts".
 
 Type `npm run [task-name]` into your command prompt to run a single task or `npm run build:watch` to continually watch for changes to Sass, JavaScript and Images and run the corresponding tasks.
 
 ### Readability vs Compression
-We promote readability over file-size where maintaining code is concerned. Add as much white space as appropriate and comment your code regularly. There is not need to manually compress HTML, CSS or JavaScript.
+We promote readability over file-size where maintaining code is concerned. Add as much white space as appropriate and comment your code regularly. There is no need to manually compress HTML, CSS or JavaScript.
 
 We will use server-side or build tools to automatically minify and gzip static client-side files, such as CSS and JavaScript.
 
 ## Browser Support
-We thoroughly test all of our code across a number of platforms, operating systems and web browsers. We primarily use VirtualBox to host our Virtual Machines and grab the latest version of Internet Explorer from [here](https://www.modern.ie/en-us).
+We thoroughly test all of our code across a number of platforms, operating systems and web browsers. We primarily use VirtualBox to host our Virtual Machines and grab the latest VMs for Internet Explorer from [here](https://www.modern.ie/en-us).
 
 Where testing is concerned we split web browsers into two main categories. A Grade browsers and C Grade browsers, based on the worked developed by [YUI](https://github.com/yui/yui3/wiki/Graded-Browser-Support).
 
@@ -109,7 +110,7 @@ C-grade is the base level of support, providing core content and functionality.
 | Safari             | N/A           |
 
 ## Markup
-We use HTML5 as standard on all our web applications. To ensure backwards compatibility with older, unsupported, web browsers we  used [Modernizr](http://modernizr.com/).
+We use HTML5 as standard on all our web applications. To ensure backwards compatibility with older, unsupported, web browsers we use [Modernizr](http://modernizr.com/).
 
 All of our markup is tested against W3C Standards using [their validator](http://validator.w3.org/) to ensure that our markup is well formed and free of errors that may cause compatibility problems.
 
@@ -133,7 +134,7 @@ The following are general guidelines for structuring your HTML markup. We are re
 
 ### Quoting Attributes
 Even though the HTML5 specification enables us to write HTML attributes without quotation marks, we should always use double quotes around all attribute values.
-```
+```html
 <a href=“#” title=“This is a link title”>My link</a>
 ```
 
@@ -201,17 +202,9 @@ Some examples of good rulesets:
 }
 
 // a state class (.is-*, .has-*) should look like this
-.is-visible {
-  display: block;
-}
-
-.is-hidden {
-	display: none;
-}
-
-.is-collapsed {
-	height: 0;
-}
+.is-visible { display: block; }
+.has-dropdown { display: none; }
+.is-collapsed { height: 0; }
 
 // single rule selectors can look like this
 a { color: red; }
@@ -331,26 +324,30 @@ We take a modular approach to writing JavaScript to ensure our code is maintaina
 var Module = (function () {
 
 	var _privateMethod = function () {
-    // private method
-  };
+		// private method
+	};
 
-  var publicMethod = function () {
-    _privateMethod();
-  };
+	var publicMethod = function () {
+  	_privateMethod();
+	};
 
-  return {
-    publicMethod: publicMethod
-  };
+	return {
+  	publicMethod: publicMethod
+	};
 
 })();
 ```
 
 We can then call a particular method like so:
 
-```
+```javascript
 Module.publicMethod();
 ```
 
 We prefer feature detection over browser sniffing and utilise Modernizr to take care of it.
 
 Functions and variables should be named logically and in camelCase. Sensible names that are long are preferred to short names that make no sense.
+
+## jQuery vs Vanilla JavaScript
+
+When using JavaScript to enhance a users experience on a website we prefer to use vanilla JavaScript where possible. jQuery is bundled with our Front-end Starter but shouldn't be relied upon where vanilla JavaScript would suffice.

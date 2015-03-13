@@ -34,9 +34,4 @@ Helpers.ready(function() {
 
   picturefill();
 
-  Lightbox.init({
-    template: 'lightbox.html',
-    selector: '[rel="lightbox"]'
-  });
-
 });
