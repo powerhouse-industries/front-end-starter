@@ -55,6 +55,10 @@
 
 /**
  * Link states
+ *
+ * @include states {
+ *   color: blue;
+ * }
  */
 
 @mixin states() {
@@ -68,6 +72,10 @@
 
 /**
  * Style all headings at once
+ *
+ * @include headings {
+ *   color: red;
+ * }
  */
 
 @mixin headings() {
@@ -83,8 +91,10 @@
 
 
 /**
- * Vertically align and element
+ * Vertically align an element
  * inside its container
+ *
+ * .thing {  @include verically-align; }
  */
 
 @mixin verically-align {

@@ -34,4 +34,6 @@ Helpers.ready(function() {
 
   picturefill();
 
+  checkMQ.init();
+
 });

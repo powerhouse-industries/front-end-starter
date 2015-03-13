@@ -28,9 +28,11 @@ This document outlines best practices, guidelines and methodologies that should 
   * Comments
   * Conditional Stylesheets
   * Images
+	  * Inline SVG
 * Sass
 	* Nesting
 	* Extends
+	* Mixins
 	* Mobile First
 * Javascript
 	* jQuery vs Vanilla JavaScript
@@ -45,12 +47,6 @@ EditorConfig helps us define and maintain consistent coding styles between diffe
 
 ### Project Structure and Setup
 All projects use the [FES] as a starting point. You can clone the repo from here: [https://github.com/ledgardjepson/front-end-starter.git](https://github.com/ledgardjepson/front-end-starter.git).
-
-The typical folder structure looks something like this:
-
-```
-Folder structure breakdown will go here once it’s finalised
-```
 
 #### To set up a project on your local machine follow the steps below:
 
@@ -197,10 +193,18 @@ While support for `<picture>` and `srcset` are limited we’ve opted for [Pictur
 
 All images (including SVGs) should be optimised before hitting a production server. Our build tools usually take care of this.
 
+#### Inline SVGs
+In most cases we inline SVG images to remove the need for different versions of the same image. If an icon has two variants, one red and one blue, we can use CSS to change the `<path>` fill colour instead of generating two different images. We use <a href="https://github.com/jonnyhaynes/inline-svg">a script</a> to take care of this process for us.
+
 ### Accessibility
 We utilise [WAI-ARIA](http://rawgit.com/w3c/aria-in-html/master/index.html) in all web applications to ensure that users with visual impairments or others disabilities are able to access our applications via a screen reader or other assistive technology.
 
 You should always strive to make your applications accessible and therefore should include WAI-ARIA wherever possible.
+
+```html
+<header role="banner"></header>
+<button aria-label="Close">X</button>
+```
 
 All of our code strives to adhere to the W3C's [WCAG 2.0](http://www.w3.org/TR/WCAG20/) AA standard where possible.
 
@@ -346,6 +350,9 @@ Instead we would write the following:
 ### Extends
 Employ caution when using the `@extend` operator. When used incorrectly it can bloat compiled CSS. Instead use classes that can be added to markup.
 
+### Mixins
+We try to adhere to the <abbr title="Don't Repeat Yourself">DRY</abbr> principles when writing our CSS and use mixins to prevent unnecessary code duplication. FES ships with a select few predefined mixins to help achieve common repetitive tasks which can be found in `source/scss/helpers/_mixins.scss`.
+
 ### Mobile First
 Most of our web applications are built mobile first, in that we specify mobile styles as our base and then, using media queries, enhance the user experience for larger devices and screens.
 
@@ -390,4 +397,4 @@ Functions and variables should be named logically and in camelCase. Sensible nam
 
 When using JavaScript to enhance a users experience on a website we prefer to use vanilla JavaScript where possible. jQuery is bundled with our Front-end Starter but shouldn't be relied upon where vanilla JavaScript would suffice.
 
-To find out vanilla JS alternatives to jQuery see: [http://youmightnotneedjquery.com/](http://youmightnotneedjquery.com/)
+To find out vanilla JavaScript alternatives to common jQuery methods see: [http://youmightnotneedjquery.com/](http://youmightnotneedjquery.com/)
