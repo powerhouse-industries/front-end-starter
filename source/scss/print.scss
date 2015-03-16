@@ -23,7 +23,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  @include font-size(13px);
+  @include font-size(13);
 }
 
 body {
@@ -100,7 +100,7 @@ img {
     word-wrap: break-word;
     color: $dark-grey;
     font-style: italic;
-    @include font-size(13px);
+    @include font-size(13);
   }
 }
 
@@ -152,7 +152,7 @@ a {
       word-wrap: break-word;
       color: $dark-grey !important;
       font-style: italic;
-      @include font-size(13px);
+      @include font-size(13);
     }
   }
 
@@ -174,7 +174,7 @@ abbr {
   &[title]:after {
     content: "(" attr(title) ")";
     font-style: italic;
-    @include font-size(13px);
+    @include font-size(13);
   }
 }
 
