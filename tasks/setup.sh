@@ -9,6 +9,7 @@ cd source/javascripts && bower-installer
 cd ../../
 cd source/scss && bower install
 cd ../../
+rm -rf source/javascripts/components
 
 # Create the `build` folder structure
 mkdir build

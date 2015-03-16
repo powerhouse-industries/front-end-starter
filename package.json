@@ -34,12 +34,10 @@
     "js": "sh tasks/javascripts.sh",
     "sass": "sh tasks/sass.sh",
     "images": "sh tasks/images.sh",
-    "build:sass": "npm run sass",
     "watch:sass": "nodemon -e scss -x \"sh tasks/sass.sh\"",
-    "build:js": "npm run js",
     "watch:js": "nodemon -e js -x \"sh tasks/javascripts.sh\"",
-    "build:images": "npm run images",
     "build": "npm run build:sass && npm run build:js && npm run build:images",
-    "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:images'"
+    "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:images'",
+    "deploy": "sh tasks/deploy.sh"
   }
 }
