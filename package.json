@@ -48,6 +48,6 @@
     "build:images": "npm run imagemin",
     "watch:images": "watch 'npm run build:images' source/images",
     "build": "npm run build:sass && npm run build:js && npm run build:images",
-    "build:watch": "rm -rf build/ | mkdir build | mkdir build/images | mkdir build/images/template | parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:images'"
+    "build:watch": "rm -rf build/* | mkdir build | mkdir build/images | mkdir build/images/template | parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:images'"
   }
 }
