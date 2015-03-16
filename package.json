@@ -26,7 +26,8 @@
     "parallelshell": "1.0.4",
     "uglify-js": "^2.4.16",
     "watch": "^0.13.0",
-    "bower-installer": "^1.1.0"
+    "bower-installer": "^1.1.0",
+    "nodemon": "^1.3.7"
   },
   "scripts": {
     "setup": "sh tasks/setup.sh",

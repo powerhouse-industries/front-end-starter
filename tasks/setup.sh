@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Install `bower-installer`
+sudo npm install
 sudo npm install bower-installer -g
 
 # Install all the Bower packages
