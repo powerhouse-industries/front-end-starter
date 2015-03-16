@@ -10,8 +10,8 @@
   },
   "frontend": {
     "name": "FES",
-    "stylesheets": "assets/stylesheets/scss",
-    "javascripts": "assets/javascripts"
+    "stylesheets": "source/scss",
+    "javascripts": "source/javascripts"
   },
   "engines": {
     "node": ">=0.10.0",
@@ -20,34 +20,25 @@
   "dependencies": {
     "autoprefixer": "^5.1.0",
     "bower": "^1.3.12",
-    "buffer-to-vinyl": "^1.0.0",
-    "concat-stream": "^1.4.6",
-    "get-stdin": "^4.0.1",
     "jshint": "^2.6.0",
     "imagemin": "^3.1.0",
-    "meow": "^3.0.0",
     "node-sass": "^1.2.3",
-    "optional": "^0.1.0",
     "parallelshell": "1.0.4",
-    "stream-combiner2": "^1.0.2",
-    "through2": "^0.6.1",
     "uglify-js": "^2.4.16",
-    "vinyl-fs": "^0.3.7",
-    "watch": "0.13.0",
-    "bower-installer": "1.1.0"
+    "watch": "^0.13.0",
+    "bower-installer": "^1.1.0"
   },
   "scripts": {
-    "setup": "sudo npm install bower-installer -g && rm -rf source/javascripts/components && rm -rf .travis.yml && rm -rf README.md && rm -rf LICENSE",
-    "js": "jshint source/javascripts/**.js | mkdir build/javascripts | mkdir build/javascripts/templates | mkdir build/javascripts/libraries | cp source/javascripts/modules/**/*.html build/javascripts/templates | cp source/javascripts/libraries/*.js build/javascripts/libraries | cp source/javascripts/libraries/**/*.js build/javascripts/libraries | uglifyjs source/javascripts/libraries/**/*.js source/javascripts/modules/*.js source/javascripts/modules/**/*.js source/javascripts/*.js  -o build/javascripts/application.min.js --source-map build/javascripts/application.min.js.map --source-map-url /build/javascripts/application.min.js.map",
-    "sass": "mkdir build/css | touch build/css/main.css | node-sass source/scss/main.scss --output-style compressed build/css/main.css | node-sass source/scss/print.scss --output-style compressed build/css/print.css | node-sass source/scss/ie8.scss --output-style compressed build/css/ie8.css | autoprefixer build/css/main.css",
-    "imagemin": "imagemin source/images/template/**/* build/images/template",
+    "setup": "sh tasks/setup.sh",
+    "js": "sh tasks/javascripts.sh",
+    "sass": "sh tasks/sass.sh",
+    "images": "sh tasks/images.sh",
     "build:sass": "npm run sass",
-    "watch:sass": "watch 'npm run build:sass' source/scss",
+    "watch:sass": "nodemon -e scss -x \"sh tasks/sass.sh\"",
     "build:js": "npm run js",
-    "watch:js": "watch 'npm run build:js' source/javascripts",
-    "build:images": "npm run imagemin",
-    "watch:images": "watch 'npm run build:images' source/images",
+    "watch:js": "nodemon -e js -x \"sh tasks/javascripts.sh\"",
+    "build:images": "npm run images",
     "build": "npm run build:sass && npm run build:js && npm run build:images",
-    "build:watch": "rm -rf build/* | mkdir build | mkdir build/images | mkdir build/images/template | parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:images'"
+    "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:images'"
   }
 }
