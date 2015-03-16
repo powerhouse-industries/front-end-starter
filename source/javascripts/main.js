@@ -32,6 +32,10 @@ Helpers.ready(function() {
   //   }
   // });
 
+  CookieDisclaimer.init({
+    template: '/build/javascripts/templates/cookie-banner.html'
+  });
+
   picturefill();
 
   checkMQ.init();
