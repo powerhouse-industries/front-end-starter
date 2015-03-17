@@ -2,8 +2,9 @@
   $FUNCTIONS
 \*------------------------------------*/
 
-// define a path where images are stored
-$path: '/build/images/' !default;
+
+$path: '/build/images/' !default; // define a path where images are stored
+$use-rems: true !default; // Use rems by default
 
 /**
  * Quickly get an em value
@@ -21,6 +22,15 @@ $path: '/build/images/' !default;
 @function rem($px) {
   @return $px / 10 * 1rem;
 }
+
+/**
+ * Font sizing in rems
+ */
+
+@function font-size($font-size, $line-height: false) {
+  @return if($use-rems, #{$font-size / $base-font-size}rem, #{$font-size});
+}
+
 
 
 /**

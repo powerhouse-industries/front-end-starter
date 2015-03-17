@@ -6,7 +6,7 @@
 @import 'vars';
 
 // tools
-@import 'helpers/mixins';
+@import 'helpers/functions';
 
 * {
   &,
@@ -21,9 +21,9 @@
 
 html,
 body {
-  @include font-size(13);
   margin: 0;
   padding: 0;
+  font-size: font-size(13);
 }
 
 body {
@@ -96,11 +96,11 @@ img {
   max-width: 100% !important;
 
   &:after {
-    @include font-size(13);
     content: '(' img(alt) ')';
     word-wrap: break-word;
     color: $dark-grey;
     font-style: italic;
+    font-size: font-size(13);
   }
 }
 
@@ -148,11 +148,11 @@ a {
     text-decoration: none;
 
     &:after {
-      @include font-size(13);
       content: '(' attr(href) ')';
       word-wrap: break-word;
       color: $dark-grey !important;
       font-style: italic;
+      font-size: font-size(13);
     }
   }
 
@@ -172,9 +172,9 @@ abbr {
   border: 0;
 
   &[title]:after {
-    @include font-size(13);
-    content: '(' attr(title) ')';
+    content: "(" attr(title) ")";
     font-style: italic;
+    font-size: font-size(13);
   }
 }
 

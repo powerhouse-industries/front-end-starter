@@ -13,7 +13,7 @@ ul {
 }
 
 li {
-  @include font-size(16px);
+  font-size: font-size(16);
 
   > ul,
   > ol {

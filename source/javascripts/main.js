@@ -12,7 +12,7 @@ Helpers.ready(function() {
   yepnope({
     test : Modernizr.inlinesvg,
     yep: [
-      'build/javascripts/libraries/inlineSVG.js'
+      '/javascripts/libraries/inlineSVG.js'
     ],
     callback: function (url, result, key) {
       if (result) {
@@ -35,7 +35,7 @@ Helpers.ready(function() {
   yepnope({
     test : Modernizr.input.placeholder,
     nope: [
-      'build/javascripts/libraries/jquery.placeholder.js'
+      '/javascripts/libraries/jquery.placeholder.js'
     ],
     callback: function (url, result, key) {
       if (!result) {
@@ -52,7 +52,7 @@ Helpers.ready(function() {
    * Initialise Cookie Disclaimer
    */
   CookieDisclaimer.init({
-    template: '/build/javascripts/templates/cookie-banner.html'
+    template: '/javascripts/templates/cookie-banner.html'
   });
 
 

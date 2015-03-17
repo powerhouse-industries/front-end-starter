@@ -17,3 +17,6 @@ sh tasks/javascripts.sh
 
 # Generate images
 sh tasks/images.sh
+
+# Minify HTML
+sh tasks/html.sh
