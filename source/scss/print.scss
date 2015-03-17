@@ -3,10 +3,10 @@
 \*------------------------------------*/
 
 // vars
-@import "vars";
+@import 'vars';
 
 // tools
-@import "helpers/mixins";
+@import 'helpers/mixins';
 
 * {
   &,
@@ -21,9 +21,9 @@
 
 html,
 body {
+  @include font-size(13);
   margin: 0;
   padding: 0;
-  @include font-size(13);
 }
 
 body {
@@ -33,7 +33,7 @@ body {
 }
 
 @page {
-  margin: 1.2cm .75cm;
+  margin: 1.2cm 0.75cm;
   size: auto;
 }
 
@@ -91,16 +91,16 @@ blockquote {
 }
 
 img {
-  margin-bottom: .5cm;
+  margin-bottom: 0.5cm;
   width: auto;
   max-width: 100% !important;
 
   &:after {
-    content: "("img(alt)")";
+    @include font-size(13);
+    content: '(' img(alt) ')';
     word-wrap: break-word;
     color: $dark-grey;
     font-style: italic;
-    @include font-size(13);
   }
 }
 
@@ -148,17 +148,17 @@ a {
     text-decoration: none;
 
     &:after {
-      content: "("attr(href)")";
+      @include font-size(13);
+      content: '(' attr(href) ')';
       word-wrap: break-word;
       color: $dark-grey !important;
       font-style: italic;
-      @include font-size(13);
     }
   }
 
   &[href^="#"]:after,
   &[href^="javascript"]:after {
-    content: "";
+    content: '';
   }
 }
 
@@ -169,12 +169,12 @@ a {
  */
 
 abbr {
-  border: none;
+  border: 0;
 
   &[title]:after {
-    content: "(" attr(title) ")";
-    font-style: italic;
     @include font-size(13);
+    content: '(' attr(title) ')';
+    font-style: italic;
   }
 }
 
@@ -187,7 +187,7 @@ abbr {
   display: block !important;
 }
 
-.hide-on-print {
+.hide--print {
   display: none !important;
 }
 

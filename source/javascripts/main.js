@@ -1,7 +1,14 @@
 Helpers.ready(function() {
 
+  /**
+   * Attach FastClick to the body
+   */
   FastClick.attach(document.body);
 
+
+  /**
+   * Initialise inlineSVG
+   */
   yepnope({
     test : Modernizr.inlinesvg,
     yep: [
@@ -20,24 +27,44 @@ Helpers.ready(function() {
     }
   });
 
-  // yepnope({
-  //   test : Modernizr.input.placeholder,
-  //   nope: [
-  //     'build/javascripts/libraries/jquery.placeholder.js'
-  //   ],
-  //   callback: function (url, result, key) {
-  //     if (!result) {
-  //       document.getElementsByTagName('input, textarea').placeholder();
-  //     }
-  //   }
-  // });
 
+  /**
+   * Initialise placeholders for browsers
+   * that don't support them.
+   */
+  yepnope({
+    test : Modernizr.input.placeholder,
+    nope: [
+      'build/javascripts/libraries/jquery.placeholder.js'
+    ],
+    callback: function (url, result, key) {
+      if (!result) {
+        var inputs = document.getElementsByTagName('input, textarea');
+        for (i = 0; i < inputs.length; i++) {
+          inputs[i].placeholder();
+        }
+      }
+    }
+  });
+
+
+  /**
+   * Initialise Cookie Disclaimer
+   */
   CookieDisclaimer.init({
     template: '/build/javascripts/templates/cookie-banner.html'
   });
 
+
+  /**
+   * Initialise PictureFill
+   */
   picturefill();
 
+
+  /**
+   * Initialise CheckMQ
+   */
   checkMQ.init();
 
 });

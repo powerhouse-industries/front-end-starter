@@ -16,6 +16,7 @@ var Helpers = (function () {
    */
 
   var ready = function (fn) {
+
     if (document.readyState != 'loading'){
       fn();
     } else if (document.addEventListener) {
@@ -26,14 +27,16 @@ var Helpers = (function () {
           fn();
       });
     }
+
   };
 
 
   /**
-   * A vanilla JS alternative to $().on('click');
+   * A vanilla JS alternative to $().on();
    */
 
   var addEventListener = function(el, eventName, handler) {
+
     if (el.addEventListener) {
       el.addEventListener(eventName, handler);
     } else {
@@ -41,6 +44,7 @@ var Helpers = (function () {
         handler.call(el);
       });
     }
+
   };
 
 
@@ -49,6 +53,7 @@ var Helpers = (function () {
    */
 
   var getFileContents = function(template, callback) {
+
     request = new XMLHttpRequest();
     request.onreadystatechange = function() {
       if (request.readyState == 4 && request.status == 200) {
@@ -57,6 +62,7 @@ var Helpers = (function () {
     };
     request.open('GET', template, true);
     request.send();
+
   };
 
   return {

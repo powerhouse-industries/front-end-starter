@@ -35,6 +35,7 @@ This document outlines best practices, guidelines and methodologies that should 
 	* Mixins
 	* Mobile First
 * Javascript
+	* Dependency Management
 	* jQuery vs Vanilla JavaScript
 
 ## General Guidelines
@@ -400,3 +401,7 @@ Functions and variables should be named logically and in camelCase. Sensible nam
 When using JavaScript to enhance a users experience on a website we prefer to use vanilla JavaScript where possible. jQuery is bundled with our Front-end Starter but shouldn't be relied upon where vanilla JavaScript would suffice.
 
 To find out vanilla JavaScript alternatives to common jQuery methods see: [http://youmightnotneedjquery.com/](http://youmightnotneedjquery.com/)
+
+
+### Dependency Management
+We rely on a number of JavaScript libraries to add functionality to our projects. Some of these have been written internally and others not. We use Bower to handle these dependencies which can be installed using `bower-installer`. If you've run the `npm run setup` command when cloning FES you should have all the default dependencies.

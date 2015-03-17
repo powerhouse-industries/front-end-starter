@@ -28,14 +28,14 @@
  * Font sizing in rems
  */
 
- @mixin font-size($font-size, $line-height: false) {
-   $rem-size: $font-size / $base-font-size;
-   font-size: #{$font-size}px;
-   font-size: #{$rem-size}rem;
-   @if $line-height {
-     line-height: $line-height;
-   }
- }
+@mixin font-size($font-size, $line-height: false) {
+  $rem-size: $font-size / $base-font-size;
+  font-size: #{$font-size}px;
+  font-size: #{$rem-size}rem;
+  @if $line-height {
+    line-height: $line-height;
+  }
+}
 
 
 /**
@@ -111,7 +111,7 @@
  * .thing { @include svg-background(icon-red); }
  */
 
- @mixin svg-background($image) {
+@mixin svg-background($image) {
   background: file-url(#{$image} + '.svg');
 
   .no-svg & {
