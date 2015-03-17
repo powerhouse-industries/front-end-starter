@@ -398,7 +398,9 @@ Functions and variables should be named logically and in camelCase. Sensible nam
 
 ### jQuery vs Vanilla JavaScript
 
-When using JavaScript to enhance a users experience on a website we prefer to use vanilla JavaScript where possible. jQuery is bundled with our Front-end Starter but shouldn't be relied upon where vanilla JavaScript would suffice.
+When using JavaScript to enhance a users experience on a website we prefer to use vanilla JavaScript where possible. jQuery isn't bundled with our Front-end Starter and therefore shouldn't be relied upon where vanilla JavaScript would suffice.
+
+There are cases when jQuery is useful, but this will be decided on a per-project basis.
 
 To find out vanilla JavaScript alternatives to common jQuery methods see: [http://youmightnotneedjquery.com/](http://youmightnotneedjquery.com/)
 
