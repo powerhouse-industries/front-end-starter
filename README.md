@@ -82,14 +82,14 @@ git commit -m 'Initial import of [FES] master branch'
 
 Now we have all the necessary [FES] files we need to set up the build environment.
 
-Run `npm install` to download all the Node dependencies listed in `package.json`. YYou should then run `bower-installer` inside both `source/javascripts` and `source/scss` to download all other project dependencies. And finally running `npm run setup` will build your production environment for the first time.
+Run `npm install` to download all the Node dependencies listed in `package.json`. You should then run `npm run setup` which will build your production environment for the first time and install any dependencies.
 
 If you're using something like the highly recommended Node module [http-server](https://www.npmjs.com/package/http-server) you can now run `http-server` and you should see the [FES] startup page.
 
 ### Build Tools
 Build tool such as Grunt or Gulp are not used. Instead we opt for a slimline set of native NPM commands and packages. Open up `package.json` and you’ll find a number of build commands under "scripts".
 
-Type `npm run [task-name]` into your command prompt to run a single task or `npm run build:watch` to continually watch for changes to Sass, JavaScript and Images and run the corresponding tasks.
+Type `npm run [task-name]` into your command prompt to run a single task or `npm run build:watch` to continually watch for changes to Sass and JavaScript and run the corresponding tasks.
 
 ### Readability vs Compression
 We promote readability over file-size where maintaining code is concerned. Add as much white space as appropriate and comment your code regularly. There is no need to manually compress HTML, CSS or JavaScript.
@@ -312,13 +312,15 @@ We use Sass as our preprocessor of choice and choose to separate our CSS into se
 
 ```
 |- base
-|- layout
+|- components
 |- helpers
+|- layout
 |- modules
 |- _vars.scss
 |- _trumps.scss
 |- print.scss
 |- main.scss
+|- ie8.scss
 ```
 
 There are some downsides to using preprocessors and these should be fully understood before contributing CSS to a project.

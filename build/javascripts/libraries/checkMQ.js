@@ -16,7 +16,7 @@ window.checkMQ = (function() {
 
     theBreakpoints.forEach(function (eachBreakpoint) {
       if (eachBreakpoint.theQuery.matches) {
-        if (theMQ != eachBreakpoint.theName) {
+        if (theMQ !== eachBreakpoint.theName) {
           theMQ = eachBreakpoint.theName;
         }
       }
@@ -44,14 +44,14 @@ window.checkMQ = (function() {
       eachFunction(theMQ);
     });
 
-  }
+  };
 
   // Add functions to theFunctions array
   var addFunction = function(fn) {
 
     theFunctions.push(fn);
 
-  }
+  };
 
   // Init
   var init = function() {
@@ -61,6 +61,8 @@ window.checkMQ = (function() {
     return this;
 
   };
+
+  init();
 
   // Provide some public methods for access outside the module
   return {
