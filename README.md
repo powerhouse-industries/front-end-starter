@@ -1,6 +1,6 @@
 # Front-End Best Practice and Methodology
 
-[![Build Status](https://travis-ci.org/ledgardjepson/front-end-starter.svg)](https://travis-ci.org/ledgardjepson/front-end-starter) [![Code Climate](https://codeclimate.com/github/ledgardjepson/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/ledgardjepson/front-end-starter)  [![David](https://img.shields.io/david/ledgardjepson/front-end-starter.svg)](https://github.com/ledgardjepson/front-end-starter) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ledgardjepson/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Build Status](https://travis-ci.org/ledgardjepson/front-end-starter.svg)](https://travis-ci.org/ledgardjepson/front-end-starter) [![Code Climate](https://codeclimate.com/github/ledgardjepson/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/ledgardjepson/front-end-starter)  [![Dependency Status](https://david-dm.org/ledgardjepson/front-end-starter.svg)](https://david-dm.org/ledgardjepson/front-end-starter) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ledgardjepson/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Authors: [Oliver Farrell](https://twitter.com/oliverfarrell) & [Jonny Haynes](https://twitter.com/jonnyhaynes) | Last Updated: 17 March 2015
 
