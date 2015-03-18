@@ -93,6 +93,20 @@
 
 
 /**
+ * Horizontally align an element
+ * inside its container
+ *
+ * .thing {  @include horizontally-align; }
+ */
+
+@mixin horizontally-align {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/**
  * SVG background images with fallback
  *
  * .thing { @include svg-background(icon-red); }

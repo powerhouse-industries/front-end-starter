@@ -35,16 +35,8 @@ Helpers.ready(function() {
   yepnope({
     test : Modernizr.input.placeholder,
     nope: [
-      '/javascripts/libraries/jquery.placeholder.js'
-    ],
-    callback: function (url, result, key) {
-      if (!result) {
-        var inputs = document.getElementsByTagName('input, textarea');
-        for (i = 0; i < inputs.length; i++) {
-          inputs[i].placeholder();
-        }
-      }
-    }
+      '/javascripts/libraries/placeholders.min.js'
+    ]
   });
 
 
@@ -57,7 +49,7 @@ Helpers.ready(function() {
 
 
   /**
-   * Initialise PictureFill
+   * Initialise Picturefill
    */
   picturefill();
 
@@ -66,5 +58,6 @@ Helpers.ready(function() {
    * Initialise CheckMQ
    */
   checkMQ.init();
+  checkMQ.addFunction(test);
 
 });

@@ -5,10 +5,10 @@
     "yepnope": "1.5.4",
     "picturefill": "2.2.0",
     "fastclick": "1.0.3",
-    "jquery-placeholder": "2.0.8",
+    "placeholders": "4.0.0",
     "inline-svg": "1.0.4",
     "cookie-disclaimer": "1.0.3",
-    "checkmq": "1.0.5"
+    "checkmq": "1.0.6"
   },
   "install": {
     "path": "libraries",
@@ -19,7 +19,7 @@
       "media-match": "components/media-match/media.match.min.js",
       "picturefill": "components/picturefill/dist/picturefill.min.js",
       "yepnope": "components/yepnope/yepnope.js",
-      "jquery-placeholder": "components/jquery-placeholder/jquery.placeholder.js"
+      "placeholders": "components/placeholders/dist/placeholders.min.js"
     }
   }
 }

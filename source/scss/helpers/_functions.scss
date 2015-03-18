@@ -28,7 +28,8 @@ $use-rems: true !default; // Use rems by default
  */
 
 @function font-size($font-size, $line-height: false) {
-  @return if($use-rems, #{$font-size / $base-font-size}rem, #{$font-size});
+  $rem-size: $font-size / $base-font-size;
+  @return if($use-rems, $rem-size * 1rem, $font-size * 1px);
 }
 
 
