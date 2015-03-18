@@ -34,9 +34,7 @@ Helpers.ready(function() {
    */
   yepnope({
     test : Modernizr.input.placeholder,
-    nope: [
-      '/javascripts/libraries/placeholders.min.js'
-    ]
+    nope: ['/javascripts/libraries/placeholders.min.js']
   });
 
 
@@ -58,6 +56,5 @@ Helpers.ready(function() {
    * Initialise CheckMQ
    */
   checkMQ.init();
-  checkMQ.addFunction(test);
 
 });
