@@ -37,6 +37,7 @@ This document outlines best practices, guidelines and methodologies that should 
 * Javascript
 	* Dependency Management
 	* jQuery vs Vanilla JavaScript
+* Performance
 
 ## General Guidelines
 All front-end code should be well written, semantically correct and generally valid to W3C Standards. Progressive enhancement should be considered when implementing Javascript functionality and unsupported technologies such as `box-shadow` and geolocation. Sites should degrade gracefully using feature detection through [Modernizr](http://modernizr.com/).
@@ -407,3 +408,6 @@ To find out vanilla JavaScript alternatives to common jQuery methods see: [http:
 
 ### Dependency Management
 We rely on a number of JavaScript libraries to add functionality to our projects. Some of these have been written internally and others not. We use Bower to handle these dependencies which can be installed using `bower-installer`. If you've run the `npm run setup` command when cloning FES you should have all the default dependencies.
+
+## Performance
+Quick roundup of our thoughts on performance.

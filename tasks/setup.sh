@@ -3,6 +3,7 @@
 # Install `bower-installer`
 sudo npm install
 sudo npm install bower-installer -g
+brew install terminal-notifier
 
 # Install all the Bower packages
 cd source/javascripts && bower-installer
