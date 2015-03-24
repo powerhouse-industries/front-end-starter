@@ -9,6 +9,7 @@ Desktop.ini
 node_modules
 scss-lint-report.xml
 *.log
+*.log.*
 tmp
 .vagrant
 */javascripts/components

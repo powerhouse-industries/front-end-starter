@@ -8,7 +8,7 @@ $banner-link-color: $white;
 $banner-btn-color: $white;
 $banner-btn-text-color: $black;
 
-#cookies {
+#cookie-banner {
   padding: 15px 0;
   background: {
     color: $banner-background-color;
@@ -19,6 +19,7 @@ $banner-btn-text-color: $black;
   }
 
   p {
+    margin-bottom: 10px;
     line-height: 1.3;
     color: $banner-text-color;
   }
@@ -39,7 +40,7 @@ $banner-btn-text-color: $black;
 }
 
 @include mq(mq600) {
-  #cookies {
+  #cookie-banner {
     p {
       @include span(14 of 16);
       margin: 0;

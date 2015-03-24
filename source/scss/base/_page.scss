@@ -21,7 +21,7 @@ html {
 }
 
 body {
-  @include font-size($base-font-size);
+  font-size: font-size($base-font-size);
 }
 
 .wrap {

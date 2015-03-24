@@ -1,11 +1,18 @@
 Helpers.ready(function() {
 
+  /**
+   * Attach FastClick to the body
+   */
   FastClick.attach(document.body);
 
+
+  /**
+   * Initialise inlineSVG
+   */
   yepnope({
     test : Modernizr.inlinesvg,
     yep: [
-      'build/javascripts/libraries/inlineSVG.js'
+      '/javascripts/libraries/inlineSVG.js'
     ],
     callback: function (url, result, key) {
       if (result) {
@@ -20,20 +27,34 @@ Helpers.ready(function() {
     }
   });
 
-  // yepnope({
-  //   test : Modernizr.input.placeholder,
-  //   nope: [
-  //     'build/javascripts/libraries/jquery.placeholder.js'
-  //   ],
-  //   callback: function (url, result, key) {
-  //     if (!result) {
-  //       document.getElementsByTagName('input, textarea').placeholder();
-  //     }
-  //   }
-  // });
 
+  /**
+   * Initialise placeholders for browsers
+   * that don't support them.
+   */
+  yepnope({
+    test : Modernizr.input.placeholder,
+    nope: ['/javascripts/libraries/placeholders.min.js']
+  });
+
+
+  /**
+   * Initialise Cookie Disclaimer
+   */
+  CookieDisclaimer.init({
+    template: '/javascripts/templates/cookie-banner.html'
+  });
+
+
+  /**
+   * Initialise Picturefill
+   */
   picturefill();
 
+
+  /**
+   * Initialise CheckMQ
+   */
   checkMQ.init();
 
 });

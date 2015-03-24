@@ -3,13 +3,12 @@
   "dependencies": {
     "modernizr": "2.8.3",
     "yepnope": "1.5.4",
-    "jquery-easing-original": "1.3.0",
     "picturefill": "2.2.0",
     "fastclick": "1.0.3",
-    "media-match": "2.0.2",
-    "jquery-placeholder": "2.0.8",
+    "placeholders": "4.0.0",
     "inline-svg": "1.0.4",
-    "cookie-disclaimer": "1.0.1"
+    "cookie-disclaimer": "1.0.3",
+    "checkmq": "1.0.6"
   },
   "install": {
     "path": "libraries",
@@ -17,11 +16,10 @@
     "sources": {
       "modernizr": "components/modernizr/modernizr.js",
       "yepnope": "components/inline-svg/inlineSVG.js",
-      "jquery-easing-original": "components/jquery-easing-original/jquery.easing.1.3.min.js",
       "media-match": "components/media-match/media.match.min.js",
       "picturefill": "components/picturefill/dist/picturefill.min.js",
       "yepnope": "components/yepnope/yepnope.js",
-      "jquery-placeholder": "components/jquery-placeholder/jquery.placeholder.js"
+      "placeholders": "components/placeholders/dist/placeholders.min.js"
     }
   }
 }

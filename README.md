@@ -1,8 +1,8 @@
 # Front-End Best Practice and Methodology
 
-[![Build Status](https://travis-ci.org/ledgardjepson/front-end-starter.svg)](https://travis-ci.org/ledgardjepson/front-end-starter) [![Code Climate](https://codeclimate.com/github/ledgardjepson/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/ledgardjepson/front-end-starter) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ledgardjepson/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Build Status](https://travis-ci.org/ledgardjepson/front-end-starter.svg)](https://travis-ci.org/ledgardjepson/front-end-starter) [![Code Climate](https://codeclimate.com/github/ledgardjepson/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/ledgardjepson/front-end-starter)  [![Dependency Status](https://david-dm.org/ledgardjepson/front-end-starter.svg)](https://david-dm.org/ledgardjepson/front-end-starter) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ledgardjepson/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-Authors: Oliver Farrell & Jonny Haynes | Last Updated: 13 March 2015
+Authors: [Oliver Farrell](https://twitter.com/oliverfarrell) & [Jonny Haynes](https://twitter.com/jonnyhaynes) | Last Updated: 17 March 2015
 
 This document outlines best practices, guidelines and methodologies that should be considered and in most cases adhered to when building web applications. It is a forever evolving document and should be regularly reviewed to keep up with changes and best practices. It is inspired by the great work of [TMW](http://tech.tmw.co.uk/code/TMW-frontend-guidelines), [Isobar](http://isobar-idev.github.io/code-standards/) and [Sass Guidelines](http://sass-guidelin.es/).
 
@@ -35,7 +35,9 @@ This document outlines best practices, guidelines and methodologies that should 
 	* Mixins
 	* Mobile First
 * Javascript
+	* Dependency Management
 	* jQuery vs Vanilla JavaScript
+* Performance
 
 ## General Guidelines
 All front-end code should be well written, semantically correct and generally valid to W3C Standards. Progressive enhancement should be considered when implementing Javascript functionality and unsupported technologies such as `box-shadow` and geolocation. Sites should degrade gracefully using feature detection through [Modernizr](http://modernizr.com/).
@@ -82,14 +84,14 @@ git commit -m 'Initial import of [FES] master branch'
 
 Now we have all the necessary [FES] files we need to set up the build environment.
 
-Run `npm install` to download all the Node dependencies listed in `package.json`. YYou should then run `bower-installer` inside both `source/javascripts` and `source/scss` to download all other project dependencies. And finally running `npm run setup` will build your production environment for the first time.
+Run `npm install` to download all the Node dependencies listed in `package.json`. You should then run `npm run setup` which will build your production environment for the first time and install any dependencies.
 
 If you're using something like the highly recommended Node module [http-server](https://www.npmjs.com/package/http-server) you can now run `http-server` and you should see the [FES] startup page.
 
 ### Build Tools
 Build tool such as Grunt or Gulp are not used. Instead we opt for a slimline set of native NPM commands and packages. Open up `package.json` and you’ll find a number of build commands under "scripts".
 
-Type `npm run [task-name]` into your command prompt to run a single task or `npm run build:watch` to continually watch for changes to Sass, JavaScript and Images and run the corresponding tasks.
+Type `npm run [task-name]` into your command prompt to run a single task or `npm run build:watch` to continually watch for changes to Sass and JavaScript and run the corresponding tasks.
 
 ### Readability vs Compression
 We promote readability over file-size where maintaining code is concerned. Add as much white space as appropriate and comment your code regularly. There is no need to manually compress HTML, CSS or JavaScript.
@@ -312,13 +314,15 @@ We use Sass as our preprocessor of choice and choose to separate our CSS into se
 
 ```
 |- base
-|- layout
+|- components
 |- helpers
+|- layout
 |- modules
 |- _vars.scss
 |- _trumps.scss
 |- print.scss
 |- main.scss
+|- ie8.scss
 ```
 
 There are some downsides to using preprocessors and these should be fully understood before contributing CSS to a project.
@@ -395,6 +399,15 @@ Functions and variables should be named logically and in camelCase. Sensible nam
 
 ### jQuery vs Vanilla JavaScript
 
-When using JavaScript to enhance a users experience on a website we prefer to use vanilla JavaScript where possible. jQuery is bundled with our Front-end Starter but shouldn't be relied upon where vanilla JavaScript would suffice.
+When using JavaScript to enhance a users experience on a website we prefer to use vanilla JavaScript where possible. jQuery isn't bundled with our Front-end Starter and therefore shouldn't be relied upon where vanilla JavaScript would suffice.
+
+There are cases when jQuery is useful, but this will be decided on a per-project basis.
 
 To find out vanilla JavaScript alternatives to common jQuery methods see: [http://youmightnotneedjquery.com/](http://youmightnotneedjquery.com/)
+
+
+### Dependency Management
+We rely on a number of JavaScript libraries to add functionality to our projects. Some of these have been written internally and others not. We use Bower to handle these dependencies which can be installed using `bower-installer`. If you've run the `npm run setup` command when cloning FES you should have all the default dependencies.
+
+## Performance
+Quick roundup of our thoughts on performance.
