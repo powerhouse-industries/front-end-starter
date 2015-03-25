@@ -1,8 +1,8 @@
 # Front-End Best Practice and Methodology
 
-[![Build Status](https://travis-ci.org/ledgardjepson/front-end-starter.svg)](https://travis-ci.org/ledgardjepson/front-end-starter) [![Code Climate](https://codeclimate.com/github/ledgardjepson/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/ledgardjepson/front-end-starter)  [![Dependency Status](https://david-dm.org/ledgardjepson/front-end-starter.svg)](https://david-dm.org/ledgardjepson/front-end-starter) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ledgardjepson/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Build Status](https://travis-ci.org/powerhouse-industries/front-end-starter.svg)](https://travis-ci.org/powerhouse-industries/front-end-starter) [![Code Climate](https://codeclimate.com/github/powerhouse-industries/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/powerhouse-industries/front-end-starter)  [![Dependency Status](https://david-dm.org/powerhouse-industries/front-end-starter.svg)](https://david-dm.org/powerhouse-industries/front-end-starter) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/powerhouse-industries/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-Authors: [Oliver Farrell](https://twitter.com/oliverfarrell) & [Jonny Haynes](https://twitter.com/jonnyhaynes) | Last Updated: 17 March 2015
+Authors: [Oliver Farrell](https://twitter.com/oliverfarrell) & [Jonny Haynes](https://twitter.com/jonnyhaynes) | Last Updated: 25 March 2015
 
 This document outlines best practices, guidelines and methodologies that should be considered and in most cases adhered to when building web applications. It is a forever evolving document and should be regularly reviewed to keep up with changes and best practices. It is inspired by the great work of [TMW](http://tech.tmw.co.uk/code/TMW-frontend-guidelines), [Isobar](http://isobar-idev.github.io/code-standards/) and [Sass Guidelines](http://sass-guidelin.es/).
 
@@ -48,7 +48,7 @@ Everyone has a preference when it comes to their text editor/IDE of choice and w
 EditorConfig helps us define and maintain consistent coding styles between different editors and IDEs. You should [install the EditorConfig plugin](http://editorconfig.org/#download) for your editor of choice.
 
 ### Project Structure and Setup
-All projects use the [FES] as a starting point. You can clone the repo from here: [https://github.com/ledgardjepson/front-end-starter.git](https://github.com/ledgardjepson/front-end-starter.git).
+All projects use the [FES] as a starting point. You can clone the repo from here: [https://github.com/powerhouse-industries/front-end-starter.git](https://github.com/powerhouse-industries/front-end-starter.git).
 
 #### To set up a project on your local machine follow the steps below:
 
@@ -73,7 +73,7 @@ git push origin develop -u # Set local develop to track origin develop branch
 Now your empty project is setup you'll need to pull this repo into your develop branch.
 
 ```
-git pull --no-commit --squash git@github.com:ledgardjepson/front-end-starter.git master
+git pull --no-commit --squash git@github.com:powerhouse-industries/front-end-starter.git master
 ```
 
 This pulls the [FES] repo files into your working copy. The --squash option prevents the entire [FES] master branch history from being imported. Now commit the changes we've just done.
