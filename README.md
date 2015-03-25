@@ -1,11 +1,12 @@
-# Ledgard Jepson Front-End Best Practice and Methodology
+# Front-End Best Practice and Methodology
 
-[![Build Status](https://travis-ci.org/ledgardjepson/front-end-starter.svg)](https://travis-ci.org/ledgardjepson/front-end-starter) [![Code Climate](https://codeclimate.com/github/ledgardjepson/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/ledgardjepson/front-end-starter)
+[![Join the chat at https://gitter.im/powerhouse-industries/front-end-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/powerhouse-industries/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Authors: Oliver Farrell & Jonny Haynes
-Last Updated: 26th February 2015
+[![Build Status](https://travis-ci.org/powerhouse-industries/front-end-starter.svg)](https://travis-ci.org/powerhouse-industries/front-end-starter) [![Code Climate](https://codeclimate.com/github/powerhouse-industries/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/powerhouse-industries/front-end-starter)  [![Dependency Status](https://david-dm.org/powerhouse-industries/front-end-starter.svg)](https://david-dm.org/powerhouse-industries/front-end-starter) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/powerhouse-industries/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-This document outlines best practices, guidelines and methodologies that should be considered and in most cases adhered to when building web applications at Ledgard Jepson. It is a forever evolving document and should be regularly reviewed to keep up with changes and best practices. It is inspired by the great work of [TMW](http://tech.tmw.co.uk/code/TMW-frontend-guidelines), [Isobar](http://isobar-idev.github.io/code-standards/) and [Sass Guidelines](http://sass-guidelin.es/).
+Authors: [Oliver Farrell](https://twitter.com/oliverfarrell) & [Jonny Haynes](https://twitter.com/jonnyhaynes) | Last Updated: 25 March 2015
+
+This document outlines best practices, guidelines and methodologies that should be considered and in most cases adhered to when building web applications. It is a forever evolving document and should be regularly reviewed to keep up with changes and best practices. It is inspired by the great work of [TMW](http://tech.tmw.co.uk/code/TMW-frontend-guidelines), [Isobar](http://isobar-idev.github.io/code-standards/) and [Sass Guidelines](http://sass-guidelin.es/).
 
 ## Content
 * General Guidelines
@@ -25,46 +26,82 @@ This document outlines best practices, guidelines and methodologies that should 
   * Validation
   * OOCSS
   * Typography
-  * Resets
+  * Reset
   * Comments
   * Conditional Stylesheets
   * Images
+	  * Inline SVG
 * Sass
 	* Nesting
 	* Extends
+	* Mixins
 	* Mobile First
+* Javascript
+	* Dependency Management
+	* jQuery vs Vanilla JavaScript
+* Performance
 
 ## General Guidelines
-All front-end code should be well written, semantically correct and generally valid to W3C Standards. Progressive enhancement should be considered when implementing Javascript functionality and unsupported technologies such as `box-shadow` and geolocation, should degrade gracefully using feature detection through [Modernizr](http://modernizr.com/).
+All front-end code should be well written, semantically correct and generally valid to W3C Standards. Progressive enhancement should be considered when implementing Javascript functionality and unsupported technologies such as `box-shadow` and geolocation. Sites should degrade gracefully using feature detection through [Modernizr](http://modernizr.com/).
 
 ### Editor Setup
-We understand everyone has a preference when it comes to their text editor/IDE of choice and we’re not going to force anyone to use any particular editor. Therefore each project should feature an `.editorconfig` file in its root.
+Everyone has a preference when it comes to their text editor/IDE of choice and we’re not going to force anyone to use any particular editor. Therefore each project should feature an `.editorconfig` file in its root.
 
 EditorConfig helps us define and maintain consistent coding styles between different editors and IDEs. You should [install the EditorConfig plugin](http://editorconfig.org/#download) for your editor of choice.
 
 ### Project Structure and Setup
-All our projects use the [FES] as a starting point. You can clone the repo from here: [https://bitbucket.org/...](http://bitbucket.org).
+All projects use the [FES] as a starting point. You can clone the repo from here: [https://github.com/powerhouse-industries/front-end-starter.git](https://github.com/powerhouse-industries/front-end-starter.git).
 
-The typical folder structure looks something like this:
+#### To set up a project on your local machine follow the steps below:
+
+The first step is setting up a new empty git repo in [Github](https://help.github.com/articles/create-a-repo/).
+
+Create a new empty repo and add an empty file (`.gitkeep`) to initialise the repo. Then push to the new empty repo back to Github. Initialise the local repo with [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/). *N.B.* Git Flow adds local settings to the git config, but does not affect the remote (origin) repo in any way, so if you re-clone the repo for whatever reason later on, you will need to re-initialise git flow again.
+
+In your terminal of choice do the following:
 
 ```
-Folder structure breakdown will go here once it’s finalised
+mkdir <new_repo>
+cd <new_repo>
+git init .
+touch .gitkeep # git works on files, not empty directories
+git add .
+git commit -m 'Initial Commit'
+git remote add origin git@github.com:<username>/<new_repo_name>.git
+git push origin master -u
+git flow init -d # Accept all the default settings, this will create the develop branch for you
+git push origin develop -u # Set local develop to track origin develop branch
+```
+Now your empty project is setup you'll need to pull this repo into your develop branch.
+
+```
+git pull --no-commit --squash git@github.com:powerhouse-industries/front-end-starter.git master
 ```
 
-When you first clone a project you should run `npm install` to download all the Node dependencies listed in `package.json`. You should then run `bower install` to download all other project dependencies.
+This pulls the [FES] repo files into your working copy. The --squash option prevents the entire [FES] master branch history from being imported. Now commit the changes we've just done.
+
+```
+git commit -m 'Initial import of [FES] master branch'
+```
+
+Now we have all the necessary [FES] files we need to set up the build environment.
+
+Run `npm install` to download all the Node dependencies listed in `package.json`. You should then run `npm run setup` which will build your production environment for the first time and install any dependencies.
+
+If you're using something like the highly recommended Node module [http-server](https://www.npmjs.com/package/http-server) you can now run `http-server` and you should see the [FES] startup page.
 
 ### Build Tools
-We don’t use a build tool such as Grunt or Gulp. Instead we opt for a slimline set of native NPM commands and packages. Open up `package.json` and you’ll find a number of build commands under “scripts”.
+Build tool such as Grunt or Gulp are not used. Instead we opt for a slimline set of native NPM commands and packages. Open up `package.json` and you’ll find a number of build commands under "scripts".
 
-Type `npm run [task-name]` into your command prompt to run a single task or `npm run build:watch` to continually watch for changes to Sass, JavaScript and Images and run the corresponding tasks.
+Type `npm run [task-name]` into your command prompt to run a single task or `npm run build:watch` to continually watch for changes to Sass and JavaScript and run the corresponding tasks.
 
 ### Readability vs Compression
-We promote readability over file-size where maintaining code is concerned. Add as much white space as appropriate and comment your code regularly. There is not need to manually compress HTML, CSS or JavaScript.
+We promote readability over file-size where maintaining code is concerned. Add as much white space as appropriate and comment your code regularly. There is no need to manually compress HTML, CSS or JavaScript.
 
 We will use server-side or build tools to automatically minify and gzip static client-side files, such as CSS and JavaScript.
 
 ## Browser Support
-We thoroughly test all of our code across a number of platforms, operating systems and web browsers. We primarily use VirtualBox to host our Virtual Machines and grab the latest version of Internet Explorer from [here](https://www.modern.ie/en-us).
+All code is thoroughly tested across a number of platforms, operating systems and web browsers. We primarily use VirtualBox to host our Virtual Machines and grab the latest VMs for Internet Explorer from [here](https://www.modern.ie/en-us).
 
 Where testing is concerned we split web browsers into two main categories. A Grade browsers and C Grade browsers, based on the worked developed by [YUI](https://github.com/yui/yui3/wiki/Graded-Browser-Support).
 
@@ -109,7 +146,9 @@ C-grade is the base level of support, providing core content and functionality.
 | Safari             | N/A           |
 
 ## Markup
-We use HTML5 as standard on all our web applications. To ensure backwards compatibility with older, unsupported, web browsers we  used [Modernizr](http://modernizr.com/).
+We use HTML5 as standard on all our web applications. To ensure backwards compatibility with older, unsupported, web browsers we use [Modernizr](http://modernizr.com/).
+
+### Validation
 
 All of our markup is tested against W3C Standards using [their validator](http://validator.w3.org/) to ensure that our markup is well formed and free of errors that may cause compatibility problems.
 
@@ -133,7 +172,7 @@ The following are general guidelines for structuring your HTML markup. We are re
 
 ### Quoting Attributes
 Even though the HTML5 specification enables us to write HTML attributes without quotation marks, we should always use double quotes around all attribute values.
-```
+```html
 <a href=“#” title=“This is a link title”>My link</a>
 ```
 
@@ -158,18 +197,26 @@ While support for `<picture>` and `srcset` are limited we’ve opted for [Pictur
 
 All images (including SVGs) should be optimised before hitting a production server. Our build tools usually take care of this.
 
+#### Inline SVGs
+In most cases we inline SVG images to remove the need for different versions of the same image. If an icon has two variants, one red and one blue, we can use CSS to change the `<path>` fill colour instead of generating two different images. We use <a href="https://github.com/jonnyhaynes/inline-svg">a script</a> to take care of this process for us.
+
 ### Accessibility
-We utilise WAI-ARIA in all web applications to ensure that users with visual impairments or others disabilities are able to access our applications via a screen reader or other assistive technology.
+We utilise [WAI-ARIA](http://rawgit.com/w3c/aria-in-html/master/index.html) in all web applications to ensure that users with visual impairments or others disabilities are able to access our applications via a screen reader or other assistive technology.
 
 You should always strive to make your applications accessible and therefore should include WAI-ARIA wherever possible.
 
-All of our code strives to adhere to the W3C's WCAG 2.0 AA standard where possible.
+```html
+<header role="banner"></header>
+<button aria-label="Close">X</button>
+```
+
+All of our code strives to adhere to the W3C's [WCAG 2.0](http://www.w3.org/TR/WCAG20/) AA standard where possible.
 
 ## CSS
 We use Sass to compose our stylesheet, but more on that further into this document. We always avoid writing CSS inline – it might make quick and dirty fixes easy, but in the long run it makes our code impossible to maintain. The only time we do inline CSS is where it’s necessary to apply user customisations.
 
 ### Validation
-We don’t validate our CSS to W3C Standards.
+We don’t validate our CSS to W3C Standards as we use a lot of experimental features and these are usually not supported by the W3C's validators.
 
 ### Syntax and Formatting
 We write CSS using the BEM (Block, Element, Modifier) naming convention and opt for multi-line CSS declarations. Where possible you should try to group related rulesets together, for example: all positional rules together, all font rules together etc.
@@ -201,17 +248,9 @@ Some examples of good rulesets:
 }
 
 // a state class (.is-*, .has-*) should look like this
-.is-visible {
-  display: block;
-}
-
-.is-hidden {
-	display: none;
-}
-
-.is-collapsed {
-	height: 0;
-}
+.is-visible { display: block; }
+.has-dropdown { display: none; }
+.is-collapsed { height: 0; }
 
 // single rule selectors can look like this
 a { color: red; }
@@ -277,13 +316,15 @@ We use Sass as our preprocessor of choice and choose to separate our CSS into se
 
 ```
 |- base
-|- layout
+|- components
 |- helpers
+|- layout
 |- modules
 |- _vars.scss
 |- _trumps.scss
 |- print.scss
 |- main.scss
+|- ie8.scss
 ```
 
 There are some downsides to using preprocessors and these should be fully understood before contributing CSS to a project.
@@ -315,12 +356,15 @@ Instead we would write the following:
 ### Extends
 Employ caution when using the `@extend` operator. When used incorrectly it can bloat compiled CSS. Instead use classes that can be added to markup.
 
+### Mixins
+We try to adhere to the <abbr title="Don't Repeat Yourself">DRY</abbr> principles when writing our CSS and use mixins to prevent unnecessary code duplication. FES ships with a select few predefined mixins to help achieve common repetitive tasks which can be found in `source/scss/helpers/_mixins.scss`.
+
 ### Mobile First
 Most of our web applications are built mobile first, in that we specify mobile styles as our base and then, using media queries, enhance the user experience for larger devices and screens.
 
 The problem with doing this is that Internet Explorer 8 and earlier don’t support media queries and so ignore them and just renders the mobile styles. There is a way of solving this problem using JavaScript, but our preferred solution is to use Sass.
 
-We use [The Guardian’s Sass MQ](https://github.com/sass-mq/sass-mq) library of mixins to create our various media queries and set a default static breakpoint for Internet Explorer 8. The mixins rasterise the breakpoints so browsers rely on the cascade itself.
+[The Guardian’s Sass MQ](https://github.com/sass-mq/sass-mq) library of mixins is used to create our various media queries and set a default static breakpoint for Internet Explorer 8. The mixins rasterise the breakpoints so browsers rely on the cascade itself.
 
 ## JavaScript
 The majority of our Javascript should be written in external JavaScript files. Similar to our approach with CSS we promote the use of comments, our build tools will take care of stripping those out before our code hits the production server.
@@ -331,26 +375,41 @@ We take a modular approach to writing JavaScript to ensure our code is maintaina
 var Module = (function () {
 
 	var _privateMethod = function () {
-    // private method
-  };
+		// private method
+	};
 
-  var publicMethod = function () {
-    _privateMethod();
-  };
+	var publicMethod = function () {
+  	_privateMethod();
+	};
 
-  return {
-    publicMethod: publicMethod
-  };
+	return {
+  	publicMethod: publicMethod
+	};
 
 })();
 ```
 
-We can then call a particular method like so:
+You can then call a particular method like so:
 
-```
+```javascript
 Module.publicMethod();
 ```
 
 We prefer feature detection over browser sniffing and utilise Modernizr to take care of it.
 
 Functions and variables should be named logically and in camelCase. Sensible names that are long are preferred to short names that make no sense.
+
+### jQuery vs Vanilla JavaScript
+
+When using JavaScript to enhance a users experience on a website we prefer to use vanilla JavaScript where possible. jQuery isn't bundled with our Front-end Starter and therefore shouldn't be relied upon where vanilla JavaScript would suffice.
+
+There are cases when jQuery is useful, but this will be decided on a per-project basis.
+
+To find out vanilla JavaScript alternatives to common jQuery methods see: [http://youmightnotneedjquery.com/](http://youmightnotneedjquery.com/)
+
+
+### Dependency Management
+We rely on a number of JavaScript libraries to add functionality to our projects. Some of these have been written internally and others not. We use Bower to handle these dependencies which can be installed using `bower-installer`. If you've run the `npm run setup` command when cloning FES you should have all the default dependencies.
+
+## Performance
+Quick roundup of our thoughts on performance.
