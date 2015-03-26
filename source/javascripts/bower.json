@@ -8,7 +8,8 @@
     "placeholders": "4.0.0",
     "inline-svg": "1.0.4",
     "cookie-disclaimer": "1.0.3",
-    "checkmq": "1.0.6"
+    "checkmq": "1.1.1",
+    "lazysizes": "1.0.1"
   },
   "install": {
     "path": "libraries",
@@ -19,7 +20,9 @@
       "media-match": "components/media-match/media.match.min.js",
       "picturefill": "components/picturefill/dist/picturefill.min.js",
       "yepnope": "components/yepnope/yepnope.js",
-      "placeholders": "components/placeholders/dist/placeholders.min.js"
+      "placeholders": "components/placeholders/dist/placeholders.min.js",
+      "checkmq": "components/checkmq/checkMQ.js",
+      "lazysizes": "components/lazysizes/lazysizes.js"
     }
   }
 }

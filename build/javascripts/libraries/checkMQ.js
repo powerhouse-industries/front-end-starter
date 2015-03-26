@@ -14,10 +14,10 @@ window.checkMQ = (function() {
 
     var theMQ;
 
-    for (var x = 0; x < theBreakpoints.length; x++){
-      if (theBreakpoints[x].theQuery.matches) {
-        if (theMQ !== theBreakpoints[x].theName) {
-          theMQ = theBreakpoints[x].theName;
+    for (var i = 0; i < theBreakpoints.length; i++){
+      if (theBreakpoints[i].theQuery.matches) {
+        if (theMQ !== theBreakpoints[i].theName) {
+          theMQ = theBreakpoints[i].theName;
         }
       }
     }
@@ -31,8 +31,8 @@ window.checkMQ = (function() {
   // Event listener for changes in MQ
   var changeMQ = function() {
 
-    for (var y = 0; y < theBreakpoints.length; y++){
-      theBreakpoints[y].theQuery.addListener(whichMQ);
+    for (var i = 0; i < theBreakpoints.length; i++){
+      theBreakpoints[i].theQuery.addListener(whichMQ);
     }
 
   };
@@ -40,8 +40,8 @@ window.checkMQ = (function() {
   // Load the functions
   var loadFunctions = function(theMQ) {
 
-    for (var z = 0; z < theFunctions.length; z++){
-      theFunctions[z](theMQ);
+    for (var i = 0; i < theFunctions.length; i++){
+      theFunctions[i](theMQ);
     }
 
   };
@@ -56,8 +56,8 @@ window.checkMQ = (function() {
   // Init
   var init = function() {
 
-    changeMQ();
     whichMQ();
+    changeMQ();
     return this;
 
   };
@@ -65,7 +65,20 @@ window.checkMQ = (function() {
   // Provide some public methods for access outside the module
   return {
     init: init,
+    whichMQ: whichMQ,
+    changeMQ: changeMQ,
     addFunction: addFunction
   };
 
 })();
+
+if (document.readyState != 'loading'){
+  checkMQ.init();
+} else if (document.addEventListener) {
+  document.addEventListener('DOMContentLoaded', checkMQ.init);
+} else {
+  document.attachEvent('onreadystatechange', function() {
+    if (document.readyState != 'loading')
+    checkMQ.init();
+  });
+}
