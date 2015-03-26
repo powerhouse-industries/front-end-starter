@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/powerhouse-industries/front-end-starter.svg)](https://travis-ci.org/powerhouse-industries/front-end-starter) [![Code Climate](https://codeclimate.com/github/powerhouse-industries/front-end-starter/badges/gpa.svg)](https://codeclimate.com/github/powerhouse-industries/front-end-starter)  [![Dependency Status](https://david-dm.org/powerhouse-industries/front-end-starter.svg)](https://david-dm.org/powerhouse-industries/front-end-starter) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/powerhouse-industries/front-end-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-Authors: [Oliver Farrell](https://twitter.com/oliverfarrell) & [Jonny Haynes](https://twitter.com/jonnyhaynes) | Last Updated: 25 March 2015
+Authors: [Oliver Farrell](https://twitter.com/oliverfarrell) & [Jonny Haynes](https://twitter.com/jonnyhaynes) | Last Updated: 26 March 2015
 
 This document outlines best practices, guidelines and methodologies that should be considered and in most cases adhered to when building web applications. It is a forever evolving document and should be regularly reviewed to keep up with changes and best practices. It is inspired by the great work of [TMW](http://tech.tmw.co.uk/code/TMW-frontend-guidelines), [Isobar](http://isobar-idev.github.io/code-standards/) and [Sass Guidelines](http://sass-guidelin.es/).
 
@@ -15,10 +15,11 @@ This document outlines best practices, guidelines and methodologies that should 
 * Browser Support
 * Markup
 	* General Guidelines
-  * Quoting Attributes
-  * Schema.org
-  * Images
-  * Accessibility
+  	* Quoting Attributes
+  	* Schema.org
+  	* Images
+	* Validation
+	* Accessibility
 * CSS
   * Syntax and Formatting
   * Validation
@@ -146,23 +147,16 @@ C-grade is the base level of support, providing core content and functionality.
 ## Markup
 We use HTML5 as standard on all our web applications. To ensure backwards compatibility with older, unsupported, web browsers we use [Modernizr](http://modernizr.com/).
 
-### Validation
-
-All of our markup is tested against W3C Standards using [their validator](http://validator.w3.org/) to ensure that our markup is well formed and free of errors that may cause compatibility problems.
-
-It’s important to note that our goal isn’t to write 100% valid code but instead ensure our code is maintainable whilst making sure the user experience is consistent cross-browser.
-
 ### General Guidelines
 The following are general guidelines for structuring your HTML markup. We are reminded to always use markup which represents the semantics of the content in the document being created.
 
 * Use `<p>` elements for paragraph delimiters as opposed to multiple `<br />` tags.
 * Items in list form should always be housed in a `<ul>`, `<ol>`, or `<dl>`.
-* Consider placing HTML comments around block element that contain larger amounts of markup to indicate the element being closed. It makes skim-reading code much easier.
 
 ```html
 <div class="my-element">
 	<p>This is my element</p>
-</div><!-- /.my-element -->
+</div>
 ```
 * Each `<input>` inside of a form should always have an associated `<label>` and the `placeholder` attribute should never be used as a substitute.
 * Always use CSS to transform text to uppercase or lowercase. Never enter content in ALL CAPS or lowercase.
@@ -197,6 +191,12 @@ All images (including SVGs) should be optimised before hitting a production serv
 
 #### Inline SVGs
 In most cases we inline SVG images to remove the need for different versions of the same image. If an icon has two variants, one red and one blue, we can use CSS to change the `<path>` fill colour instead of generating two different images. We use <a href="https://github.com/jonnyhaynes/inline-svg">a script</a> to take care of this process for us.
+
+### Validation
+
+All of our markup is tested against W3C Standards using [their validator](http://validator.w3.org/) to ensure that our markup is well formed and free of errors that may cause compatibility problems.
+
+It’s important to note that our goal isn’t to write 100% valid code but instead ensure our code is maintainable whilst making sure the user experience is consistent cross-browser.
 
 ### Accessibility
 We utilise [WAI-ARIA](http://rawgit.com/w3c/aria-in-html/master/index.html) in all web applications to ensure that users with visual impairments or others disabilities are able to access our applications via a screen reader or other assistive technology.
