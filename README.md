@@ -52,9 +52,9 @@ EditorConfig helps us define and maintain consistent coding styles between diffe
 
 #### To set up a project on your local machine follow the steps below:
 
-The first step is setting up a new empty git repo in [Github](https://help.github.com/articles/create-a-repo/).
+The first step is setting up a new empty git repo in Bitbucket.
 
-Create a new empty repo and add an empty file (`.gitkeep`) to initialise the repo. Then push to the new empty repo back to Github. Initialise the local repo with [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/). *N.B.* Git Flow adds local settings to the git config, but does not affect the remote (origin) repo in any way, so if you re-clone the repo for whatever reason later on, you will need to re-initialise git flow again.
+Create a new empty repo and add an empty file (`.gitkeep`) to initialise the repo. Then push to the new empty repo back to Bitbucket. Initialise the local repo with [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/). *N.B.* Git Flow adds local settings to the git config, but does not affect the remote (origin) repo in any way, so if you re-clone the repo for whatever reason later on, you will need to re-initialise git flow again.
 
 In your terminal of choice do the following:
 
@@ -65,7 +65,7 @@ git init .
 touch .gitkeep # git works on files, not empty directories
 git add .
 git commit -m 'Initial Commit'
-git remote add origin git@github.com:<username>/<new_repo_name>.git
+git remote add origin ssh://git@10.0.0.7:7999/<username>/<new_repo_name>.git
 git push origin master -u
 git flow init -d # Accept all the default settings, this will create the develop branch for you
 git push origin develop -u # Set local develop to track origin develop branch
