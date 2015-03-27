@@ -49,6 +49,7 @@ Everyone has a preference when it comes to their text editor/IDE of choice and w
 EditorConfig helps us define and maintain consistent coding styles between different editors and IDEs. You should [install the EditorConfig plugin](http://editorconfig.org/#download) for your editor of choice.
 
 ### Project Structure and Setup
+All projects use the [FES] as a starting point. You can clone the repo from here: [https://github.com/powerhouse-industries/front-end-starter.git](https://github.com/powerhouse-industries/front-end-starter.git).
 
 #### To set up a project on your local machine follow the steps below:
 
@@ -73,7 +74,7 @@ git push origin develop -u # Set local develop to track origin develop branch
 Now your empty project is setup you'll need to pull this repo into your develop branch.
 
 ```
-git pull --no-commit --squash ssh://git@10.0.0.7:7999/fes/version-4.git master
+git pull --no-commit --squash git@github.com:powerhouse-industries/front-end-starter.git master
 ```
 
 This pulls the [FES] repo files into your working copy. The --squash option prevents the entire [FES] master branch history from being imported. Now commit the changes we've just done.
