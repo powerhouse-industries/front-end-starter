@@ -15,9 +15,9 @@ This document outlines best practices, guidelines and methodologies that should 
 * Browser Support
 * Markup
 	* General Guidelines
-  	* Quoting Attributes
-  	* Schema.org
-  	* Images
+		* Quoting Attributes
+		* Schema.org
+		* Images
 	* Validation
 	* Accessibility
 * CSS
