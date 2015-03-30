@@ -1,9 +1,22 @@
 #!/bin/bash
 
-# Install `bower-installer`
+# Store platform name
+os=`uname`
+
+# Install all dependencies
 sudo npm install
+sudo npm install bower -g
 sudo npm install bower-installer -g
-brew install terminal-notifier
+sudo npm install nodemon -g
+sudo npm install parallelshell -g
+sudo npm install jshint -g
+sudo npm install autoprefixer -g
+sudo gem install scss-lint
+
+# Only install terminal notifier on OS X
+if [[ "$os" == 'Darwin' ]]; then
+  sudo gem install terminal-notifier
+fi
 
 # Install all the Bower packages
 cd source/javascripts && bower-installer

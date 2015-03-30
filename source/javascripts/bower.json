@@ -2,7 +2,6 @@
   "name": "frontend-common-js",
   "dependencies": {
     "modernizr": "2.8.3",
-    "yepnope": "1.5.4",
     "picturefill": "2.2.0",
     "fastclick": "1.0.3",
     "placeholders": "4.0.0",
@@ -15,10 +14,9 @@
     "ignore": ["jquery"],
     "sources": {
       "modernizr": "components/modernizr/modernizr.js",
-      "yepnope": "components/inline-svg/inlineSVG.js",
+      "inline-svg": "components/inline-svg/inlineSVG.js",
       "media-match": "components/media-match/media.match.min.js",
       "picturefill": "components/picturefill/dist/picturefill.min.js",
-      "yepnope": "components/yepnope/yepnope.js",
       "placeholders": "components/placeholders/dist/placeholders.min.js"
     }
   }

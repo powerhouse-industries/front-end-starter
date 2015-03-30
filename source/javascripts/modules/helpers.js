@@ -47,23 +47,46 @@ var Helpers = (function () {
    * Get contents of file
    */
 
-  var getFileContents = function(template, callback) {
+  var getFileContents = function(file, callback) {
 
     request = new XMLHttpRequest();
+    request.open('GET', file, true);
+
     request.onreadystatechange = function() {
-      if (request.readyState == 4 && request.status == 200) {
-        callback(request.responseText);
+      if (this.readyState === 4) {
+        if (this.status >= 200 && this.status < 500) {
+          callback(this.responseText);
+        }
       }
     };
-    request.open('GET', template, true);
+
     request.send();
+    request = null;
 
   };
+
+
+  /**
+   * Load a Javascript file asynchronously
+   */
+  var loadJS = function (src, cb){
+ 	  var ref = window.document.getElementsByTagName( "script" )[ 0 ];
+ 	  var script = window.document.createElement( "script" );
+   	script.src = src;
+   	script.async = true;
+   	ref.parentNode.insertBefore( script, ref );
+   	if (cb && typeof(cb) === "function") {
+   		script.onload = cb;
+   	}
+   	return script;
+  };
+
 
   return {
     ready: ready,
     addEventListener: addEventListener,
-    getFileContents: getFileContents
+    getFileContents: getFileContents,
+    loadJS: loadJS
   };
 
 })();
