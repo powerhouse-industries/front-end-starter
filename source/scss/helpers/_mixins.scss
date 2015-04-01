@@ -3,29 +3,6 @@
 \*------------------------------------*/
 
 /**
- * Font family
- */
-
-@mixin font($family: 'open-sans', $weight: 'regular') {
-  @if($family == 'Open Sans') {
-    @if($weight == 'regular') {
-      font: { family: 'Open Sans', sans-serif; weight: 400; }
-    } @elseif($weight == 'medium') {
-      font: { family: 'Open Sans', sans-serif; weight: 600; }
-    } @elseif($weight == 'medium') {
-      font: { family: 'Open Sans', sans-serif; weight: 700; }
-    }
-  } @elseif($family == 'georgia') {
-    @if($weight == 'regular') {
-      font-family: Georgia, Times, 'Times New Roman', serif;
-    } @elseif($weight == 'bold') {
-      font-family: Georgia, Times, 'Times New Roman', serif;
-    }
-  }
-}
-
-
-/**
  * Target devices based on pixel ratio
  */
 
@@ -82,10 +59,10 @@
  * Vertically align an element
  * inside its container
  *
- * .thing {  @include verically-align; }
+ * .thing {  @include vertically-align; }
  */
 
-@mixin verically-align {
+@mixin vertically-align {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
@@ -107,18 +84,33 @@
 
 
 /**
+ * Centrally align an element
+ * inside its container
+ *
+ * .thing {  @include centrally-align; }
+ */
+
+@mixin centrally-align {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/**
  * SVG background images with fallback
  *
  * .thing { @include svg-background(icon-red); }
  */
 
 @mixin svg-background($image) {
-  background: file-url(#{$image} + '.svg');
+  $svg-image: $image + '.svg';
+  $png-image: $image + '.png';
+  background-image: file-url($svg-image);
 
   .no-svg & {
-    background: {
-      image: file-url(#{$image} + '.png');
-    }
+    background-image: file-url($png-image);
   }
 }
 

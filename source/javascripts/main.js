@@ -9,33 +9,26 @@ Helpers.ready(function() {
   /**
    * Initialise inlineSVG
    */
-  yepnope({
-    test : Modernizr.inlinesvg,
-    yep: [
-      '/javascripts/libraries/inlineSVG.js'
-    ],
-    callback: function (url, result, key) {
-      if (result) {
-        inlineSVG();
-      } else {
-        var svgs = document.querySelectorAll('img.svg');
-        for (i = 0; i < svgs.length; i++) {
-          var fallback = svgs[i].getAttribute('data-fallback');
-          svgs[i].src = fallback;
-        }
-      }
+  if(Modernizr.inlinesvg) {
+    Helpers.loadJS('/javascripts/libraries/inlineSVG.js', function() {
+      inlineSVG();
+    });
+  } else {
+    var svgs = document.querySelectorAll('img.svg');
+    for (i = 0; i < svgs.length; i++) {
+      var fallback = svgs[i].getAttribute('data-fallback');
+      svgs[i].src = fallback;
     }
-  });
+  }
 
 
   /**
    * Initialise placeholders for browsers
    * that don't support them.
    */
-  yepnope({
-    test : Modernizr.input.placeholder,
-    nope: ['/javascripts/libraries/placeholders.min.js']
-  });
+  if(!Modernizr.input.placeholder) {
+    Helpers.loadJS('/javascripts/libraries/placeholders.min.js');
+  }
 
 
   /**
@@ -50,11 +43,5 @@ Helpers.ready(function() {
    * Initialise Picturefill
    */
   picturefill();
-
-
-  /**
-   * Initialise CheckMQ
-   */
-  checkMQ.init();
 
 });
