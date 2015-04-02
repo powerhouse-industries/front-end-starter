@@ -6,10 +6,14 @@ var Helpers = (function () {
       type,
       handler;
 
-  /**
-   * A vanilla JS alternative to $(document).ready();
-   */
 
+  /**
+   * A vanilla JavaScript alternative to jQuery's $(document).ready();
+   *
+   * @public
+   * @param {function} fn - The function to be executed when the document is ready
+   * @return {function}
+   */
   var ready = function (fn) {
 
     if (document.readyState != 'loading'){
@@ -27,9 +31,13 @@ var Helpers = (function () {
 
 
   /**
-   * A vanilla JS alternative to $().on();
+   * A vanilla JavaScript alternative to jQuery's $(document).on();
+   *
+   * @public
+   * @param {object} el - The element being targetted
+   * @param {string} eventName - The name of the event
+   * @param {function} handler - The callback
    */
-
   var addEventListener = function(el, eventName, handler) {
 
     if (el.addEventListener) {
@@ -44,9 +52,13 @@ var Helpers = (function () {
 
 
   /**
-   * Get contents of file
+   * Get the contents of a file
+   *
+   * @public
+   * @param {string} file - The url of the file
+   * @param {function} callback - The name of the event
+   * @return {string}
    */
-
   var getFileContents = function(file, callback) {
 
     request = new XMLHttpRequest();
@@ -54,7 +66,7 @@ var Helpers = (function () {
 
     request.onreadystatechange = function() {
       if (this.readyState === 4) {
-        if (this.status >= 200 && this.status < 500) {
+        if (this.status >= 200 && this.status < 400) {
           callback(this.responseText);
         }
       }
@@ -67,7 +79,11 @@ var Helpers = (function () {
 
 
   /**
-   * Load a Javascript file asynchronously
+   * Get the contents of a file
+   *
+   * @public
+   * @param {src} file - The url of the JavaScript file
+   * @param {function} callback - The callback
    */
   var loadJS = function (src, cb){
  	  var ref = window.document.getElementsByTagName( "script" )[ 0 ];
