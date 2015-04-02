@@ -1,0 +1,10 @@
+{
+  "files": {
+    "included": [
+      "build/*"
+    ],
+    "excluded": [
+      "build/javascripts/libraries/*",
+    ]
+  }
+}
