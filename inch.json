@@ -1,10 +1,10 @@
 {
   "files": {
     "included": [
-      "build/*"
+      "build/javascripts/**/*.js"
     ],
     "excluded": [
-      "build/javascripts/libraries/*",
+      "build/javascripts/libraries/*.js"
     ]
   }
 }
