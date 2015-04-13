@@ -38,9 +38,9 @@
     "sass": "sh tasks/sass.sh",
     "images": "sh tasks/images.sh",
     "html": "sh tasks/html.sh",
-    "watch:sass": "nodemon -e scss -x \"sh tasks/sass.sh\"",
-    "watch:js": "nodemon -e js -x \"sh tasks/javascripts.sh\"",
-    "watch:html": "nodemon -e html -x \"sh tasks/html.sh\"",
+    "watch:sass": "nodemon -e scss --watch source/ -i node_modules/ -x \"sh tasks/sass.sh\"",
+    "watch:js": "nodemon --watch source/ -i build/ -i node_modules/ -e js -x \"sh tasks/javascripts.sh\"",
+    "watch:html": "nodemon -i build/ -i node_modules/ -e html -x \"sh tasks/html.sh\"",
     "build": "npm run build:sass && npm run build:js",
     "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:html'",
     "deploy": "sh tasks/deploy.sh"

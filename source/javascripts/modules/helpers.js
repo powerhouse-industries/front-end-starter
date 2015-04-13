@@ -12,7 +12,7 @@ var Helpers = (function () {
    *
    * @public
    * @param {function} fn - The function to be executed when the document is ready
-   * @return {function}
+   * @returns {function}
    */
   var ready = function (fn) {
 
@@ -57,7 +57,7 @@ var Helpers = (function () {
    * @public
    * @param {string} file - The url of the file
    * @param {function} callback - The name of the event
-   * @return {string}
+   * @returns {string}
    */
   var getFileContents = function(file, callback) {
 
@@ -86,15 +86,20 @@ var Helpers = (function () {
    * @param {function} callback - The callback
    */
   var loadJS = function (src, cb){
- 	  var ref = window.document.getElementsByTagName( "script" )[ 0 ];
- 	  var script = window.document.createElement( "script" );
-   	script.src = src;
-   	script.async = true;
-   	ref.parentNode.insertBefore( script, ref );
-   	if (cb && typeof(cb) === "function") {
-   		script.onload = cb;
-   	}
-   	return script;
+
+    var ref = window.document.getElementsByTagName('script')[0],
+        script = window.document.createElement('script');
+
+    script.src = src;
+    script.async = true;
+    ref.parentNode.insertBefore(script, ref);
+
+    if (cb && typeof(cb) === 'function') {
+      script.onload = cb;
+    }
+
+    return script;
+
   };
 
 
