@@ -5,11 +5,10 @@ Helpers.ready(function() {
    */
   FastClick.attach(document.body);
 
-
   /**
    * Initialise inlineSVG
    */
-  if(Modernizr.inlinesvg) {
+  if (Modernizr.inlinesvg) {
     Helpers.loadJS('/javascripts/libraries/inlineSVG.js', function() {
       inlineSVG();
     });
@@ -21,15 +20,13 @@ Helpers.ready(function() {
     }
   }
 
-
   /**
    * Initialise placeholders for browsers
    * that don't support them.
    */
-  if(!Modernizr.input.placeholder) {
+  if (!Modernizr.input.placeholder) {
     Helpers.loadJS('/javascripts/libraries/placeholders.min.js');
   }
-
 
   /**
    * Initialise Cookie Disclaimer
@@ -37,7 +34,6 @@ Helpers.ready(function() {
   CookieDisclaimer.init({
     template: '/javascripts/templates/cookie-banner.html'
   });
-
 
   /**
    * Initialise Picturefill

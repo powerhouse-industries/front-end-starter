@@ -6,7 +6,6 @@ var Helpers = (function () {
       type,
       handler;
 
-
   /**
    * A vanilla JavaScript alternative to jQuery's $(document).ready();
    *
@@ -16,19 +15,19 @@ var Helpers = (function () {
    */
   var ready = function (fn) {
 
-    if (document.readyState != 'loading'){
+    if (document.readyState != 'loading') {
       fn();
     } else if (document.addEventListener) {
       document.addEventListener('DOMContentLoaded', fn);
     } else {
       document.attachEvent('onreadystatechange', function() {
-        if (document.readyState != 'loading')
+        if (document.readyState != 'loading') {
           fn();
+        }
       });
     }
 
   };
-
 
   /**
    * A vanilla JavaScript alternative to jQuery's $(document).on();
@@ -38,18 +37,17 @@ var Helpers = (function () {
    * @param {string} eventName - The name of the event
    * @param {function} handler - The callback
    */
-  var addEventListener = function(el, eventName, handler) {
+  var addEventListener = function (el, eventName, handler) {
 
     if (el.addEventListener) {
       el.addEventListener(eventName, handler);
     } else {
-      el.attachEvent('on' + eventName, function(){
+      el.attachEvent('on' + eventName, function() {
         handler.call(el);
       });
     }
 
   };
-
 
   /**
    * Get the contents of a file
@@ -59,7 +57,7 @@ var Helpers = (function () {
    * @param {function} callback - The name of the event
    * @returns {string}
    */
-  var getFileContents = function(file, callback) {
+  var getFileContents = function (file, callback) {
 
     request = new XMLHttpRequest();
     request.open('GET', file, true);
@@ -77,7 +75,6 @@ var Helpers = (function () {
 
   };
 
-
   /**
    * Get the contents of a file
    *
@@ -85,7 +82,7 @@ var Helpers = (function () {
    * @param {src} file - The url of the JavaScript file
    * @param {function} callback - The callback
    */
-  var loadJS = function (src, cb){
+  var loadJS = function (src, cb) {
 
     var ref = window.document.getElementsByTagName('script')[0],
         script = window.document.createElement('script');
@@ -101,7 +98,6 @@ var Helpers = (function () {
     return script;
 
   };
-
 
   return {
     ready: ready,

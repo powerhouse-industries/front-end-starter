@@ -10,6 +10,7 @@ sudo npm install bower-installer -g
 sudo npm install nodemon -g
 sudo npm install parallelshell -g
 sudo npm install jshint -g
+sudo npm install jscs -g
 sudo npm install autoprefixer -g
 sudo gem install scss-lint
 
