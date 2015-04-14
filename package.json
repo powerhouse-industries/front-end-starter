@@ -6,16 +6,11 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": ""
-  },
-  "frontend": {
-    "name": "FES",
-    "stylesheets": "source/scss",
-    "javascripts": "source/javascripts"
+    "url": "https://github.com/powerhouse-industries/front-end-starter"
   },
   "engines": {
-    "node": ">=0.10.0",
-    "npm": ">=2.1.5"
+    "node": ">=0.12.0",
+    "npm": ">=2.7.6"
   },
   "dependencies": {
     "autoprefixer": "^5.1.0",
