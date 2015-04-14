@@ -36,7 +36,7 @@
     "watch:sass": "nodemon -e scss --watch source/ -i node_modules/ -x \"sh tasks/sass.sh\"",
     "watch:js": "nodemon --watch source/ -i build/ -i node_modules/ -e js -x \"sh tasks/javascripts.sh\"",
     "watch:html": "nodemon -i build/ -i node_modules/ -e html -x \"sh tasks/html.sh\"",
-    "build": "npm run build:sass && npm run build:js",
+    "build": "npm run sass && npm run js",
     "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:html'",
     "deploy": "sh tasks/deploy.sh"
   }

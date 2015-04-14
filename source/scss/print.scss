@@ -172,7 +172,7 @@ abbr {
   border: 0;
 
   &[title]:after {
-    content: "(" attr(title) ")";
+    content: '(' attr(title) ')';
     font-style: italic;
     font-size: font-size(13);
   }

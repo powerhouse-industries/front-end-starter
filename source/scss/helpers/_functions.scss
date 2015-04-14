@@ -2,14 +2,13 @@
   $FUNCTIONS
 \*------------------------------------*/
 
-
+$use-asset-pipeline: false;
 $path: '/images/' !default; // define a path where images are stored
 $use-rems: true !default; // Use rems by default
 
 /**
  * Quickly get an em value
  */
-
 @function em($px) {
   @return $px / 16 * 1em;
 }
@@ -18,7 +17,6 @@ $use-rems: true !default; // Use rems by default
 /**
  * Quickly get a rem value
  */
-
 @function rem($px) {
   @return $px / 10 * 1rem;
 }
@@ -26,7 +24,6 @@ $use-rems: true !default; // Use rems by default
 /**
  * Font sizing in rems
  */
-
 @function font-size($font-size, $line-height: false) {
   $rem-size: $font-size / $base-font-size;
   @return if($use-rems, $rem-size * 1rem, $font-size * 1px);
@@ -37,13 +34,12 @@ $use-rems: true !default; // Use rems by default
 /**
  * Output an image URL
  */
-
-@function file-url($file) {
-  $url: '';
-  @if $path {
-    $url: url($path+$file);
-  } @else {
-    $url: image-url($file);
-  }
-  @return $url;
-}
+ @function file-url($file) {
+   $url: '';
+   @if $use-asset-pipeline {
+     $url: image-url($path+$file);
+   } @else {
+     $url: url($path+$file);
+   }
+   @return $url;
+ }

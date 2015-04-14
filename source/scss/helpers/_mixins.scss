@@ -5,7 +5,6 @@
 /**
  * Target devices based on pixel ratio
  */
-
 @mixin device-pixel-ratio($ratio: 2) {
   @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
   only screen and (min--moz-device-pixel-ratio: $ratio),
@@ -25,7 +24,6 @@
  *   color: blue;
  * }
  */
-
 @mixin states() {
   &:hover,
   &:active,
@@ -42,7 +40,6 @@
  *   color: red;
  * }
  */
-
 @mixin headings() {
   h1,
   h2,
@@ -61,7 +58,6 @@
  *
  * .thing {  @include vertically-align; }
  */
-
 @mixin vertically-align {
   position: relative;
   top: 50%;
@@ -75,7 +71,6 @@
  *
  * .thing {  @include horizontally-align; }
  */
-
 @mixin horizontally-align {
   position: relative;
   left: 50%;
@@ -89,7 +84,6 @@
  *
  * .thing {  @include centrally-align; }
  */
-
 @mixin centrally-align {
   position: relative;
   left: 50%;
@@ -103,7 +97,6 @@
  *
  * .thing { @include svg-background(icon-red); }
  */
-
 @mixin svg-background($image) {
   $svg-image: $image + '.svg';
   $png-image: $image + '.png';
@@ -120,7 +113,6 @@
  *
  * .thing {  @include position(relative, 0, 1px, 10px, 0); }
  */
-
 @mixin position($position, $top, $right, $bottom, $left) {
   position: $position;
   @if $top { top: $top; }
