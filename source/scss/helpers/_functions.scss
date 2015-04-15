@@ -34,12 +34,12 @@ $use-rems: true !default; // Use rems by default
 /**
  * Output an image URL
  */
- @function file-url($file) {
-   $url: '';
-   @if $use-asset-pipeline {
-     $url: image-url($path+$file);
-   } @else {
-     $url: url($path+$file);
-   }
-   @return $url;
- }
+@function file-url($file) {
+  $url: '';
+  @if $use-asset-pipeline {
+    $url: image-url($path+$file);
+  } @else {
+    $url: url($path+$file);
+  }
+  @return $url;
+}

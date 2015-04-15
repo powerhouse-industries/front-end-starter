@@ -76,7 +76,7 @@ var Helpers = (function () {
   };
 
   /**
-   * Get the contents of a file
+   * Load JavaScript file asynchronously
    *
    * @public
    * @param {src} file - The url of the JavaScript file
