@@ -23,6 +23,8 @@ else
   uglifyjs source/javascripts/libraries/media-match/media.match.min.js source/javascripts/libraries/modernizr/modernizr.js source/javascripts/libraries/picturefill/picturefill.min.js source/javascripts/libraries/fastclick/fastclick.js source/javascripts/libraries/cookie-disclaimer/cookieDisclaimer.min.js source/javascripts/libraries/checkmq/checkMQ.js source/javascripts/modules/*.js source/javascripts/*.js -o build/javascripts/application.min.js --source-map build/javascripts/application.min.js.map --source-map-url /javascripts/application.min.js.map
 fi
 
+minify build/javascripts/libraries --template {{filename}}.{{ext}}
+
 # Send a notifcation to the OS
 if [[ "$os" == 'Darwin' ]]; then
   terminal-notifier -group 'js-changes' -title 'JavaScript' -message 'JavaScript compiled successfully.'

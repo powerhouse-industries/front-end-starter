@@ -24,7 +24,11 @@
     "bower-installer": "^1.1.0",
     "nodemon": "^1.3.7",
     "parker": "^0.0.8",
-    "http-server": "^0.7.5"
+    "http-server": "^0.7.5",
+    "csscomb": "^3.0.4",
+    "cssnano": "^1.0.1",
+    "htmlhint": "^0.9.7",
+    "minifier": "^0.6.2"
   },
   "scripts": {
     "setup": "sh tasks/setup.sh",
@@ -36,7 +40,7 @@
     "watch:sass": "nodemon -e scss --watch source/ -i node_modules/ -x \"sh tasks/sass.sh\"",
     "watch:js": "nodemon --watch source/ -i build/ -i node_modules/ -e js -x \"sh tasks/javascripts.sh\"",
     "watch:html": "nodemon -i build/ -i node_modules/ -e html -x \"sh tasks/html.sh\"",
-    "build": "npm run sass && npm run js",
+    "build": "npm run sass && npm run js && npm run html && npm run images",
     "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:html'",
     "deploy": "sh tasks/deploy.sh"
   }
