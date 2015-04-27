@@ -42,7 +42,7 @@
     "watch:js": "nodemon --watch source/javascripts -i build/ -i node_modules/ -e js -x \"sh tasks/javascripts.sh\"",
     "watch:html": "nodemon -i build/ -i node_modules/ -e html -x \"sh tasks/html.sh\"",
     "build": "npm run sass && npm run js && npm run html && npm run images",
-    "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:images' 'npm run watch:html'",
+    "build:watch": "parallelshell 'npm run watch:js' 'npm run watch:sass' 'npm run watch:html' 'npm run watch:images'",
     "deploy": "sh tasks/deploy.sh"
   }
 }

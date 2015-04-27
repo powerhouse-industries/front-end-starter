@@ -43,13 +43,18 @@ h6,
   font-size: font-size($h6-size);
 }
 
+@include headings {
+  margin-bottom: 5px;
+}
+
 
 /**
  * Paragraphs
  */
 
 p {
-  margin-bottom: $base-line-height * 1px;
+  margin-bottom: 15px;
+  line-height: $base-line-height * 1px;
 }
 
 strong {

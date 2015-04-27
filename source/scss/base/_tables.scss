@@ -2,14 +2,41 @@
   $TABLES
 \*------------------------------------*/
 
+$table-th-background-color: $black;
+$table-th-text-color: $white;
+$table-border-color: $black;
+$table-striped: true;
+$table-stripe-background-color: $light-grey;
+$table-stripe-text-color: $black;
+
 table {
+  margin-bottom: 15px;
   width: 100%;
   border: 1px solid;
   border-collapse: collapse;
+
+  @if ($table-striped == true) {
+    tr:nth-child(even) {
+      background: $table-stripe-background-color;
+    }
+    color: $table-stripe-text-color;
+  }
 }
 
 th,
 td {
-  border: 1px solid;
+  padding: 15px;
   text-align: left;
+}
+
+th {
+  background: {
+    color: $table-th-background-color;
+  }
+  color: $table-th-text-color;
+}
+
+td,
+tr {
+  border: 1px solid $black;
 }
