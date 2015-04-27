@@ -13,10 +13,14 @@ addons:
 before_script:
   - npm install -g jscs
   - npm install -g jshint
+  - npm install htmlhint
+  - gem install scss-lint
 
 script:
   - jscs source/javascripts/main.js && jshint source/javascripts/modules/**.js
   - jshint source/javascripts/main.js && jshint source/javascripts/modules/**.js
+  - htmlhint *.html
+  - scss-lint source/scss -c .scss-lint.yml
 
 after_script:
   - cat lcov.info | codeclimate
