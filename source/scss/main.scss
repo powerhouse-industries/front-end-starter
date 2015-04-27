@@ -31,3 +31,17 @@
 
 // trumps
 @import 'trumps';
+
+
+// purposeful error to test travis.ci
+p {
+	.red {
+		.blue {
+			color: pink;
+
+			strong {
+				color: red;
+			}
+		}
+	}
+}
