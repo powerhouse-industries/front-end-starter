@@ -1,4 +1,4 @@
-sudo: true
+sudo: false
 language: node_js
 node_js:
   - 0.12.2
@@ -11,7 +11,7 @@ addons:
     repo_token: CODECLIMATE_REPO_TOKEN=477c6e6416b854edcd23bbd313b0ab81dd004774ed35aa6dc8be0b0f29739876
 
 before_script:
-  - sudo npm install -g jshint
+  - npm install -g jshint
 
 script:
   - jshint source/javascripts/main.js && jshint source/javascripts/modules/**.js
