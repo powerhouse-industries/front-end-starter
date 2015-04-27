@@ -12,12 +12,14 @@ addons:
 
 before_script:
   - npm install -g jscs
+  - npm install -g jsinspect
   - npm install -g jshint
   - npm install -g htmlhint
   - gem install scss-lint
 
 script:
-  - jscs source/javascripts/main.js && jshint source/javascripts/modules/**.js
+  - jscs source/javascripts/main.js && jscs source/javascripts/modules/**.js
+  - jsinspect source/javascripts/main.js source/javascripts/modules/**.js
   - jshint source/javascripts/main.js && jshint source/javascripts/modules/**.js
   - htmlhint *.html
   - scss-lint source/scss -c .scss-lint.yml

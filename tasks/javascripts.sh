@@ -9,6 +9,11 @@ echo "$(tput setaf 6)Checking code formating...$(tput sgr 0)"
 jscs source/javascripts/modules source/javascripts/*.js
 echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
+# Check formatting against styleguide
+echo "$(tput setaf 6)Checking for duplicated code...$(tput sgr 0)"
+jsinspect source/javascripts/main.js source/javascripts/modules/**.js
+echo "$(tput setaf 2)Done!$(tput sgr 0)"
+
 # Look for issues
 echo "$(tput setaf 6)Looking for code errors...$(tput sgr 0)"
 jshint source/javascripts/**.js
