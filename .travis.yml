@@ -11,9 +11,11 @@ addons:
     repo_token: CODECLIMATE_REPO_TOKEN=477c6e6416b854edcd23bbd313b0ab81dd004774ed35aa6dc8be0b0f29739876
 
 before_script:
+  - npm install -g jscs
   - npm install -g jshint
 
 script:
+  - jscs source/javascripts/main.js && jshint source/javascripts/modules/**.js
   - jshint source/javascripts/main.js && jshint source/javascripts/modules/**.js
 
 after_script:
