@@ -19,6 +19,7 @@ table {
     tr:nth-child(even) {
       background: $table-stripe-background-color;
     }
+
     color: $table-stripe-text-color;
   }
 }
