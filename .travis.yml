@@ -13,7 +13,7 @@ addons:
 before_script:
   - npm install -g jscs
   - npm install -g jshint
-  - npm install htmlhint
+  - npm install -g htmlhint
   - gem install scss-lint
 
 script:
