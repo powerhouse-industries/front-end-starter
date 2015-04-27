@@ -24,20 +24,22 @@
     <link rel="stylesheet" href="/css/ie8.css" />
   <![endif]-->
 
-  <link rel="shortcut icon" href="/images/icon.png" />
-  <link rel="apple-touch-icon-precomposed" href="/images/icon.png" />
+  <link rel="shortcut icon" href="/images/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/images/touch-icon.png" />
   <meta name="application-name" content="Site Name" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="">
   <meta name="msapplication-TileColor" content="#000" />
   <meta name="msapplication-TileImage" content="/images/ms-tile.png" />
 
+  <meta name="main-js" content="/javascripts/application.min.js" />
+
+  <script>var getContentByMetaTagName=function(e){for(var n=document.getElementsByTagName("meta"),t=0;t<n.length;t++)if(e==n[t].name||e==n[t].getAttribute("property"))return n[t].content;return!1},loadJS=function(e,n){var t=window.document.getElementsByTagName("script")[0],o=window.document.createElement("script");return o.src=e,o.async=!0,t.parentNode.insertBefore(o,t),n&&"function"==typeof n&&(o.onload=n),o};loadJS(getContentByMetaTagName("main-js"));</script>
+
 </head>
 <body>
 
   <a href="#content" class="skip-content">skip to main content</a>
-
-  <script src="/javascripts/application.min.js"></script>
 
 </body>
 </html>
