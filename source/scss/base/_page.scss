@@ -27,7 +27,7 @@ body {
 .wrap {
   margin: 0 auto;
   width: $wrapper-width;
-  @if $wrapper-responsive == true {
+  @if ($mq-responsive == true) {
     max-width: 95%;
   }
 }
