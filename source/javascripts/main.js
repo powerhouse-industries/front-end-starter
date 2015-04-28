@@ -7,11 +7,11 @@ FastClick.attach(document.body);
  * Initialise inlineSVG
  */
 if (Modernizr.inlinesvg) {
-  Helpers.loadJS('/javascripts/libraries/inlineSVG.js', function() {
+  loadJS('/javascripts/libraries/inlineSVG.js', function() {
     inlineSVG();
   });
 } else {
-  var svgs = document.querySelectorAll('img.svg');
+  var svgs = $('img.svg');
   for (i = 0; i < svgs.length; i++) {
     var fallback = svgs[i].getAttribute('data-fallback');
     svgs[i].src = fallback;
@@ -23,7 +23,7 @@ if (Modernizr.inlinesvg) {
  * that don't support them.
  */
 if (!Modernizr.input.placeholder) {
-  Helpers.loadJS('/javascripts/libraries/placeholders.min.js');
+  loadJS('/javascripts/libraries/placeholders.min.js');
 }
 
 /**
