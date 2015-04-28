@@ -9,12 +9,23 @@ ol {
 }
 
 ul {
-  li { list-style: disc; }
+  nav & {
+    margin: 0;
+  }
+
+  li {
+    list-style: disc;
+  }
 }
 
 li {
   margin-bottom: 5px;
   font-size: font-size(16);
+
+  nav & {
+    margin: 0;
+    list-style: none;
+  }
 
   > ul,
   > ol {

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 os=`uname`
-
 modules=`find source/javascripts/modules/ -maxdepth 1 -type d | wc -l`
 
 # Check formatting against styleguide
@@ -34,8 +33,10 @@ else
   uglifyjs source/javascripts/libraries/media-match/media.match.min.js source/javascripts/libraries/modernizr/modernizr.js source/javascripts/libraries/picturefill/picturefill.min.js source/javascripts/libraries/fastclick/fastclick.js source/javascripts/libraries/cookie-disclaimer/cookieDisclaimer.min.js source/javascripts/libraries/checkmq/checkMQ.js source/javascripts/modules/*.js source/javascripts/*.js -o build/javascripts/application.min.js --source-map build/javascripts/application.min.js.map --source-map-url /javascripts/application.min.js.map
 fi
 
-echo "$(tput setaf 6)Minifying final output...$(tput sgr 0)"
-minify build/javascripts/libraries --template {{filename}}.{{ext}}
+for f in `ls build/javascripts/libraries/*.js`; do
+  echo "$(tput setaf 6)Minifying $f...$(tput sgr 0)"
+  uglifyjs "$f" -o "$f"
+done
 echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
 # Send a notifcation to the OS
