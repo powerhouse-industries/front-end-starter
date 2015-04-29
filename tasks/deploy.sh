@@ -23,4 +23,4 @@ sh tasks/images.sh
 # Check HTML
 sh tasks/html.sh
 
-echo "$(tput setaf 4)Project ready for deployment. Check inside /build$(tput sgr 0)"
+echo "$(tput setaf 4)Project ready for deployment. Production ready files can be found inside /build.$(tput sgr 0)"
