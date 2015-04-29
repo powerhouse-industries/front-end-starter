@@ -52,9 +52,9 @@ var PowerHouse = (function () {
    */
   var forEachElement = function (el, callback) {
 
-    var el = document.querySelectorAll(selector);
-    for (var i = 0; i < el.length; i++) {
-      fn(el[i], i);
+    var elements = document.querySelectorAll(selector);
+    for (var i = 0; i < elements.length; i++) {
+      fn(elements[i], i);
     }
 
   };

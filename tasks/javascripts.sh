@@ -15,7 +15,7 @@ echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
 # Look for issues
 echo "$(tput setaf 6)Looking for code errors...$(tput sgr 0)"
-jshint source/javascripts/**.js
+jshint source/javascripts/main.js && jshint source/javascripts/modules/**.js
 echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
 # Copy some files into /build
