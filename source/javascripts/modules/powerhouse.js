@@ -1,20 +1,5 @@
 (function () {
 
-  var request, template, element, type, handler;
-
-  /**
-   * A vanilla JavaScript alternative to jQuery's $(el);
-   *
-   * @public
-   * @param {object} el - The element being targetted
-   */
-  return $ = function (el) {
-
-    var el = document.querySelectorAll(el);
-    return el;
-
-  };
-
   /**
    * A vanilla JavaScript alternative to jQuery's $(document).on();
    *
@@ -23,7 +8,7 @@
    * @param {string} eventName - The name of the event
    * @param {function} handler - The callback
    */
-  return addEventListeners = function () {
+  return addEventListeners = function (el, eventName) {
 
     if (el.addEventListener) {
       el.addEventListener(eventName, handler);
@@ -31,6 +16,22 @@
       el.attachEvent('on' + eventName, function() {
         handler.call(el);
       });
+    }
+
+  };
+
+  /**
+   * A vanilla JavaScript alternative to jQuery's $(el).each();
+   *
+   * @public
+   * @param {object} el - The element being targetted
+   * @param {function} handler - The callback
+   */
+  return forEachElement = function (el, callback) {
+
+    var el = document.querySelectorAll(selector);
+    for (var i = 0; i < el.length; i++) {
+      fn(el[i], i);
     }
 
   };

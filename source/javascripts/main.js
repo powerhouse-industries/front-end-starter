@@ -11,11 +11,11 @@ if (Modernizr.inlinesvg) {
     inlineSVG();
   });
 } else {
-  var svgs = $('img.svg');
-  for (i = 0; i < svgs.length; i++) {
-    var fallback = svgs[i].getAttribute('data-fallback');
-    svgs[i].src = fallback;
-  }
+  var svgs = document.querySelectorAll('img.svg');
+  forEachElement(svgs, function (svg, i) {
+    var fallback = svg.getAttribute('data-fallback');
+    svgs.src = fallback;
+  });
 }
 
 /**
