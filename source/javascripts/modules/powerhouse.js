@@ -1,4 +1,27 @@
-(function () {
+var PowerHouse = (function () {
+
+  /**
+   * A vanilla JavaScript alternative to jQuery's $(document).ready();
+   *
+   * @public
+   * @param {function} fn - The function to be executed when the document is ready
+   * @returns {function}
+   */
+  var ready = function (fn) {
+
+    if (document.readyState != 'loading') {
+      fn();
+    } else if (document.addEventListener) {
+      document.addEventListener('DOMContentLoaded', fn);
+    } else {
+      document.attachEvent('onreadystatechange', function() {
+        if (document.readyState != 'loading') {
+          fn();
+        }
+      });
+    }
+
+  };
 
   /**
    * A vanilla JavaScript alternative to jQuery's $(document).on();
@@ -6,15 +29,15 @@
    * @public
    * @param {object} el - The element being targetted
    * @param {string} eventName - The name of the event
-   * @param {function} handler - The callback
+   * @param {function} callback - The callback
    */
-  return addEventListeners = function (el, eventName) {
+  var addEventListener = function (el, eventName, callback) {
 
     if (el.addEventListener) {
-      el.addEventListener(eventName, handler);
+      el.addEventListener(eventName, callback);
     } else {
       el.attachEvent('on' + eventName, function() {
-        handler.call(el);
+        callback.call(el);
       });
     }
 
@@ -27,7 +50,7 @@
    * @param {object} el - The element being targetted
    * @param {function} handler - The callback
    */
-  return forEachElement = function (el, callback) {
+  var forEachElement = function (el, callback) {
 
     var el = document.querySelectorAll(selector);
     for (var i = 0; i < el.length; i++) {
@@ -44,7 +67,7 @@
    * @param {function} callback - The name of the event
    * @returns {string}
    */
-  return getFileContents = function (file, callback) {
+  var getFileContents = function (file, callback) {
 
     request = new XMLHttpRequest();
     request.open('GET', file, true);
@@ -60,6 +83,13 @@
     request.send();
     request = null;
 
+  };
+
+  return {
+    ready : ready,
+    addEventListener : addEventListener,
+    forEachElement : forEachElement,
+    getFileContents : getFileContents
   };
 
 })();
