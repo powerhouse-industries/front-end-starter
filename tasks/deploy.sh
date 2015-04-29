@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "$(tput setaf 4)Preparing project for deployment...$(tput sgr 0)"
+
 # Cleanup the build folder
 rm -rf build
 mkdir build
@@ -20,3 +22,5 @@ sh tasks/images.sh
 
 # Check HTML
 sh tasks/html.sh
+
+echo "$(tput setaf 4)Project ready for deployment. Check inside /build$(tput sgr 0)"
