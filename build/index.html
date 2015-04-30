@@ -60,37 +60,77 @@
     <p class="message-text message-text--warning">This is a warning</p>
 
     <form>
-      <label>Text input</label>
-      <input type="text" required>
+      <div class="field">
+        <label>Text input</label>
+        <input type="text" placeholder="Text input">
+      </div>
 
-      <label>Email input</label>
-      <input type="email" required>
+      <div class="field">
+        <label>Email input</label>
+        <input type="email" placeholder="name@email.com">
+      </div>
 
-      <label>Tel input</label>
-      <input type="tel" required>
+      <div class="field">
+        <label>Tel input</label>
+        <input type="tel" placeholder="+44">
+      </div>
 
-      <label>Date input</label>
-      <input type="date" required>
+      <div class="field">
+        <label>Date input</label>
+        <input type="date">
+      </div>
 
-      <label>URL input</label>
-      <input type="url" required>
+      <div class="field">
+        <label>URL input <abbr title="Required">*</abbr></label>
+        <input type="url" placeholder="http://google.com" required>
+        <p class="message-text message-text--error">A valid URL is required.</p>
+      </div>
 
-      <label>Number input</label>
-      <input type="number" required>
+      <div class="field">
+        <label>Number input</label>
+        <input type="number" placeholder="Enter a number">
+      </div>
 
-      <label>Password input</label>
-      <input type="password" required>
+      <div class="field">
+        <label>Password input</label>
+        <input type="password" placeholder="Type your password">
+        <p class="message-text message-text--warning">Your password should be 6 or more characters long.</p>
+      </div>
 
-      <label>Search input</label>
-      <input type="search" required>
+      <div class="field">
+        <label>Search input</label>
+        <input type="search" placeholder="Enter a search term">
+      </div>
 
-      <label>Range input</label>
-      <input type="range" min="0" max="100" step="10" value="0">
+      <div class="field">
+        <label>Range input</label>
+        <input type="range" min="0" max="100" step="10" value="0">
+      </div>
 
-      <label>Textarea</label>
-      <textarea></textarea>
+      <div class="field field--choice">
+        <fieldset>
+          <legend>Radio buttons</legend>
 
-      <button>Submit</button>
+          <label for="male"><input type="radio" name="sex" id="male" value="male">Male</label>
+          <label for="female"><input type="radio" name="sex" id="female" value="female">Female</label>
+        </fieldset>
+      </div>
+
+      <div class="field field--choice">
+        <fieldset>
+          <legend>Checkboxes</legend>
+
+          <label for="choice-1"><input type="checkbox" id="choice-1" value="choice-1">Choice 1</label>
+          <label for="choice-2"><input type="checkbox" id="choice-2" value="choice-2">Choice 2</label>
+        </fieldset>
+      </div>
+
+      <div class="field">
+        <label>Textarea</label>
+        <textarea placeholder="Enter your message here"></textarea>
+      </div>
+
+      <button class="btn">Submit</button>
     </form>
 
     <table summary="A summary of this table.">
@@ -102,6 +142,13 @@
           <th scope="col">Heading</th>
         </tr>
       </thead>
+      <tfoot>
+        <tr>
+          <th scope="col">Footer</th>
+          <th scope="col">Footer</th>
+          <th scope="col">Footer</th>
+        </tr>
+      </tfoot>
       <tbody>
         <tr>
           <td scope="row">Item</td>
@@ -128,9 +175,17 @@
     <h5>Heading 5</h5>
     <h6>Heading 6</h6>
 
-    <time datetime="2013-04-06T12:32+00:00">2 weeks ago</time>
+    <p><time datetime="2013-04-06T12:32+00:00">2 weeks ago</time></p>
 
-    <p>Lorem ipsum dolor sit amet, consectetur <del>adipiscing</del> elit. Etiam porta sem <em>malesuada</em> magna mollis euismod. <q>Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</q> Integer posuere <mark>erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque</mark> ornare sem lacinia quam <abbr title="Something helpful">venenatis</abbr> vestibulum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur <del>adipiscing</del> elit. Etiam porta sem <em>malesuada</em> magna mollis euismod. <q>Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</q> Integer posuere <mark>erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque</mark> ornare sem lacinia quam <abbr title="Something helpful">venenatis</abbr> vestibulum. <cite>This is some cited text.</cite></p>
+
+    <picture>
+      <!--[if IE 9]><video style="display: none;"><![endif]-->
+      <source srcset="http://placehold.it/500x500, http://placehold.it/750x750 2x" media="(min-width: 960px)"></source>
+      <source srcset="http://placehold.it/960x960, http://placehold.it/1440x1440 2x" media="(min-width: 600px)"></source>
+      <!--[if IE 9]></video><![endif]-->
+      <img srcset="http://placehold.it/600x600, http://placehold.it/900x900 2x" alt="">
+    </picture>
 
     <p>Superscript<sup>&trade;</sup></p>
     <p>Subscript H<sub>2</sub>O</p>
@@ -162,6 +217,10 @@
       <li>List item</li>
     </ol>
 
+    <div class="embed embed--responsive">
+      <iframe width="420" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+    </div>
+
     <p>The following people worked on this project:</p>
 
     <address>
@@ -169,7 +228,16 @@
       <a href="http://twitter.com/jonnyhaynes">Jonny Haynes</a>
     </address>
 
-    <p>Lorem ipsum dolor sit amet, <b>consectetur</b> adipiscing elit. Etiam porta <i>sem</i> malesuada magna mollis euismod. Morbi leo risus, porta ac <a href="#">consectetur ac</a>, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    <p>Lorem ipsum dolor sit amet, <b>consectetur</b> adipiscing elit. Etiam porta <i>sem</i> malesuada magna mollis euismod. Morbi leo risus, porta ac <a href="#">consectetur ac</a>, vestibulum at eros. Integer <strong>posuere</strong> erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+
+    <dl>
+      <dt>This is a definintion</dt>
+      <dd>This is its description</dd>
+      <dt>This is a definintion</dt>
+      <dd>This is its description</dd>
+    </dl>
+
+    <a href="#" class="btn">This is a button</a>
 
   </div>
 

@@ -14,6 +14,7 @@ sudo npm install jshint -g
 sudo npm install jscs -g
 sudo npm install autoprefixer -g
 sudo npm install jscs -g
+sudo npm install phantomas -g
 sudo gem install scss-lint
 
 # Only install terminal notifier on OS X

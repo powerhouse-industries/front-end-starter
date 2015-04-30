@@ -4,8 +4,21 @@
 
 ul,
 ol {
-  margin-bottom: 15px;
+  margin-bottom: $base-spacing-unit;
   margin-left: 40px;
+}
+
+dl {
+  margin-bottom: $base-spacing-unit;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dt,
+dd {
+  margin-bottom: 5px;
 }
 
 ul {

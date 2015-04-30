@@ -5,7 +5,7 @@
 $banner-background-color: $black;
 $banner-text-color: $white;
 $banner-link-color: $white;
-$banner-btn-color: $white;
+$banner-btn-background-color: $white;
 $banner-btn-text-color: $black;
 
 .cookie-banner {
@@ -35,17 +35,8 @@ $banner-btn-text-color: $black;
   }
 
   .btn {
-    padding: 10px 15px;
-    float: left;
-    text-decoration: none;
+    background-color: $banner-btn-background-color;
     color: $banner-btn-text-color;
-    font: {
-      family: $body-font;
-      size: font-size(15);
-    }
-    background: {
-      color: $banner-btn-color;
-    }
 
     @include mq(mq600) {
       float: right;

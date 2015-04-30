@@ -3,6 +3,7 @@
 \*------------------------------------*/
 
 img {
+  margin-bottom: $base-spacing-unit;
   max-width: 100%;
   font-style: italic;
   vertical-align: middle;
@@ -15,7 +16,7 @@ img {
  * If a `width` and/or `height` attribute have been explicitly defined,
  * let’s not make the image fluid.
  */
- 
+
 .gm-style img,
 img[width],
 img[height] {

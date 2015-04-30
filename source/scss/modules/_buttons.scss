@@ -1,0 +1,45 @@
+/*------------------------------------*\
+  $BUTTONS
+\*------------------------------------*/
+
+$btn-padding: 15px;
+$btn-border-radius: 0;
+$btn-background-color: $black;
+$btn-hover-background-color: $light-grey;
+$btn-text-color: $white;
+$btn-hover-text-color: $black;
+
+/**
+ * The basic structure of a button.
+ */
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: $btn-padding;
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+  color: $btn-text-color;
+  cursor: pointer;
+  background-color: $btn-background-color;
+  border: 0;
+
+  @if ($btn-border-radius != 0) {
+    border-radius: $btn-border-radius;
+  }
+
+  @include states {
+    text-decoration: none;
+    color: $btn-hover-text-color;
+    background-color: $btn-hover-background-color;
+  }
+}
+
+
+/**
+ * Full-width buttons
+ */
+.btn--full {
+  width: 100%;
+}

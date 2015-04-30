@@ -10,9 +10,9 @@ $table-stripe-background-color: $light-grey;
 $table-stripe-text-color: $black;
 
 table {
-  margin-bottom: 15px;
+  margin-bottom: $base-spacing-unit;
   width: 100%;
-  border: 1px solid;
+  border: 1px solid $table-border-color;
   border-collapse: collapse;
 
   @if ($table-striped == true) {
@@ -40,4 +40,8 @@ th {
 td,
 tr {
   border: 1px solid $black;
+}
+
+caption {
+  margin-bottom: 15px;
 }

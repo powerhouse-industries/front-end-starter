@@ -24,6 +24,6 @@ sh tasks/images.sh
 sh tasks/html.sh
 
 # Analyse output
-sh tasks/analysis.sh
+sh tasks/analyse.sh
 
 echo "$(tput setaf 4)Project ready for deployment. Production ready files can be found inside /build.$(tput sgr 0)"

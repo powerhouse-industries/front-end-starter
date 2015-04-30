@@ -2,9 +2,9 @@
   $MESSAGES
 \*------------------------------------*/
 
-$error-color:   #fe6565;
-$warning-color: #fdfdcc;
-$success-color: #b7d985;
+$error-color:   #f2dede;
+$warning-color: #fcf8e3;
+$success-color: #dff0d8;
 
 .message-box {
   margin-bottom: 10px;
@@ -17,21 +17,21 @@ $success-color: #b7d985;
   }
 
   &--error {
-    color: mix($error-color, black, 50%);
+    color: mix($error-color, black, 40%);
     background-color: $error-color;
-    border-color: mix($error-color, black, 50%);
+    border-color: mix($error-color, black, 75%);
   }
 
   &--warning {
-    color: mix($warning-color, $black, 50%);
+    color: mix($warning-color, $black, 40%);
     background-color: $warning-color;
-    border-color: mix($warning-color, $black, 50%);
+    border-color: mix($warning-color, $black, 75%);
   }
 
   &--success {
-    color: mix($success-color, $black, 50%);
+    color: mix($success-color, $black, 40%);
     background-color: $success-color;
-    border-color: mix($success-color, $black, 50%);
+    border-color: mix($success-color, $black, 75%);
   }
 }
 
@@ -39,14 +39,14 @@ $success-color: #b7d985;
   font-weight: bold;
 
   &--error {
-    color: darken($error-color, 40%);
+    color: darken($error-color, 50%);
   }
 
   &--warning {
-    color: darken($warning-color, 60%);
+    color: darken($warning-color, 50%);
   }
 
   &--success {
-    color: darken($success-color, 40%);
+    color: darken($success-color, 50%);
   }
 }
