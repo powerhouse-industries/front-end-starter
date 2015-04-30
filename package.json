@@ -26,6 +26,7 @@
     "http-server": "^0.8.0",
     "csscomb": "^3.0.4",
     "cssnano": "^1.0.1",
+    "cleancss": "^3.2.6",
     "htmlhint": "^0.9.7",
     "html-minifier": "^0.7.2",
     "minifier": "^0.6.2",
