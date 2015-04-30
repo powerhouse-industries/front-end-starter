@@ -55,50 +55,68 @@
       <p>This is a warning</p>
     </div>
 
-    <p class="message-text message-text--error">
-      This is an error
-    </p>
+    <p class="message-text message-text--error">This is an error</p>
 
-    <p class="message-text message-text--success">
-      This is a success
-    </p>
+    <p class="message-text message-text--success">This is a success</p>
 
-    <p class="message-text message-text--warning">
-      This is a warning
-    </p>
+    <p class="message-text message-text--warning">This is a warning</p>
 
-    <input type="text">
-    <input type="email">
-    <input type="tel">
-    <input type="date">
-    <input type="url">
-    <input type="number">
-    <input type="password">
-    <input type="search">
-    <textarea></textarea>
-    <button>Submit</button>
+    <form>
+      <label>Text input</label>
+      <input type="text" required>
 
-    <table>
+      <label>Email input</label>
+      <input type="email" required>
+
+      <label>Tel input</label>
+      <input type="tel" required>
+
+      <label>Date input</label>
+      <input type="date" required>
+
+      <label>URL input</label>
+      <input type="url" required>
+
+      <label>Number input</label>
+      <input type="number" required>
+
+      <label>Password input</label>
+      <input type="password" required>
+
+      <label>Search input</label>
+      <input type="search" required>
+
+      <label>Range input</label>
+      <input type="range" min="0" max="100" step="10" value="0">
+
+      <label>Textarea</label>
+      <textarea></textarea>
+
+      <button>Submit</button>
+    </form>
+
+    <table summary="A summary of this table.">
+      <caption>A useful table.</caption>
       <thead>
         <tr>
-          <th>Heading</th>
-          <th>Heading</th>
-          <th>Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Item</td>
-          <td>Item</td>
-          <td>Item</td>
-        </tr>
-        <tr>
-          <td>Item</td>
+          <td scope="row">Item</td>
           <td>Item</td>
           <td>Item</td>
         </tr>
         <tr>
+          <td scope="row">Item</td>
           <td>Item</td>
+          <td>Item</td>
+        </tr>
+        <tr>
+          <td scope="row">Item</td>
           <td>Item</td>
           <td>Item</td>
         </tr>
@@ -112,10 +130,21 @@
     <h5>Heading 5</h5>
     <h6>Heading 6</h6>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. <q>Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</q> Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    <time datetime="2013-04-06T12:32+00:00">2 weeks ago</time>
+
+    <p>Lorem ipsum dolor sit amet, consectetur <del>adipiscing</del> elit. Etiam porta sem <em>malesuada</em> magna mollis euismod. <q>Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</q> Integer posuere <mark>erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque</mark> ornare sem lacinia quam <abbr title="Something helpful">venenatis</abbr> vestibulum.</p>
+
+    <p>Superscript<sup>&trade;</sup></p>
+    <p>Subscript H<sub>2</sub>O</p>
 
     <ul>
       <li>List item</li>
+      <li>List item
+        <ul>
+          <li>List item</li>
+          <li>List item</li>
+        </ul>
+      </li>
       <li>List item</li>
       <li>List item</li>
     </ul>
@@ -126,15 +155,23 @@
 
     <ol>
       <li>List item</li>
-      <li>List item</li>
+      <li>List item
+        <ol>
+          <li>List item</li>
+          <li>List item</li>
+        </ol>
+      </li>
       <li>List item</li>
     </ol>
 
+    <p>The following people worked on this project:</p>
+
     <address>
-      <p>wwrwre</p>
+      <a href="http://twitter.com/oliverfarrell">Oliver Farrell</a>
+      <a href="http://twitter.com/jonnyhaynes">Jonny Haynes</a>
     </address>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac <a href="#">consectetur ac</a>, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    <p>Lorem ipsum dolor sit amet, <b>consectetur</b> adipiscing elit. Etiam porta <i>sem</i> malesuada magna mollis euismod. Morbi leo risus, porta ac <a href="#">consectetur ac</a>, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
 
   </div>
 

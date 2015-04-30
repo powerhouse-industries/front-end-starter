@@ -57,22 +57,42 @@ p {
   line-height: $base-line-height * 1px;
 }
 
-strong {
+strong,
+b {
   font-weight: bold;
 }
 
-em {
+em,
+i {
   font-style: italic;
+}
+
+sup {
+  vertical-align: sup;
+  font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
 }
 
 del {
   text-decoration: line-through;
 }
 
+mark {
+  background: yellow;
+}
+
 abbr[title],
 dfn[title] {
   border-bottom: 1px dotted;
   cursor: help;
+}
+
+address {
+  margin-bottom: 15px;
 }
 
 

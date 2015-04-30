@@ -15,7 +15,7 @@ input {
   display: block;
 }
 
-input,
+input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="search"],
@@ -29,6 +29,10 @@ textarea {
   width: 100%;
   border: 1px solid;
   -webkit-appearance: none;
+}
+
+input[type="range"] {
+  width: 100%;
 }
 
 input[type="submit"],
