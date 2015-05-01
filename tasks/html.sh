@@ -1,5 +1,7 @@
 #!/bin/bash
 
+os=`uname`
+
 # Lint all HTML files
 echo "$(tput setaf 3)Linting HTML...$(tput sgr 0)"
 htmlhint *.html
@@ -13,10 +15,15 @@ echo "$(tput setaf 2)Done!$(tput sgr 0)"
 # Optimise HTML files
 for f in `ls build/*.html`; do
   echo "$(tput setaf 6)Minifying $f...$(tput sgr 0)"
-  html-minifier "$f" -o "$f" --remove-comments --remove-empty-attributes --remove-script-type-attributes
+  html-minifier "$f" -o "$f" --remove-comments --remove-empty-attributes --remove-script-type-attributes --minify-js
 done
 
 for f in `ls build/javascripts/templates/*.html`; do
   echo "$(tput setaf 6)Minifying $f...$(tput sgr 0)"
   html-minifier "$f" -o "$f" --remove-comments --remove-empty-attributes --remove-script-type-attributes --collapse-whitespace
 done
+
+# Send a notifcation to the OS
+if [[ "$os" == 'Darwin' ]]; then
+  terminal-notifier -group 'html-changes' -title 'HTML' -message 'HTML compiled successfully.'
+fi
