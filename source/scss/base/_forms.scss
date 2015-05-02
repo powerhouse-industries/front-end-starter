@@ -32,8 +32,11 @@ input[type="date"],
 input[type="url"],
 input[type="password"],
 textarea {
-  font-size: font-size(16);
   padding: $input-padding;
+  font: {
+    family: $body-font;
+    size: font-size($base-font-size);
+  }
   width: 100%;
   border: 1px solid $input-border-color;
   -webkit-appearance: none;

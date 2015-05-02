@@ -21,7 +21,10 @@ html {
 }
 
 body {
-  font-size: font-size($base-font-size);
+  font: {
+    family: $body-font;
+    size: font-size($base-font-size);
+  }
 }
 
 .wrap {

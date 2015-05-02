@@ -18,7 +18,7 @@
   <meta name="author" content="Powerhouse Industries">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <link rel="stylesheet" href="/css/main.css">
+  <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
   <link rel="stylesheet" href="/css/print.css" media="print">
   <!--[if (lt IE 9) & (!IEMobile)]><link rel="stylesheet" href="/css/ie8.css"><![endif]-->
 
@@ -30,9 +30,15 @@
   <meta name="msapplication-TileColor" content="#000">
   <meta name="msapplication-TileImage" content="/images/ms-tile.png">
 
-  <meta name="main-js" content="/javascripts/application.min.js">
+  <meta name="full-css" content="/css/main.css">
+  <meta name="full-js" content="/javascripts/application.min.js">
 
-  <script>var getContentByMetaTagName=function(e){for(var n=document.getElementsByTagName("meta"),t=0;t<n.length;t++)if(e==n[t].name||e==n[t].getAttribute("property"))return n[t].content;return!1},loadJS=function(e,n){var t=window.document.getElementsByTagName("script")[0],o=window.document.createElement("script");return o.src=e,o.async=!0,t.parentNode.insertBefore(o,t),n&&"function"==typeof n&&(o.onload=n),o};loadJS(getContentByMetaTagName("main-js"));</script>
+  <script>
+    var getContentByMetaTagName=function(e){for(var n=document.getElementsByTagName("meta"),t=0;t<n.length;t++)if(e==n[t].name||e==n[t].getAttribute("property"))return n[t].content;return!1},onloadCSS=function(e,n){e.onload=function(){e.onload=null,n&&n.call(e)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in e&&e.onloadcssdefined(n)},loadJS=function(e,n){var t=window.document.getElementsByTagName("script")[0],o=window.document.createElement("script");return o.src=e,o.async=!0,t.parentNode.insertBefore(o,t),n&&"function"==typeof n&&(o.onload=n),o},loadCSS=function(e,n,t,o){"use strict";var a=window.document.createElement("link"),l=n||window.document.getElementsByTagName("script")[0],d=window.document.styleSheets;return a.rel="stylesheet",a.href=e,a.media="only x",o&&(a.onload=o),l.parentNode.insertBefore(a,l),a.onloadcssdefined=function(n){for(var t,o=0;o<d.length;o++)d[o].href&&d[o].href.indexOf(e)>-1&&(t=!0);t?n():setTimeout(function(){a.onloadcssdefined(n)})},a.onloadcssdefined(function(){a.media=t||"all"}),a},onloadCSS=function(e,n){e.onload=function(){e.onload=null,n&&n.call(e)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in e&&e.onloadcssdefined(n)},stylesheet=loadCSS(getContentByMetaTagName("full-css"));onloadCSS(stylesheet,function(){var e=new Date(+new Date+6048e5).toUTCString();document.cookie="fullCSS=true; expires="+e});
+    loadJS(getContentByMetaTagName("full-js"));
+  </script>
+
+  <style>body,h6{font-size:1rem}abbr,body,caption,cite,del,div,em,fieldset,form,h1,h2,h3,h4,h5,h6,html,label,legend,mark,p,q,table,tbody,td,tfoot,th,thead,time,tr{font:inherit;font-size:100%;margin:0;padding:0;vertical-align:baseline;border:0;outline:0;background:0 0}cite,em{font-style:italic}body{line-height:1;font-family:Source Sans Pro,sans-serif}q{quotes:none}q:after,q:before{content:'';content:none}*,:after,:before{box-sizing:inherit}input,label{display:block}.skip-content{position:absolute;z-index:1;top:-3.5em;left:2em;padding:1em;color:#fff}table,td,tr{border:1px solid #000}input[type=range],table{width:100%}h1{font-size:2.625rem}h2{font-size:2.25rem}h3{font-size:1.875rem}h4{font-size:1.5rem}h5{font-size:1.125rem}h1,h2,h3,h4,h5,h6{margin-bottom:10px}.field,caption,p{margin-bottom:15px}p{line-height:24px}.btn{vertical-align:middle}del{text-decoration:line-through}mark{background:#ff0}abbr[title]{cursor:help;border-bottom:1px dotted}.btn,label{cursor:pointer}a{color:#ffce00}q{quotes:'\201C' '\201D' '\2018' '\2019'}q:before{content:open-quote}q:after{content:close-quote}label,legend{margin-bottom:5px}table{border-spacing:0;margin-bottom:15px;border-collapse:collapse;color:#000}table tr:nth-child(even){background:#ddd}td,th{padding:15px;text-align:left}th{color:#fff;background-color:#000}fieldset{border:0}input[type=date],input[type=email],input[type=number],input[type=password],input[type=search],input[type=tel],input[type=text],input[type=url],textarea{font-family:Source Sans Pro,sans-serif;font-size:1rem;width:100%;padding:10px;border:1px solid #000;-webkit-appearance:none}input[type=checkbox],input[type=radio]{display:inline-block;margin-right:5px}button{-webkit-appearance:none}button::-moz-focus-inner{padding:0;border:0}.field--choice label:last-child{margin-bottom:0}html{box-sizing:border-box;overflow-y:scroll;min-height:100%;color:#212121;background-color:#fff;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}.wrap{width:75pc;max-width:95%;margin:0 auto}.btn{font:inherit;display:inline-block;margin:0;padding:15px;text-align:center;text-decoration:none;color:#fff;border:0;background-color:#000}.message-box p,.message-text{font-weight:700}.message-box{margin-bottom:10px;padding:10px;border:1px solid}.message-box p{margin-bottom:0}.message-box--error{color:#605858;border-color:#b5a6a6;background-color:#f2dede}.message-box--warning{color:#64635a;border-color:#bdbaaa;background-color:#fcf8e3}.message-box--success{color:#596056;border-color:#a7b4a2;background-color:#dff0d8}.message-text--error{color:#963b3b}.message-text--warning{color:#caad16}.message-text--success{color:#529138}</style>
 
 </head>
 <body>
@@ -181,10 +187,10 @@
 
     <picture>
       <!--[if IE 9]><video style="display: none;"><![endif]-->
-      <source srcset="http://placehold.it/500x500, http://placehold.it/750x750 2x" media="(min-width: 960px)"></source>
-      <source srcset="http://placehold.it/960x960, http://placehold.it/1440x1440 2x" media="(min-width: 600px)"></source>
+      <source data-srcset="http://placehold.it/500x500, http://placehold.it/750x750 2x" media="(min-width: 960px)"></source>
+      <source data-srcset="http://placehold.it/960x960, http://placehold.it/1440x1440 2x" media="(min-width: 600px)"></source>
       <!--[if IE 9]></video><![endif]-->
-      <img srcset="http://placehold.it/600x600, http://placehold.it/900x900 2x" alt="">
+      <img data-srcset="http://placehold.it/600x600, http://placehold.it/900x900 2x" alt="" class="lazyload">
     </picture>
 
     <p>Superscript<sup>&trade;</sup></p>
@@ -218,7 +224,7 @@
     </ol>
 
     <div class="embed embed--responsive">
-      <iframe width="420" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+      <iframe width="420" height="315" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen class="lazyload"></iframe>
     </div>
 
     <p>The following people worked on this project:</p>
