@@ -5,9 +5,9 @@
 $btn-padding: 15px;
 $btn-border-radius: 0;
 $btn-background-color: $black;
-$btn-hover-background-color: $light-grey;
+$btn-background-color--hover: $light-grey;
 $btn-text-color: $white;
-$btn-hover-text-color: $black;
+$btn-text-color--hover: $black;
 
 /**
  * The basic structure of a button.
@@ -31,8 +31,8 @@ $btn-hover-text-color: $black;
 
   @include states {
     text-decoration: none;
-    color: $btn-hover-text-color;
-    background-color: $btn-hover-background-color;
+    color: $btn-text-color--hover;
+    background-color: $btn-background-color--hover;
   }
 }
 
