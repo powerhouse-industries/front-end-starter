@@ -35,10 +35,7 @@ cleancss -o build/css/ie8.css build/css/ie8.css
 echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
 # Inline critical CSS
-critical build/index.html -c build/css/main.css > build/css/critical.css
-inline_css=`cat build/css/critical.css`
-replace '{{ inline_css }}' "<style>$inline_css</style>" build/*.html
-rm -rf build/css/critical.css
+sh tasks/html.sh
 
 # Send a notifcation to the OS
 if [[ "$os" == 'Darwin' ]]; then

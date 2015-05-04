@@ -40,7 +40,7 @@
     loadJS(getContentByMetaTagName("full-js"));
   </script>
 
-  {{ inline_css }}
+  <!-- critical_css -->
 
 </head>
 <body>
@@ -88,7 +88,7 @@
         <input type="date">
       </div>
 
-      <div class="field">
+      <div class="field field--error">
         <label>URL input <abbr title="Required">*</abbr></label>
         <input type="url" placeholder="http://google.com" required>
         <p class="message-text message-text--error">A valid URL is required.</p>

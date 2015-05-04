@@ -70,14 +70,31 @@ button {
 
 .field {
   margin-bottom: $base-spacing-unit;
+
+  p { margin-bottom: 0; }
 }
 
+
 /**
- * `.field-choice` contains either
+ * `.field--choice` contains either
  * radio buttons or checkboxes
  */
 .field--choice {
   label:last-child {
     margin-bottom: 0;
+  }
+}
+
+
+/**
+ * `.field--error` modifies the defaults
+ * only when the input errors
+ */
+.field--error {
+  input,
+  textarea {
+    color: mix($error-color, black, 40%);
+    background-color: $error-color;
+    border: 1px solid darken($error-color, 50%);
   }
 }
