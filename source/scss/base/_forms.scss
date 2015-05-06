@@ -23,6 +23,9 @@ input {
   display: block;
 }
 
+/**
+ * 1. Remove the default browser styling from elements
+ */
 input[type="text"],
 input[type="email"],
 input[type="tel"],
@@ -42,17 +45,24 @@ textarea {
   background-color: $white;
   border: 1px solid $input-border-color;
   border-radius: 0;
-  -webkit-appearance: none;
+  -webkit-appearance: none; /* 1 */
+  -moz-appearance: none; /* 1 */
 }
 
+meter,
+progress,
+input[type="range"] {
+  width: 100%;
+}
+
+/**
+ * Add an arrow to the select menu since we removed
+ * the default one with `appearance: none;`
+ */
 select {
   @include svg-background('arrow-down');
   background-repeat: no-repeat;
   background-position: right $input-padding center;
-}
-
-input[type="range"] {
-  width: 100%;
 }
 
 input[type="radio"],
@@ -61,14 +71,20 @@ input[type="checkbox"] {
   display: inline-block;
 }
 
+/**
+ * 1. Remove the default browser styling from elements
+ * 2. Fixed a an issue where [type="submit"] gets an
+ *    additional 2px padding in Firefox.
+ */
 input[type="submit"],
 button {
-  -webkit-appearance: none;
+  -webkit-appearance: none; /* 1 */
+  -moz-appearance: none; /* 1 */
 
   &::-moz-focus-inner,
   &::-moz-focus-inner {
-    border: 0;
-    padding: 0;
+    border: 0; /* 2 */
+    padding: 0; /* 2 */
   }
 }
 

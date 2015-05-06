@@ -17,11 +17,11 @@ $table-stripe-text-color: $black;
 
   @if ($table-striped == true) {
     &--striped {
+      color: $table-stripe-text-color;
+
       tr:nth-child(even) {
         background: $table-stripe-background-color;
       }
-
-      color: $table-stripe-text-color;
     }
   }
 
