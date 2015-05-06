@@ -96,14 +96,14 @@ address {
  */
 
 a {
-  color: $link-colour;
+  color: $link-color;
 
   @if ($link-underlined == false) {
     text-decoration: none;
   }
 
   @include states() {
-    color: $link-colour-hover;
+    color: $link-color-hover;
 
     @if ($link-underlined-hover == false) {
       text-decoration: none;
