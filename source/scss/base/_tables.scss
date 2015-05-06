@@ -9,37 +9,39 @@ $table-striped: true;
 $table-stripe-background-color: $light-grey;
 $table-stripe-text-color: $black;
 
-table {
+.table {
   margin-bottom: $base-spacing-unit;
   width: 100%;
   border: 1px solid $table-border-color;
   border-collapse: collapse;
 
   @if ($table-striped == true) {
-    tr:nth-child(even) {
-      background: $table-stripe-background-color;
+    &--striped {
+      tr:nth-child(even) {
+        background: $table-stripe-background-color;
+      }
+
+      color: $table-stripe-text-color;
     }
-
-    color: $table-stripe-text-color;
   }
-}
 
-th,
-td {
-  padding: 15px;
-  text-align: left;
-}
-
-th {
-  background: {
-    color: $table-th-background-color;
+  th,
+  td {
+    padding: 15px;
+    text-align: left;
   }
-  color: $table-th-text-color;
-}
 
-td,
-tr {
-  border: 1px solid $black;
+  th {
+    background: {
+      color: $table-th-background-color;
+    }
+    color: $table-th-text-color;
+  }
+
+  td,
+  tr {
+    border: 1px solid $black;
+  }
 }
 
 caption {
