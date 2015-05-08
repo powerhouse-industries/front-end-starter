@@ -5,7 +5,6 @@
 /**
  * Headings
  */
-
 $h1-size: 42;
 $h2-size: 36;
 $h3-size: 30;
@@ -45,7 +44,6 @@ h6 {
 /**
  * Paragraphs
  */
-
 p {
   margin-bottom: $base-spacing-unit;
   line-height: $base-line-height * 1px;
@@ -98,7 +96,6 @@ address {
 /**
  * Links
  */
-
 a {
   color: $link-color;
 
@@ -121,7 +118,6 @@ a {
 /**
  * Blockquotes
  */
-
 q {
   quotes: '\201C''\201D''\2018''\2019';
 
