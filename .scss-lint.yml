@@ -1,4 +1,4 @@
-exclude: ['source/scss/components/**', 'source/scss/base/_reset.scss', 'source/scss/print.scss']
+exclude: ['source/scss/components/**', 'source/scss/base/_reset.scss', 'source/scss/_print.scss']
 
 linters:
 

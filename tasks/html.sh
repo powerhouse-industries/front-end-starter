@@ -14,7 +14,7 @@ echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
 # Inline critical CSS
 echo "$(tput setaf 3)Inlining critical CSS...$(tput sgr 0)"
-critical build/index.html -c build/css/main.css > build/css/critical.css
+critical build/index.html -w 1200 -h 768 -c build/css/main.css > build/css/critical.css
 critical_css=`cat build/css/critical.css`
 replace '<!-- critical_css -->' "<style>$critical_css</style>" build/*.html
 rm -rf build/css/critical.css
