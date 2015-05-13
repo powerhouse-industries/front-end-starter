@@ -19,15 +19,15 @@
   }
 
   &--warning {
-    color: mix($warning-color, $black, 40%);
+    color: mix($warning-color, #000, 40%);
     background-color: $warning-color;
-    border-color: mix($warning-color, $black, 75%);
+    border-color: mix($warning-color, #000, 75%);
   }
 
   &--success {
-    color: mix($success-color, $black, 40%);
+    color: mix($success-color, #000, 40%);
     background-color: $success-color;
-    border-color: mix($success-color, $black, 75%);
+    border-color: mix($success-color, #000, 75%);
   }
 }
 

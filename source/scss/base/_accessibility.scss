@@ -8,12 +8,12 @@
   top: -3.5em;
   left: 2em;
   z-index: 100;
-  color: $white;
+  color: #fff;
 
   &:focus {
     position: absolute;
     top: 0;
-    background-color: $black;
+    background-color: #000;
   }
 }
 

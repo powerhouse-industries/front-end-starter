@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 $input-padding: 10px;
-$input-border-color: $black;
+$input-border-color: #000;
 
 fieldset {
   border: 0;
@@ -42,7 +42,7 @@ textarea {
     family: $body-font;
     size: font-size($base-font-size);
   }
-  background-color: $white;
+  background-color: #fff;
   border: 1px solid $input-border-color;
   border-radius: 0;
   -webkit-appearance: none; /* 1 */

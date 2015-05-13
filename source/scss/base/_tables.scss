@@ -2,12 +2,12 @@
   $TABLES
 \*------------------------------------*/
 
-$table-th-background-color: $black;
-$table-th-text-color: $white;
-$table-border-color: $black;
+$table-th-background-color: #000;
+$table-th-text-color: #fff;
+$table-border-color: #000;
 $table-striped: true;
 $table-stripe-background-color: $light-grey;
-$table-stripe-text-color: $black;
+$table-stripe-text-color: #000;
 
 .table {
   margin-bottom: $base-spacing-unit;
