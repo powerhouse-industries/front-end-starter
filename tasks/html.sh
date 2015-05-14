@@ -20,6 +20,12 @@ replace '<!-- critical_css -->' "<style>$critical_css</style>" build/*.html
 rm -rf build/css/critical.css
 echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
+# Cache busting assets
+echo "$(tput setaf 3)Cache busting assets...$(tput sgr 0)"
+timestamp=`date +"%d%m%y%H%M%S"`
+replace 'cache_buster' "$timestamp" build/*.html
+echo "$(tput setaf 2)Done!$(tput sgr 0)"
+
 # Optimise HTML files
 for f in `ls build/*.html`; do
   echo "$(tput setaf 6)Minifying $f...$(tput sgr 0)"

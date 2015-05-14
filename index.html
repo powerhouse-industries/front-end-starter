@@ -12,15 +12,16 @@
   <link rel="dns-prefetch" href="//fast.fonts.net">
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//use.typekit.com">
+  <link rel="dns-prefetch" href="/javascripts/templates/cookie-banner.html">
 
   <title>Site Name</title>
   <meta name="description" content="">
   <meta name="author" content="Powerhouse Industries">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+  <noscript><link rel="stylesheet" href="/css/main.css?cache_buster"></noscript>
   <!--[if (lt IE 9) & (!IEMobile)]>
-    <link rel="stylesheet" href="/css/ie8.css">
+    <link rel="stylesheet" href="/css/ie8.css?cache_buster">
   <![endif]-->
 
   <link rel="shortcut icon" href="/images/favicon.png">
@@ -31,8 +32,8 @@
   <meta name="msapplication-TileColor" content="#000">
   <meta name="msapplication-TileImage" content="/images/ms-tile.png">
 
-  <meta name="full-css" content="/css/main.css">
-  <meta name="full-js" content="/javascripts/application.min.js">
+  <meta name="full-css" content="/css/main.css?cache_buster">
+  <meta name="full-js" content="/javascripts/application.min.js?cache_buster">
 
   <script>
     var getContentByMetaTagName=function(e){for(var n=document.getElementsByTagName("meta"),t=0;t<n.length;t++)if(e==n[t].name||e==n[t].getAttribute("property"))return n[t].content;return!1},onloadCSS=function(e,n){e.onload=function(){e.onload=null,n&&n.call(e)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in e&&e.onloadcssdefined(n)},loadJS=function(e,n){var t=window.document.getElementsByTagName("script")[0],o=window.document.createElement("script");return o.src=e,o.async=!0,t.parentNode.insertBefore(o,t),n&&"function"==typeof n&&(o.onload=n),o},loadCSS=function(e,n,t,o){"use strict";var a=window.document.createElement("link"),l=n||window.document.getElementsByTagName("script")[0],d=window.document.styleSheets;return a.rel="stylesheet",a.href=e,a.media="only x",o&&(a.onload=o),l.parentNode.insertBefore(a,l),a.onloadcssdefined=function(n){for(var t,o=0;o<d.length;o++)d[o].href&&d[o].href.indexOf(e)>-1&&(t=!0);t?n():setTimeout(function(){a.onloadcssdefined(n)})},a.onloadcssdefined(function(){a.media=t||"all"}),a},onloadCSS=function(e,n){e.onload=function(){e.onload=null,n&&n.call(e)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in e&&e.onloadcssdefined(n)},stylesheet=loadCSS(getContentByMetaTagName("full-css"));onloadCSS(stylesheet,function(){var e=new Date(+new Date+6048e5).toUTCString();document.cookie="fullCSS=true; expires="+e});
@@ -106,7 +107,7 @@
 
       <div class="field">
         <label for="search">Search input</label>
-        <input type="search" placeholder="Enter a search term">
+        <input type="search" name="search" id="search" placeholder="Enter a search term">
       </div>
 
       <div class="field">
@@ -182,35 +183,35 @@
       <button class="btn">Submit</button>
     </form>
 
-    <table class="table" summary="A summary of this table.">
+    <table class="table">
       <caption>A useful table.</caption>
       <thead>
         <tr>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
+          <th>Heading</th>
+          <th>Heading</th>
+          <th>Heading</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
-          <th scope="col">Footer</th>
-          <th scope="col">Footer</th>
-          <th scope="col">Footer</th>
+          <th>Footer</th>
+          <th>Footer</th>
+          <th>Footer</th>
         </tr>
       </tfoot>
       <tbody>
         <tr>
-          <td scope="row">Item</td>
           <td>Item</td>
-          <td>Item</td>
-        </tr>
-        <tr>
-          <td scope="row">Item</td>
           <td>Item</td>
           <td>Item</td>
         </tr>
         <tr>
-          <td scope="row">Item</td>
+          <td>Item</td>
+          <td>Item</td>
+          <td>Item</td>
+        </tr>
+        <tr>
+          <td>Item</td>
           <td>Item</td>
           <td>Item</td>
         </tr>
@@ -280,9 +281,9 @@
     <p>Lorem ipsum dolor sit amet, <b>consectetur</b> adipiscing elit. Etiam porta <i>sem</i> malesuada <small>magna</small> mollis euismod. Morbi leo risus, porta ac <a href="#">consectetur ac</a>, vestibulum at eros. Integer <strong>posuere</strong> erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
 
     <dl>
-      <dt>This is a definintion</dt>
+      <dt>This is a definition</dt>
       <dd>This is its description</dd>
-      <dt>This is a definintion</dt>
+      <dt>This is a definition</dt>
       <dd>This is its description</dd>
     </dl>
 
