@@ -135,7 +135,7 @@ $mq-static-breakpoint: desktop;
 ### Adding custom breakpoints
 
 ```scss
-@include mq-add-breakpoint(tvscreen, 1920);
+@include mq-add-breakpoint(tvscreen, 1920px);
 
 .hide-on-tv {
     @include mq(tvscreen) {

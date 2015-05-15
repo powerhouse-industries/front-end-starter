@@ -33,7 +33,7 @@
   <meta name="msapplication-TileImage" content="/images/ms-tile.png">
 
   <meta name="full-css" content="/css/main.css?cache_buster">
-  <meta name="full-js" content="/javascripts/application.min.js?cache_buster">
+  <meta name="full-js" content="/javascripts/main.js?cache_buster">
 
   <script>
     var getContentByMetaTagName=function(e){for(var n=document.getElementsByTagName("meta"),t=0;t<n.length;t++)if(e==n[t].name||e==n[t].getAttribute("property"))return n[t].content;return!1},onloadCSS=function(e,n){e.onload=function(){e.onload=null,n&&n.call(e)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in e&&e.onloadcssdefined(n)},loadJS=function(e,n){var t=window.document.getElementsByTagName("script")[0],o=window.document.createElement("script");return o.src=e,o.async=!0,t.parentNode.insertBefore(o,t),n&&"function"==typeof n&&(o.onload=n),o},loadCSS=function(e,n,t,o){"use strict";var a=window.document.createElement("link"),l=n||window.document.getElementsByTagName("script")[0],d=window.document.styleSheets;return a.rel="stylesheet",a.href=e,a.media="only x",o&&(a.onload=o),l.parentNode.insertBefore(a,l),a.onloadcssdefined=function(n){for(var t,o=0;o<d.length;o++)d[o].href&&d[o].href.indexOf(e)>-1&&(t=!0);t?n():setTimeout(function(){a.onloadcssdefined(n)})},a.onloadcssdefined(function(){a.media=t||"all"}),a},onloadCSS=function(e,n){e.onload=function(){e.onload=null,n&&n.call(e)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in e&&e.onloadcssdefined(n)},stylesheet=loadCSS(getContentByMetaTagName("full-css"));onloadCSS(stylesheet,function(){var e=new Date(+new Date+6048e5).toUTCString();document.cookie="fullCSS=true; expires="+e});
@@ -235,6 +235,7 @@
       <source data-srcset="http://placehold.it/960x960, http://placehold.it/1440x1440 2x" media="(min-width: 600px)"></source>
       <!--[if IE 9]></video><![endif]-->
       <img data-srcset="http://placehold.it/600x600, http://placehold.it/900x900 2x" alt="" class="lazyload">
+      <!--[if lte IE 8]><img src="http://placehold.it/500x500" alt=""><![endif]-->
     </picture>
 
     <p>Superscript<sup>&trade;</sup></p>
@@ -269,6 +270,7 @@
 
     <div class="embed embed--responsive">
       <iframe width="420" height="315" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen class="lazyload"></iframe>
+      <!--[if lte IE 8]><iframe width="420" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe><![endif]-->
     </div>
 
     <p>The following people worked on this project:</p>

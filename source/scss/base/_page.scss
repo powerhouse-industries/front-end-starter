@@ -29,7 +29,20 @@ body {
 .wrap {
   margin: 0 auto;
   width: $wrapper-width;
+
+  /**
+   * If the site is responsive it should always
+   * fill a maximum of 95% of the viewport. Otherwise
+   * it should be a fixed width of $wrapper-width.
+   *
+   * 1. We're adding `!important` to get around the order
+   *    in which the CSS files are loaded. IE8's stylesheet
+   *    isn't asynchrounously loaded in and so some styles get
+   *    overwritten by main.css file when it's loaded.
+   */
   @if ($mq-responsive == true) {
     max-width: 95%;
+  } @else {
+    max-width: $wrapper-width !important; /* 1 */
   }
 }

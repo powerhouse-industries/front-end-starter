@@ -12,7 +12,6 @@
   },
   "install": {
     "path": "libraries",
-    "ignore": ["jquery"],
     "sources": {
       "modernizr": "components/modernizr/modernizr.js",
       "inline-svg": "components/inline-svg/inlineSVG.js",

@@ -17,6 +17,10 @@
 
 	var addEventListener = window.addEventListener;
 
+	var setTimeout = window.setTimeout;
+
+	var rAF = window.requestAnimationFrame || setTimeout;
+
 	var regPicture = /^picture$/i;
 
 	var loadEvents = ['load', 'error', 'lazyincluded', '_lazyloaded'];
@@ -49,12 +53,12 @@
 		});
 	};
 
-	var triggerEvent = function(elem, name, details, noBubbles, noCanceable){
-		var event = document.createEvent('Event');
+	var triggerEvent = function(elem, name, detail, noBubbles, noCancelable){
+		var event = document.createEvent('CustomEvent');
 
-		event.initEvent(name, !noBubbles, !noCanceable);
+		event.initCustomEvent(name, !noBubbles, !noCancelable, detail);
 
-		event.details = details || {};
+		event.details =  event.detail;
 
 		elem.dispatchEvent(event);
 		return event;
@@ -75,8 +79,8 @@
 		return getComputedStyle(elem, null)[style];
 	};
 
-	var getWidth = function(elem, parent){
-		var width = elem.offsetWidth;
+	var getWidth = function(elem, parent, width){
+		width = width || elem.offsetWidth;
 
 		while(width < lazySizesConfig.minSize && parent && !elem._lazysizesWidth){
 			width =  parent.offsetWidth;
@@ -87,29 +91,34 @@
 	};
 
 	var throttle = function(fn){
-		var run, timer;
-		var main = function(){
-			if(run){
-				run = false;
-				fn();
-			}
+		var running;
+		var lastTime = 0;
+		var Date = window.Date;
+		var run = function(){
+			running = false;
+			lastTime = Date.now();
+			fn();
 		};
-		var handleVisibility = function(){
-			clearInterval(timer);
-			if(!document.hidden){
-				main();
-				timer = setInterval(main, 51);
-			}
+		var afterAF = function(){
+			//Todo: test setImmediate
+			setTimeout(run);
+		};
+		var getAF = function(){
+			rAF(afterAF);
 		};
 
-		document.addEventListener('visibilitychange', handleVisibility);
-		handleVisibility();
-
-		return function(force){
-			run = true;
-			if(force === true){
-				main();
+		return function(){
+			if(running){
+				return;
 			}
+			var delay = lazySizesConfig.throttle - (Date.now() - lastTime);
+
+			running =  true;
+
+			if(delay < 9){
+				delay = 9;
+			}
+			setTimeout(getAF, delay);
 		};
 	};
 
@@ -127,11 +136,9 @@
 
 		var shrinkExpand = 0;
 		var currentExpand = 0;
-		var lowRuns = 0;
 
 		var isLoading = 0;
-
-		var checkElementsIndex = 0;
+		var lowRuns = 1;
 
 		var resetPreloading = function(e){
 			isLoading--;
@@ -155,7 +162,7 @@
 			eLright += elemExpand;
 
 			while(visible && (parent = parent.offsetParent)){
-				visible = (isCompleted && isLoading < 2) || ((getCSS(parent, 'opacity') || 1) > 0);
+				visible = ((getCSS(parent, 'opacity') || 1) > 0);
 
 				if(visible && getCSS(parent, 'overflow') != 'visible'){
 					outerRect = parent.getBoundingClientRect();
@@ -166,31 +173,29 @@
 					;
 				}
 			}
+
 			return visible;
 		};
 
 		var checkElements = function() {
-			var i, start, rect, autoLoadElem, loadedSomething, elemExpand, elemNegativeExpand, elemExpandVal, beforeExpandVal;
+			var eLlen, i, rect, autoLoadElem, loadedSomething, elemExpand, elemNegativeExpand, elemExpandVal, beforeExpandVal;
 
-			var eLlen = lazyloadElems.length;
+			if((loadMode = lazySizesConfig.loadMode) && isLoading < 8 && (eLlen = lazyloadElems.length)){
 
-			if(eLlen && (loadMode = lazySizesConfig.loadMode)){
-				start = Date.now();
-
-				i = checkElementsIndex;
+				i = 0;
 
 				lowRuns++;
 
-				if(currentExpand < preloadExpand && isLoading < 1 && lowRuns > 5 && loadMode > 2){
+				if(currentExpand < preloadExpand && isLoading < 1 && lowRuns > 3 && loadMode > 2){
 					currentExpand = preloadExpand;
 					lowRuns = 0;
-				} else if(currentExpand != defaultExpand && loadMode > 1 && lowRuns > 4){
+				} else if(currentExpand != defaultExpand && loadMode > 1 && lowRuns > 2 && isLoading < 6){
 					currentExpand = defaultExpand;
 				} else {
 					currentExpand = shrinkExpand;
 				}
 
-				for(; i < eLlen; i++, checkElementsIndex++){
+				for(; i < eLlen; i++){
 
 					if(!lazyloadElems[i] || lazyloadElems[i]._lazyRace){continue;}
 
@@ -198,12 +203,6 @@
 
 					if(!(elemExpandVal = lazyloadElems[i].getAttribute('data-expand')) || !(elemExpand = elemExpandVal * 1)){
 						elemExpand = currentExpand;
-					}
-
-					if(isLoading > 6 && (!elemExpandVal || ('src' in lazyloadElems[i]))){continue;}
-
-					if(elemExpand > shrinkExpand && (loadMode < 2 || isLoading > 3)){
-						elemExpand = shrinkExpand;
 					}
 
 					if(beforeExpandVal !== elemExpand){
@@ -220,28 +219,16 @@
 						(eLright = rect.right) >= elemNegativeExpand &&
 						(eLleft = rect.left) <= eLvW &&
 						(eLbottom || eLright || eLleft || eLtop) &&
-						((isCompleted && currentExpand < preloadExpand && isLoading < 3 && lowRuns < 4 && !elemExpandVal && loadMode > 2) || isNestedVisible(lazyloadElems[i], elemExpand))){
-						checkElementsIndex--;
-						start += 2;
-						unveilElement(lazyloadElems[i]);
+						((isCompleted && isLoading < 3 && lowRuns < 4 && !elemExpandVal && loadMode > 2) || isNestedVisible(lazyloadElems[i], elemExpand))){
+						unveilElement(lazyloadElems[i], false, rect.width);
 						loadedSomething = true;
-					} else  {
-						if(Date.now() - start > 3){
-							checkElementsIndex++;
-							throttledCheckElements();
-							return;
-						}
-
-						if(!loadedSomething && isCompleted && !autoLoadElem &&
-							isLoading < 3 && lowRuns < 4 && loadMode > 2 &&
-							(preloadElems[0] || lazySizesConfig.preloadAfterLoad) &&
-							(preloadElems[0] || (!elemExpandVal && ((eLbottom || eLright || eLleft || eLtop) || lazyloadElems[i].getAttribute(lazySizesConfig.sizesAttr) != 'auto')))){
-							autoLoadElem = preloadElems[0] || lazyloadElems[i];
-						}
+					} else if(!loadedSomething && isCompleted && !autoLoadElem &&
+						isLoading < 3 && lowRuns < 4 && loadMode > 2 &&
+						(preloadElems[0] || lazySizesConfig.preloadAfterLoad) &&
+						(preloadElems[0] || (!elemExpandVal && ((eLbottom || eLright || eLleft || eLtop) || lazyloadElems[i].getAttribute(lazySizesConfig.sizesAttr) != 'auto')))){
+						autoLoadElem = preloadElems[0] || lazyloadElems[i];
 					}
 				}
-
-				checkElementsIndex = 0;
 
 				if(autoLoadElem && !loadedSomething){
 					unveilElement(autoLoadElem);
@@ -265,7 +252,25 @@
 			}
 		};
 
-		var unveilElement = function (elem, force){
+		var rafBatch = (function(){
+			var isRunning;
+			var batch = [];
+			var runBatch = function(){
+				while(batch.length){
+					(batch.shift())();
+				}
+				isRunning = false;
+			};
+			return function(fn){
+				batch.push(fn);
+				if(!isRunning){
+					isRunning = true;
+					rAF(runBatch);
+				}
+			};
+		})();
+
+		var unveilElement = function (elem, force, width){
 			var sources, i, len, sourceSrcset, src, srcset, parent, isPicture, event, firesLoad, customMedia;
 
 			var curSrc = elem.currentSrc || elem.src;
@@ -278,84 +283,85 @@
 			if( (isAuto || !isCompleted) && isImg && curSrc && !elem.complete && !hasClass(elem, lazySizesConfig.errorClass)){return;}
 
 			elem._lazyRace = true;
+			isLoading++;
 
-			if(!(event = triggerEvent(elem, 'lazybeforeunveil', {force: !!force})).defaultPrevented){
+			rafBatch(function lazyUnveil(){
 
-				if(sizes){
-					if(isAuto){
-						autoSizer.updateElem(elem, true);
-					} else {
-						elem.setAttribute('sizes', sizes);
-					}
-				}
-
-				srcset = elem.getAttribute(lazySizesConfig.srcsetAttr);
-				src = elem.getAttribute(lazySizesConfig.srcAttr);
-
-				if(isImg) {
-					parent = elem.parentNode;
-					isPicture = regPicture.test(parent.nodeName || '');
-				}
-
-				firesLoad = event.details.firesLoad || (('src' in elem) && (srcset || src || isPicture));
-
-				if(firesLoad){
-					isLoading++;
-					addRemoveLoadEvents(elem, resetPreloading, true);
-					clearTimeout(resetPreloadingTimer);
-					resetPreloadingTimer = setTimeout(resetPreloading, 3000);
-				}
-
-				if(isPicture){
-					sources = parent.getElementsByTagName('source');
-					for(i = 0, len = sources.length; i < len; i++){
-						if( (customMedia = lazySizesConfig.customMedia[sources[i].getAttribute('data-media') || sources[i].getAttribute('media')]) ){
-							sources[i].setAttribute('media', customMedia);
-						}
-						sourceSrcset = sources[i].getAttribute(lazySizesConfig.srcsetAttr);
-						if(sourceSrcset){
-							sources[i].setAttribute('srcset', sourceSrcset);
-						}
-					}
-				}
-
-				if(srcset){
-					elem.setAttribute('srcset', srcset);
-				} else if(src){
-					if(regIframe.test(elem.nodeName)){
-						changeIframeSrc(elem, src);
-					} else {
-						elem.setAttribute('src', src);
-					}
-				}
-
-				addClass(elem, lazySizesConfig.loadingClass);
-				addRemoveLoadEvents(elem, switchLoadingClass, true);
-			}
-
-			setTimeout(function(){
 				if(elem._lazyRace){
 					delete elem._lazyRace;
 				}
 
-				if(sizes == 'auto'){
-					addClass(elem, lazySizesConfig.autosizesClass);
-				}
-
-				if(srcset || isPicture){
-					updatePolyfill(elem, {src: src});
-				}
-
 				removeClass(elem, lazySizesConfig.lazyClass);
 
-				//remove curSrc == (elem.currentSrc || elem.src) it's a workaround for FF. see: https://bugzilla.mozilla.org/show_bug.cgi?id=608261
+				if(!(event = triggerEvent(elem, 'lazybeforeunveil', {force: !!force})).defaultPrevented){
+
+					if(sizes){
+						if(isAuto){
+							autoSizer.updateElem(elem, true, width);
+							addClass(elem, lazySizesConfig.autosizesClass);
+						} else {
+							elem.setAttribute('sizes', sizes);
+						}
+					}
+
+					srcset = elem.getAttribute(lazySizesConfig.srcsetAttr);
+					src = elem.getAttribute(lazySizesConfig.srcAttr);
+
+					if(isImg) {
+						parent = elem.parentNode;
+						isPicture = parent && regPicture.test(parent.nodeName || '');
+					}
+
+					firesLoad = event.detail.firesLoad || (('src' in elem) && (srcset || src || isPicture));
+
+					event = {target: elem};
+
+					if(firesLoad){
+						addRemoveLoadEvents(elem, resetPreloading, true);
+						clearTimeout(resetPreloadingTimer);
+						resetPreloadingTimer = setTimeout(resetPreloading, 2500);
+
+						addClass(elem, lazySizesConfig.loadingClass);
+						addRemoveLoadEvents(elem, switchLoadingClass, true);
+					}
+
+					if(isPicture){
+						sources = parent.getElementsByTagName('source');
+						for(i = 0, len = sources.length; i < len; i++){
+							if( (customMedia = lazySizesConfig.customMedia[sources[i].getAttribute('data-media') || sources[i].getAttribute('media')]) ){
+								sources[i].setAttribute('media', customMedia);
+							}
+							sourceSrcset = sources[i].getAttribute(lazySizesConfig.srcsetAttr);
+							if(sourceSrcset){
+								sources[i].setAttribute('srcset', sourceSrcset);
+							}
+						}
+					}
+
+					if(srcset){
+						elem.setAttribute('srcset', srcset);
+					} else if(src){
+						if(regIframe.test(elem.nodeName)){
+							changeIframeSrc(elem, src);
+						} else {
+							elem.setAttribute('src', src);
+						}
+					}
+
+					if(srcset || isPicture){
+						updatePolyfill(elem, {src: src});
+					}
+				}
+
+				//remove curSrc == (elem.currentSrc || elem.src) in July/August 2015 it's a workaround for FF. see: https://bugzilla.mozilla.org/show_bug.cgi?id=608261
 				if( !firesLoad || (elem.complete && curSrc == (elem.currentSrc || elem.src)) ){
 					if(firesLoad){
 						resetPreloading(event);
+					} else {
+						isLoading--;
 					}
 					switchLoadingClass(event);
 				}
-				elem = null;
 			});
 		};
 
@@ -370,14 +376,13 @@
 			lowRuns += 8;
 
 			lazySizesConfig.loadMode = 3;
-			throttledCheckElements(true);
 
 			addEventListener('scroll', function(){
 				if(lazySizesConfig.loadMode == 3){
 					lazySizesConfig.loadMode = 2;
 				}
 				clearTimeout(scrollTimer);
-				scrollTimer = setTimeout(afterScroll, 66);
+				scrollTimer = setTimeout(afterScroll, 99);
 			}, true);
 		};
 
@@ -388,7 +393,7 @@
 				preloadElems = document.getElementsByClassName(lazySizesConfig.lazyClass + ' ' + lazySizesConfig.preloadClass);
 
 				defaultExpand = lazySizesConfig.expand;
-				preloadExpand = defaultExpand * lazySizesConfig.expFactor;
+				preloadExpand = Math.round(defaultExpand * lazySizesConfig.expFactor);
 
 				addEventListener('scroll', throttledCheckElements, true);
 
@@ -399,12 +404,13 @@
 				} else {
 					docElem.addEventListener('DOMNodeInserted', throttledCheckElements, true);
 					docElem.addEventListener('DOMAttrModified', throttledCheckElements, true);
-					setInterval(throttledCheckElements, 3000);
+					setInterval(throttledCheckElements, 999);
 				}
 
 				addEventListener('hashchange', throttledCheckElements, true);
 
-				['transitionstart', 'transitionend', 'load', 'focus', 'mouseover', 'animationend', 'click'].forEach(function(name){
+				//, 'fullscreenchange'
+				['focus', 'mouseover', 'click', 'load', 'transitionend', 'animationend', 'webkitAnimationEnd'].forEach(function(name){
 					document.addEventListener(name, throttledCheckElements, true);
 				});
 
@@ -415,7 +421,7 @@
 					onload();
 				}
 
-				throttledCheckElements(lazyloadElems.length > 0);
+				throttledCheckElements();
 			},
 			checkElems: throttledCheckElements,
 			unveil: unveilElement
@@ -426,16 +432,16 @@
 	var autoSizer = (function(){
 		var autosizesElems;
 
-		var sizeElement = function (elem, dataAttr){
-			var width, sources, i, len, event;
+		var sizeElement = function (elem, dataAttr, width){
+			var sources, i, len, event;
 			var parent = elem.parentNode;
 
 			if(parent){
-				width = getWidth(elem, parent);
+				width = getWidth(elem, parent, width);
 				event = triggerEvent(elem, 'lazybeforesizes', {width: width, dataAttr: !!dataAttr});
 
 				if(!event.defaultPrevented){
-					width = event.details.width;
+					width = event.detail.width;
 
 					if(width && width !== elem._lazysizesWidth){
 						elem._lazysizesWidth = width;
@@ -449,8 +455,8 @@
 							}
 						}
 
-						if(!event.details.dataAttr){
-							updatePolyfill(elem, event.details);
+						if(!event.detail.dataAttr){
+							updatePolyfill(elem, event.detail);
 						}
 					}
 				}
@@ -502,15 +508,16 @@
 			srcsetAttr: 'data-srcset',
 			sizesAttr: 'data-sizes',
 			//preloadAfterLoad: false,
-			minSize: 50,
+			minSize: 40,
 			customMedia: {},
 			init: true,
 			expFactor: 2,
-			expand: 300,
-			loadMode: 2
+			expand: 359,
+			loadMode: 2,
+			throttle: 125
 		};
 
-		lazySizesConfig = window.lazySizesConfig || {};
+		lazySizesConfig = window.lazySizesConfig || window.lazysizesConfig || {};
 
 		for(prop in lazySizesDefaults){
 			if(!(prop in lazySizesConfig)){
