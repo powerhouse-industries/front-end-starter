@@ -33,7 +33,7 @@
     "phantomas": "^1.10.2",
     "replace": "^0.3.0",
     "svgo": "^0.5.1",
-    "ucss": "^0.4.6",
+    "ucss": "^0.4.6-beta",
     "uglify-js": "^2.4.21"
   },
   "scripts": {
