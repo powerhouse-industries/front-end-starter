@@ -9,6 +9,19 @@ $use-rems: false;
 @import 'main';
 
 /**
+ * As the site isn't responsive in IE8 it should be a
+ * fixed width of $wrapper-width.
+ *
+ * 1. We're adding `!important` to get around the order
+ *    in which the CSS files are loaded. IE8's stylesheet
+ *    isn't asynchrounously loaded in and so some styles get
+ *    overwritten by main.css file when it's loaded.
+ */
+.wrap {
+  max-width: $wrapper-width !important; /* 1 */
+}
+
+/**
  * Hide all instances of `.lazyload` as it's
  * not supported in IE 8.
  */
