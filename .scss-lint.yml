@@ -96,7 +96,7 @@ linters:
 
   PropertySpelling:
     enabled: true
-    extra_properties: []
+    extra_properties: ['font-variant-numeric']
 
   QualifyingElement:
     enabled: true
