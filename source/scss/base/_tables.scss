@@ -8,12 +8,17 @@ $table-border-color: $light-grey;
 $table-striped: false;
 $table-stripe-background-color: $light-grey;
 $table-stripe-text-color: #000;
+$table-equal-width-columns: false;
 
 table {
   margin-bottom: 25px;
   width: 100%;
   border: 1px solid $table-border-color;
   border-collapse: collapse;
+
+  @if ($table-equal-width-columns == true) {
+    table-layout: fixed;
+  }
 
   @if ($table-striped == true) {
     tr:nth-child(even) {
