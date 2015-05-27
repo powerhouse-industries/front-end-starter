@@ -42,5 +42,7 @@ mkdir build/css
 # Remove the files we don't need
 echo "$(tput setaf 2)Removing reduntant files...$(tput sgr 0)"
 rm -rf .travis.yml
+rm -rf .hound.yml
+rm -rf inch.json
 rm -rf README.md
 rm -rf LICENSE

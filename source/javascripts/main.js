@@ -29,6 +29,36 @@ PowerHouse.ready(function () {
   }
 
   /**
+   * Initialise LazySizes if the browser supports
+   * getElementsByClassName() otherwise swap data
+   * attributes for src attributes
+   */
+  if ('getElementsByClassName' in document) {
+    loadJS('/javascripts/libraries/lazysizes.js');
+  } else {
+    var images = document.querySelectorAll('img.lazyload'),
+        videos = document.querySelectorAll('iframe.lazyload');
+
+    PowerHouse.forEachElement(images, function (el, i) {
+      var src = el.getAttribute('data-src'),
+          srcset = el.getAttribute('data-srcset');
+      if (srcset) {
+        var res = /(?:([^"'\s,]+)\s*(?:\s+\d+[wx])(?:,\s*)?)+/g.exec(srcset);
+        el.setAttribute('src', res[res.length - 1]);
+      } else {
+        el.setAttribute('src', src);
+      }
+    });
+
+    PowerHouse.forEachElement(videos, function (el, i) {
+      var src = el.getAttribute('data-src');
+      if (src) {
+        el.setAttribute('src', src);
+      }
+    });
+  }
+
+  /**
    * Initialise Cookie Disclaimer
    */
   CookieDisclaimer.init({

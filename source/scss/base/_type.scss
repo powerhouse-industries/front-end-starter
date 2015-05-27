@@ -49,15 +49,10 @@ h6 {
 
 /**
  * Paragraphs
- *
- * 1. Access OpenType features for numbers, we should use
- *    oldstyle proportional numbers for prose.
- *    http://www.fonts.com/content/learning/fontology/level-3/numbers
  */
 p {
   margin-bottom: $base-spacing-unit;
   line-height: $base-line-height * 1px;
-  font-variant-numeric: oldstyle-nums proportional-nums; /* 1 */
 }
 
 strong,

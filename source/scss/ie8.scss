@@ -20,11 +20,3 @@ $use-rems: false;
 .wrap {
   max-width: $wrapper-width !important; /* 1 */
 }
-
-/**
- * Hide all instances of `.lazyload` as it's
- * not supported in IE 8.
- */
-.lazyload {
-  display: none;
-}

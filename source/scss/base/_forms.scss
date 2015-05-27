@@ -4,6 +4,8 @@
 
 $input-padding: 10px;
 $input-border-color: #000;
+$input-text-color: $dark-grey;
+$input-text-size: $base-font-size;
 
 fieldset {
   border: 0;
@@ -40,8 +42,9 @@ textarea {
   width: 100%;
   font: {
     family: $body-font;
-    size: font-size($base-font-size);
+    size: font-size($input-text-size);
   }
+  color: $input-text-color;
   background-color: #fff;
   border: 1px solid $input-border-color;
   border-radius: 0;

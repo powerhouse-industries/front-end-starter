@@ -2,54 +2,52 @@
   $TABLES
 \*------------------------------------*/
 
-$table-th-background-color: #000;
+$table-th-background-color: $brand;
 $table-th-text-color: #fff;
-$table-border-color: #000;
-$table-striped: true;
+$table-border-color: $light-grey;
+$table-striped: false;
 $table-stripe-background-color: $light-grey;
 $table-stripe-text-color: #000;
 
-/**
- * 1. OpenType font numbers come in four forms. We should use
- *    tabular lining numbers where tables are concerned.
- *    http://www.fonts.com/content/learning/fontology/level-3/numbers
- */
-.table {
-  margin-bottom: $base-spacing-unit;
+table {
+  margin-bottom: 25px;
   width: 100%;
   border: 1px solid $table-border-color;
   border-collapse: collapse;
-  font-variant-numeric: lining-nums tabular-nums; /* 1 */
 
-  th,
-  td {
-    padding: 15px;
-    text-align: left;
-  }
-
-  th {
-    background: {
-      color: $table-th-background-color;
-    }
-    color: $table-th-text-color;
-  }
-
-  td,
-  tr {
-    border: 1px solid $table-border-color;
-  }
-}
-
-@if ($table-striped == true) {
-  .table--striped {
-    color: $table-stripe-text-color;
-
+  @if ($table-striped == true) {
     tr:nth-child(even) {
       background: $table-stripe-background-color;
     }
+
+    color: $table-stripe-text-color;
   }
 }
 
-caption {
-  margin-bottom: 15px;
+th,
+td {
+  padding: 15px;
+  text-align: left;
+  font: {
+    family: $body-font;
+    weight: 300;
+    size: font-size(13);
+  }
+}
+
+th {
+  font: {
+    family: $heading-font;
+    weight: 600;
+    size: font-size(14);
+  }
+  background: {
+    color: $table-th-background-color;
+  }
+  color: $table-th-text-color;
+}
+
+td,
+tr {
+  border: 1px solid $table-border-color;
 }
