@@ -21,17 +21,15 @@ PowerHouse.ready(function () {
   }
 
   /**
-   * Initialise placeholders for browsers
-   * that don't support them.
+   * Initialise placeholders for browsers that don't support them.
    */
   if (!Modernizr.input.placeholder) {
     loadJS('/javascripts/libraries/placeholders.min.js');
   }
 
   /**
-   * Initialise LazySizes if the browser supports
-   * getElementsByClassName() otherwise swap data
-   * attributes for src attributes
+   * Initialise LazySizes if the browser supports getElementsByClassName()
+   * otherwise swap data attributes for src attributes
    */
   if ('getElementsByClassName' in document) {
     loadJS('/javascripts/libraries/lazysizes.js');

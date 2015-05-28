@@ -38,8 +38,8 @@ h6 {
 }
 
 /**
- * 1. Make sure headings have proportional line-spacing
- *    to avoid a single heading looking like two.
+ * 1. Make sure headings have proportional line-spacing to avoid a single
+ *    heading looking like two.
  */
 @include headings {
   margin-bottom: 10px;
@@ -57,8 +57,8 @@ p {
 }
 
 /**
- * The `.intro` class is used to make the introductory test
- * of a page slightly larger than the rest of the page content.
+ * The `.intro` class is used to make the introductory test of a page slightly
+ * larger than the rest of the page content.
  */
 .intro {
   font-size: font-size($intro-size);
@@ -79,14 +79,20 @@ cite {
   font-style: italic;
 }
 
+sub,
 sup {
-  vertical-align: sup;
-  font-size: smaller;
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
 }
 
 sub {
-  vertical-align: sub;
-  font-size: smaller;
+  bottom: -0.25em;
 }
 
 del {

@@ -59,16 +59,16 @@ input[type="range"] {
 }
 
 /**
- * It should be clear that the textarea allows
- * for longer prose, the default is a little too small
+ * It should be clear that the textarea allows for longer prose, the default
+ * is a little too small
  */
 textarea {
   height: 150px;
 }
 
 /**
- * Add an arrow to the select menu since we removed
- * the default one with `appearance: none;`
+ * Add an arrow to the select menu since we removed the default one with
+ * `appearance: none;`
  */
 select {
   @include svg-background('arrow-down');
@@ -76,8 +76,8 @@ select {
   background-position: right $input-padding center;
 
   /**
-   * We might as well default to the browsers
-   * UI for selects where IE 8 is concerned
+   * We might as well default to the browsers UI for selects where IE 8
+   * is concerned
    */
   .ie8 & {
     background-image: none;
@@ -85,8 +85,7 @@ select {
 }
 
 /**
- * Give checkboxes and radio buttons
- * some breathing space next to labels
+ * Give checkboxes and radio buttons some breathing space next to labels
  */
 input[type="radio"],
 input[type="checkbox"] {
@@ -95,9 +94,19 @@ input[type="checkbox"] {
 }
 
 /**
+ * Remove inner padding in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/**
  * 1. Remove the default browser styling from elements
- * 2. Fixed an issue where [type="submit"] gets an
- *    additional 2px padding in Firefox.
+ * 2. Fixed an issue where [type="submit"] gets an additional 2px padding
+ *    in Firefox.
  */
 input[type="submit"],
 button {
@@ -123,8 +132,7 @@ button {
 
 
 /**
- * `.field--choice` contains either
- * radio buttons or checkboxes
+ * `.field--choice` contains either radio buttons or checkboxes
  */
 .field--choice {
   label:last-child {
@@ -134,8 +142,7 @@ button {
 
 
 /**
- * `.field--error` modifies the defaults
- * only when the input errors
+ * `.field--error` modifies the defaults only when the input errors
  */
 .field--error {
   input,

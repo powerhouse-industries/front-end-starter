@@ -3,9 +3,8 @@
 \*------------------------------------*/
 
 /**
- * [1] Fonts on OSX will look more consistent with
- *     other systems that do not render text using
- *     sub-pixel anti-aliasing.
+ * 1. Fonts on OSX will look more consistent with other systems that do not
+ *    render text using sub-pixel anti-aliasing.
  */
 html {
   overflow-y: scroll;
