@@ -70,7 +70,8 @@ var PowerHouse = (function () {
    */
   var hasClass = function (el, className) {
 
-    return el.className && new RegExp("(^|\\s)" + className + "(\\s|$)").test(el.className);
+    return el.className && new RegExp('(^|\\s)' + className
+      + '(\\s|$)').test(el.className);
 
   };
 
