@@ -104,9 +104,9 @@ var PowerHouse = (function () {
    * A vanilla JS alternative to $().insertAfter()
    */
   var insertAfter = function (newNode, referenceNode) {
-    
-     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-     
+  
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+
   };
 
   return {
