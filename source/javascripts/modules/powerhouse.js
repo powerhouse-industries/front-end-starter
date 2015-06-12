@@ -46,6 +46,7 @@ var PowerHouse = (function () {
   /**
    * A vanilla JS alternative to $().next()
    */
+
   var nextElementSibling = function(el) {
 
     do { el = el.nextSibling; } while (el && el.nodeType !== 1);
