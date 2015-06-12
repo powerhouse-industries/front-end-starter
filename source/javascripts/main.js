@@ -37,6 +37,7 @@ PowerHouse.ready(function () {
     var images = document.querySelectorAll('img.lazyload'),
         videos = document.querySelectorAll('iframe.lazyload');
 
+    // find all images
     PowerHouse.forEachElement(images, function (el, i) {
       var src = el.getAttribute('data-src'),
           srcset = el.getAttribute('data-srcset');
@@ -48,6 +49,7 @@ PowerHouse.ready(function () {
       }
     });
 
+    // find all videos
     PowerHouse.forEachElement(videos, function (el, i) {
       var src = el.getAttribute('data-src');
       if (src) {

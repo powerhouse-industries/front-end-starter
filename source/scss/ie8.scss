@@ -6,7 +6,8 @@ $mq-responsive: false;
 $mq-static-breakpoint: mq1200;
 $use-rems: false;
 
-@import 'main';
+@import
+  'main';
 
 /**
  * As the site isn't responsive in IE8 it should be a

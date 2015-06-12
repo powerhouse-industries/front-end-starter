@@ -3,36 +3,43 @@
 \*------------------------------------*/
 
 // vars
-@import 'vars';
+@import
+  'vars';
 
 // helpers
-@import 'helpers/mixins';
-@import 'helpers/functions';
-@import 'helpers/mq';
+@import
+  'helpers/mixins',
+  'helpers/functions',
+  'helpers/mq';
 
 // base
-@import 'base/reset';
-@import 'base/box-sizing';
-@import 'base/utilities';
-@import 'base/accessibility';
-@import 'base/type';
-@import 'base/images';
-@import 'base/lists';
-@import 'base/tables';
-@import 'base/forms';
-@import 'base/page';
+@import
+  'base/reset',
+  'base/box-sizing',
+  'base/utilities',
+  'base/accessibility',
+  'base/type',
+  'base/images',
+  'base/lists',
+  'base/tables',
+  'base/forms',
+  'base/page';
 
 // layout
-@import 'layout/grid';
+@import
+  'layout/grid';
 
 // modules
-@import 'modules/buttons';
-@import 'modules/messages';
-@import 'modules/embeds';
-@import 'modules/cookies';
+@import
+  'modules/buttons',
+  'modules/messages',
+  'modules/embeds',
+  'modules/cookies';
 
 // trumps
-@import 'trumps';
+@import
+  'trumps';
 
 // print
-@import 'print';
+@import
+  'print';

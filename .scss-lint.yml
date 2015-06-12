@@ -1,4 +1,10 @@
-exclude: ['source/scss/components/**', 'source/scss/base/_reset.scss', 'source/scss/_print.scss', 'source/scss/ie8.scss']
+exclude: [
+  'source/scss/components/**',
+  'source/scss/base/_reset.scss',
+  'source/scss/_print.scss',
+  'source/scss/ie8.scss',
+  'source/scss/main.scss'
+]
 
 linters:
 
@@ -88,15 +94,23 @@ linters:
     max_depth: 3
 
   PlaceholderInExtend:
-    enabled: true
+    enabled: true,
+    severity: error
 
   PropertySortOrder:
     enabled: false
-    ignore_unspecified: false
+    order:
+      - display
+      - position
+      - margin
+      - padding
+    separate_groups: true
 
   PropertySpelling:
     enabled: true
-    extra_properties: ['font-variant-numeric']
+    extra_properties: [
+      'font-variant-numeric'
+    ]
 
   QualifyingElement:
     enabled: true

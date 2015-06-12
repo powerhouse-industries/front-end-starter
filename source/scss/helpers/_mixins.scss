@@ -53,8 +53,7 @@
 
 
 /**
- * Vertically align an element
- * inside its container
+ * Vertically align an element inside its container
  *
  * .thing {  @include vertically-align; }
  */
@@ -66,8 +65,7 @@
 
 
 /**
- * Horizontally align an element
- * inside its container
+ * Horizontally align an element inside its container
  *
  * .thing {  @include horizontally-align; }
  */
@@ -79,8 +77,7 @@
 
 
 /**
- * Centrally align an element
- * inside its container
+ * Centrally align an element inside its container
  *
  * .thing {  @include centrally-align; }
  */
@@ -111,7 +108,7 @@
 /**
  * Set the position and top, right, bottom, left values
  *
- * .thing {  @include position(relative, 0, 1px, 10px, 0); }
+ * .thing { @include position(relative, 0, 1px, 10px, 0); }
  */
 @mixin position($position, $top, $right, $bottom, $left) {
   position: $position;

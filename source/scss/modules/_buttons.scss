@@ -17,11 +17,14 @@ $btn-text-color--hover: #000;
   vertical-align: middle;
   margin: 0;
   padding: $btn-padding;
+
   font: inherit;
   text-align: center;
   text-decoration: none;
   color: $btn-text-color;
+
   cursor: pointer;
+
   background-color: $btn-background-color;
   border: 0;
 

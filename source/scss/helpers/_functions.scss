@@ -2,7 +2,7 @@
   $FUNCTIONS
 \*------------------------------------*/
 
-$use-asset-pipeline: false;
+$use-asset-pipeline: false !default;
 $path: '/images/' !default; // define a path where images are stored
 $use-rems: true !default; // Use rems by default
 
