@@ -44,17 +44,33 @@ var PowerHouse = (function () {
   };
 
   /**
-   * A vanilla JavaScript alternative to jQuery's $(el).each();
-   *
-   * @public
-   * @param {object} el - The element being targetted
-   * @param {function} handler - The callback
+   * A vanilla JS alternative to $().next()
    */
-  var forEachElement = function (el, callback) {
+  var nextElementSibling = function(el) {
 
-    for (var i = 0; i < el.length; i++) {
-      callback(el[i], i);
+    do { el = el.nextSibling; } while (el && el.nodeType !== 1);
+    return el;
+
+  };
+
+  /**
+   * A vanilla JS alternative to $().each();
+   */
+  var forEachElement = function (selector, fn) {
+
+    var elements = document.querySelectorAll(selector);
+    for (var i = 0; i < elements.length; i++) {
+      fn(elements[i], i);
     }
+
+  };
+
+  /**
+   * A vanilla JS alternative to $().hasClass()
+   */
+  var hasClass = function (el, className) {
+
+    return el.className && new RegExp('(^|\\s)' + className + '(\\s|$)').test(el.className);
 
   };
 
@@ -84,11 +100,23 @@ var PowerHouse = (function () {
 
   };
 
+  /**
+   * A vanilla JS alternative to $().insertAfter()
+   */
+  var insertAfter = function (newNode, referenceNode) {
+
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+
+  };
+
   return {
     ready : ready,
     addEventListener : addEventListener,
     forEachElement : forEachElement,
-    getFileContents : getFileContents
+    hasClass : hasClass,
+    nextElementSibling : nextElementSibling,
+    getFileContents : getFileContents,
+    insertAfter: insertAfter
   };
 
 })();

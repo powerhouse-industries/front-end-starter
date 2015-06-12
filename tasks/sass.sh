@@ -15,7 +15,7 @@ echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
 # Add prefixes
 echo "$(tput setaf 5)Adding prefixes...$(tput sgr 0)"
-autoprefixer build/css/main.css
+postcss --use autoprefixer -o build/css/main.css build/css/main.css
 echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
 # Sort all rules alphabetically – overall it benefits GZIP
