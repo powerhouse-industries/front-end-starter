@@ -13,10 +13,9 @@ PowerHouse.ready(function () {
       inlineSVG();
     });
   } else {
-    var svgs = document.querySelectorAll('img.svg');
-    PowerHouse.forEachElement(svgs, function (svg, i) {
+    PowerHouse.forEachElement('img.svg', function (svg, i) {
       var fallback = svg.getAttribute('data-fallback');
-      svgs.src = fallback;
+      svg.src = fallback;
     });
   }
 
@@ -34,11 +33,8 @@ PowerHouse.ready(function () {
   if ('getElementsByClassName' in document) {
     loadJS('/javascripts/libraries/lazysizes.js');
   } else {
-    var images = document.querySelectorAll('img.lazyload'),
-        videos = document.querySelectorAll('iframe.lazyload');
-
     // find all images
-    PowerHouse.forEachElement(images, function (el, i) {
+    PowerHouse.forEachElement('img.lazyload', function (el, i) {
       var src = el.getAttribute('data-src'),
           srcset = el.getAttribute('data-srcset');
       if (srcset) {
@@ -50,7 +46,7 @@ PowerHouse.ready(function () {
     });
 
     // find all videos
-    PowerHouse.forEachElement(videos, function (el, i) {
+    PowerHouse.forEachElement('iframe.lazyload', function (el, i) {
       var src = el.getAttribute('data-src');
       if (src) {
         el.setAttribute('src', src);
