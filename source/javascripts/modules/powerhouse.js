@@ -110,8 +110,6 @@ var PowerHouse = (function () {
 
   };
 
-  
-
   /**
    * Get the positon of an element on the page
    *
