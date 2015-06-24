@@ -121,22 +121,22 @@ var PowerHouse = (function () {
 
   var getOffsetRect = function (el) {
     /* 1 */
-    var box = el.getBoundingClientRect()
+    var box = el.getBoundingClientRect();
 
-    var body = document.body
-    var docElement = document.documentElement
+    var body = document.body;
+    var docElement = document.documentElement;
 
     /* 2 */
-    var scrollTop = window.pageYOffset || docElement.scrollTop || body.scrollTop
-    var scrollLeft = window.pageXOffset || docElement.scrollLeft || body.scrollLeft
+    var scrollTop = window.pageYOffset || docElement.scrollTop || body.scrollTop;
+    var scrollLeft = window.pageXOffset || docElement.scrollLeft || body.scrollLeft;
 
     /* 3 */
-    var clientTop = docElement.clientTop || body.clientTop || 0
-    var clientLeft = docElement.clientLeft || body.clientLeft || 0
+    var clientTop = docElement.clientTop || body.clientTop || 0;
+    var clientLeft = docElement.clientLeft || body.clientLeft || 0;
 
     /* 4 */
-    var top  = box.top +  scrollTop - clientTop
-    var left = box.left + scrollLeft - clientLeft
+    var top  = box.top +  scrollTop - clientTop;
+    var left = box.left + scrollLeft - clientLeft;
 
     return {
       top: Math.round(top),
