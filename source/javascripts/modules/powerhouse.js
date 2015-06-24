@@ -110,6 +110,25 @@ var PowerHouse = (function () {
 
   };
 
+  /**
+   * Get the positon of an element on the page
+   */
+  var getPosition = function (element) {
+    var xPosition = 0;
+    var yPosition = 0;
+
+    while(element) {
+      xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+      yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+      element = element.offsetParent;
+    }
+
+    return {
+      x: xPosition,
+      y: yPosition
+    };
+  };
+
   return {
     ready : ready,
     addEventListener : addEventListener,
@@ -117,7 +136,8 @@ var PowerHouse = (function () {
     hasClass : hasClass,
     nextElementSibling : nextElementSibling,
     getFileContents : getFileContents,
-    insertAfter: insertAfter
+    insertAfter: insertAfter,
+    getPosition: getPosition
   };
 
 })();
