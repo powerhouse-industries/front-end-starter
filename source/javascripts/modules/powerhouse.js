@@ -110,6 +110,40 @@ var PowerHouse = (function () {
 
   };
 
+  /**
+   * Get the positon of an element on the page
+   *
+   * 1. Get the enclosing rectangle.
+   * 2. Calculate the page scroll. All browsers except IE<9 support `pageXOffset/pageYOffset`, and in IE when DOCTYPE is set, the scroll can be taken from documentElement(<html>), otherwise from `body` - so we take what we can.
+   * 3. The document (`html` or `body`) can be shifted from left-upper corner in IE. Get the shift.
+   * 4. Add scrolls to window-relative coordinates and substract the shift of `html/body` to get coordinates in the whole document.
+   */
+
+  var getOffsetRect = function (el) {
+    /* 1 */
+    var box = el.getBoundingClientRect();
+
+    var body = document.body;
+    var docElement = document.documentElement;
+
+    /* 2 */
+    var scrollTop = window.pageYOffset || docElement.scrollTop || body.scrollTop;
+    var scrollLeft = window.pageXOffset || docElement.scrollLeft || body.scrollLeft;
+
+    /* 3 */
+    var clientTop = docElement.clientTop || body.clientTop || 0;
+    var clientLeft = docElement.clientLeft || body.clientLeft || 0;
+
+    /* 4 */
+    var top  = box.top +  scrollTop - clientTop;
+    var left = box.left + scrollLeft - clientLeft;
+
+    return {
+      top: Math.round(top),
+      left: Math.round(left)
+    };
+  };
+
   return {
     ready : ready,
     addEventListener : addEventListener,
@@ -117,7 +151,8 @@ var PowerHouse = (function () {
     hasClass : hasClass,
     nextElementSibling : nextElementSibling,
     getFileContents : getFileContents,
-    insertAfter: insertAfter
+    insertAfter: insertAfter,
+    getOffsetRect: getOffsetRect
   };
 
 })();
