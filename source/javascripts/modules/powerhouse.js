@@ -4,19 +4,19 @@ var PowerHouse = (function () {
    * A vanilla JavaScript alternative to jQuery's $(document).ready();
    *
    * @public
-   * @param {function} fn - The function to be executed when the document is ready
+   * @param {function} callback - The function to be executed when the document is ready
    * @returns {function}
    */
-  var ready = function (fn) {
+  var ready = function (callback) {
 
     if (document.readyState != 'loading') {
-      fn();
+      callback();
     } else if (document.addEventListener) {
-      document.addEventListener('DOMContentLoaded', fn);
+      document.addEventListener('DOMContentLoaded', callback);
     } else {
       document.attachEvent('onreadystatechange', function() {
         if (document.readyState != 'loading') {
-          fn();
+          callback();
         }
       });
     }
@@ -45,8 +45,10 @@ var PowerHouse = (function () {
 
   /**
    * A vanilla JS alternative to $().next()
+   *
+   * @public
+   * @param {object} el - The element being targetted
    */
-
   var nextElementSibling = function(el) {
 
     do { el = el.nextSibling; } while (el && el.nodeType !== 1);
@@ -56,18 +58,26 @@ var PowerHouse = (function () {
 
   /**
    * A vanilla JS alternative to $().each();
+   *
+   * @public
+   * @param {string} el - The element being targetted
+   * @param {function} callback - The callback
    */
-  var forEachElement = function (selector, fn) {
+  var forEachElement = function (selector, callback) {
 
     var elements = document.querySelectorAll(selector);
     for (var i = 0; i < elements.length; i++) {
-      fn(elements[i], i);
+      callback(elements[i], i);
     }
 
   };
 
   /**
-   * A vanilla JS alternative to $().hasClass()
+   * A vanilla JS alternative to $().hasClass();
+   *
+   * @public
+   * @param {object} el - The element being targetted
+   * @param {string} className - The class name to query
    */
   var hasClass = function (el, className) {
 
@@ -102,7 +112,11 @@ var PowerHouse = (function () {
   };
 
   /**
-   * A vanilla JS alternative to $().insertAfter()
+   * A vanilla JS alternative to $().insertAfter();
+   *
+   * @public
+   * @param {string} newNode - The HTML to insert
+   * @param {function} referenceNode - The node to insert after
    */
   var insertAfter = function (newNode, referenceNode) {
 
@@ -114,9 +128,16 @@ var PowerHouse = (function () {
    * Get the positon of an element on the page
    *
    * 1. Get the enclosing rectangle.
-   * 2. Calculate the page scroll. All browsers except IE<9 support `pageXOffset/pageYOffset`, and in IE when DOCTYPE is set, the scroll can be taken from documentElement(<html>), otherwise from `body` - so we take what we can.
-   * 3. The document (`html` or `body`) can be shifted from left-upper corner in IE. Get the shift.
-   * 4. Add scrolls to window-relative coordinates and substract the shift of `html/body` to get coordinates in the whole document.
+   * 2. Calculate the page scroll. All browsers except IE<9 support `pageXOffset/
+   *    pageYOffset`, and in IE when DOCTYPE is set, the scroll can be taken from
+   *    documentElement(<html>), otherwise from `body` - so we take what we can.
+   * 3. The document (`html` or `body`) can be shifted from left-upper corner in
+   *    IE. Get the shift.
+   * 4. Add scrolls to window-relative coordinates and substract the shift of
+   *    `html/body` to get coordinates in the whole document.
+   *
+   * @public
+   * @param {object} el - The element being targetted
    */
 
   var getOffsetRect = function (el) {

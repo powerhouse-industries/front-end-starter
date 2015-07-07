@@ -56,7 +56,7 @@
 	var triggerEvent = function(elem, name, detail, noBubbles, noCancelable){
 		var event = document.createEvent('CustomEvent');
 
-		event.initCustomEvent(name, !noBubbles, !noCancelable, detail);
+		event.initCustomEvent(name, !noBubbles, !noCancelable, detail || {});
 
 		event.details =  event.detail;
 
@@ -68,7 +68,7 @@
 		var polyfill;
 		if(!window.HTMLPictureElement){
 			if( ( polyfill = (window.picturefill || window.respimage || lazySizesConfig.pf) ) ){
-				polyfill({reevaluate: true, reparse: true, elements: [el]});
+				polyfill({reevaluate: true, elements: [el]});
 			} else if(full && full.src){
 				el.src = full.src;
 			}
@@ -219,8 +219,8 @@
 						(eLright = rect.right) >= elemNegativeExpand &&
 						(eLleft = rect.left) <= eLvW &&
 						(eLbottom || eLright || eLleft || eLtop) &&
-						((isCompleted && isLoading < 3 && lowRuns < 4 && !elemExpandVal && loadMode > 2) || isNestedVisible(lazyloadElems[i], elemExpand))){
-						unveilElement(lazyloadElems[i], false, rect.width);
+						((isCompleted && isLoading < 3 && !elemExpandVal && (loadMode < 3 || lowRuns < 4)) || isNestedVisible(lazyloadElems[i], elemExpand))){
+						unveilElement(lazyloadElems[i], rect.width);
 						loadedSomething = true;
 					} else if(!loadedSomething && isCompleted && !autoLoadElem &&
 						isLoading < 3 && lowRuns < 4 && loadMode > 2 &&
@@ -270,17 +270,16 @@
 			};
 		})();
 
-		var unveilElement = function (elem, force, width){
+		var unveilElement = function (elem, width){
 			var sources, i, len, sourceSrcset, src, srcset, parent, isPicture, event, firesLoad, customMedia;
 
-			var curSrc = elem.currentSrc || elem.src;
 			var isImg = regImg.test(elem.nodeName);
 
 			//allow using sizes="auto", but don't use. it's invalid. Use data-sizes="auto" or a valid value for sizes instead (i.e.: sizes="80vw")
 			var sizes = elem.getAttribute(lazySizesConfig.sizesAttr) || elem.getAttribute('sizes');
 			var isAuto = sizes == 'auto';
 
-			if( (isAuto || !isCompleted) && isImg && curSrc && !elem.complete && !hasClass(elem, lazySizesConfig.errorClass)){return;}
+			if( (isAuto || !isCompleted) && isImg && (elem.src || elem.srcset) && !elem.complete && !hasClass(elem, lazySizesConfig.errorClass)){return;}
 
 			elem._lazyRace = true;
 			isLoading++;
@@ -293,7 +292,7 @@
 
 				removeClass(elem, lazySizesConfig.lazyClass);
 
-				if(!(event = triggerEvent(elem, 'lazybeforeunveil', {force: !!force})).defaultPrevented){
+				if(!(event = triggerEvent(elem, 'lazybeforeunveil')).defaultPrevented){
 
 					if(sizes){
 						if(isAuto){
@@ -353,8 +352,7 @@
 					}
 				}
 
-				//remove curSrc == (elem.currentSrc || elem.src) in July/August 2015 it's a workaround for FF. see: https://bugzilla.mozilla.org/show_bug.cgi?id=608261
-				if( !firesLoad || (elem.complete && curSrc == (elem.currentSrc || elem.src)) ){
+				if( !firesLoad || elem.complete ){
 					if(firesLoad){
 						resetPreloading(event);
 					} else {

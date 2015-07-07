@@ -12,10 +12,16 @@ and is now also in use at BBC Sport and the Financial Times…_
 
 ## How to Use It
 
-1. Install with [Bower](http://bower.io/ "BOWER: A package manager for the web"):
-   `bower install sass-mq --save`
-   OR [Download _mq.scss](https://raw.github.com/sass-mq/sass-mq/master/_mq.scss)
-   to your Sass project.
+Immediately play with it on [SassMeister](http://sassmeister.com/): `@import 'mq';`.
+
+OR:
+
+1. Install with [Bower](http://bower.io/ "BOWER: A package manager for the web"): `bower install sass-mq --save`
+
+    OR Install with [npm](https://www.npmjs.com/): `npm install sass-mq --save` _it supports [eyeglass](https://github.com/sass-eyeglass/eyeglass)_
+
+    OR [Download _mq.scss](https://raw.github.com/sass-mq/sass-mq/master/_mq.scss) to your Sass project.
+
 2. Import the partial in your Sass files and override default settings
    with your own preferences before the file is imported:
     ```scss
@@ -50,6 +56,8 @@ and is now also in use at BBC Sport and the Financial Times…_
     $mq-show-breakpoints: (mobile, mobileLandscape, tablet, desktop, wide);
 
     @import 'path/to/mq';
+    // With eyeglass:
+    // @import 'sass-mq';
     ```
 3. Play around with `mq()` (see below)
 
@@ -152,7 +160,7 @@ be a list of the breakpoints you want to debug, ordered by width.
 The name of the active breakpoint and its pixel and em values will
 then be shown in the top right corner of the viewport.
 
-![$mq-show-breakpoints](show-breakpoints.gif)
+![$mq-show-breakpoints](https://raw.githubusercontent.com/sass-mq/sass-mq/master/show-breakpoints.gif)
 
 ### Changing media type
 
@@ -182,25 +190,17 @@ $mq-media-type: screen;
 
 ## Test
 
-1. run:
-    * Ruby Sass *and* LibSass:
-    
-            ./test.sh
+1. Install dependencies: `npm install`
+2. Ruby Sass, LibSass, and eyeglass integration:
 
-    * Ruby Sass
-    
-            sass test/test.scss test/test.css --force --sourcemap=none --load-path=./
+        ./test.sh
 
-    * Libsass (using node-sass)
-    
-            node-sass test/test.scss test/test.css --force --sourcemap=none --include-path=./
-
-2. there should be a couple of warnings like this one, this is normal:
+3. there should be a couple of warnings like this one, this is normal:
 
         WARNING: Assuming 640 to be in pixels, attempting to convert it into pixels
          on line 74 of _mq.scss, in `mq'
 
-3. if `git diff test/test.css` shows no changes, tests pass
+4. if `git diff test/*.css` shows no changes, tests pass
 
 ## Generate the documentation
 
@@ -210,21 +210,21 @@ Sass MQ is documented using [SassDoc](http://sassdoc.com/):
 
 Then, generate the documentation using:
 
-    sassdoc . sassdoc --config .sassdocrc --no-prompt
+    sassdoc .
 
 Generate & deploy the documentation to <http://sass-mq.github.io/sass-mq/>:
 
-./sassdoc.sh
+    ./sassdoc.sh
 
 ## Inspired By…
 
-- https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/_conditionals.scss
-- https://github.com/bits-sass/helpers-responsive/blob/master/_responsive.scss
-- https://gist.github.com/magsout/5978325
+- <https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/_conditionals.scss>
+- <https://github.com/bits-sass/helpers-responsive/blob/master/_responsive.scss>
+- <https://gist.github.com/magsout/5978325>
 
 ## On Mobile-first CSS With Legacy Browser Support
 
-- http://jakearchibald.github.io/sass-ie/
-- http://nicolasgallagher.com/mobile-first-css-sass-and-ie/
-- http://cognition.happycog.com/article/fall-back-to-the-cascade
-- http://www.theguardian.com/info/developer-blog/2013/oct/14/mobile-first-responsive-ie8
+- <http://jakearchibald.github.io/sass-ie/>
+- <http://nicolasgallagher.com/mobile-first-css-sass-and-ie/>
+- <http://cognition.happycog.com/article/fall-back-to-the-cascade>
+- <http://www.theguardian.com/info/developer-blog/2013/oct/14/mobile-first-responsive-ie8>

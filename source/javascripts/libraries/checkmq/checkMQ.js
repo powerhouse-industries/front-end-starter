@@ -4,7 +4,8 @@ window.checkMQ = (function() {
 
   theBreakpoints = [
     { theName: 'mqCore', theQuery: window.matchMedia('screen and (max-width: 599px)') },
-    { theName: 'mq600', theQuery: window.matchMedia('screen and (min-width: 600px) and (max-width: 959px)') },
+    { theName: 'mq600', theQuery: window.matchMedia('screen and (min-width: 600px) and (max-width: 767px)') },
+    { theName: 'mq768', theQuery: window.matchMedia('screen and (min-width: 768px) and (max-width: 959px)') },
     { theName: 'mq960', theQuery: window.matchMedia('screen and (min-width: 960px) and (max-width: 1199px)') },
     { theName: 'mq1200', theQuery: window.matchMedia('screen and (min-width: 1200px)') }
   ];
@@ -21,8 +22,6 @@ window.checkMQ = (function() {
         }
       }
     }
-
-    loadFunctions(theMQ);
 
     return theMQ;
 
@@ -51,6 +50,8 @@ window.checkMQ = (function() {
 
     theFunctions.push(fn);
 
+    loadFunctions(whichMQ());
+
   };
 
   // Init
@@ -65,20 +66,18 @@ window.checkMQ = (function() {
   // Provide some public methods for access outside the module
   return {
     init: init,
-    whichMQ: whichMQ,
-    changeMQ: changeMQ,
     addFunction: addFunction
   };
 
 })();
 
-if (document.readyState != 'loading'){
+if (document.readyState !== 'loading'){
   checkMQ.init();
 } else if (document.addEventListener) {
   document.addEventListener('DOMContentLoaded', checkMQ.init);
 } else {
   document.attachEvent('onreadystatechange', function() {
-    if (document.readyState != 'loading')
+    if (document.readyState !== 'loading')
     checkMQ.init();
   });
 }
