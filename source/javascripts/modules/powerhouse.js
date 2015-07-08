@@ -86,28 +86,47 @@ var PowerHouse = (function () {
   };
 
   /**
-   * Get the contents of a file
+   * Get the contents of a file on the same domain
    *
    * @public
    * @param {string} file - The url of the file
    * @param {function} callback - The name of the event
    * @returns {string}
    */
-  var getFileContents = function (file, callback) {
+  var getFileContents = function (file, success, error) {
 
-    request = new XMLHttpRequest();
-    request.open('GET', file, true);
+    // Detect whether XMLHttpRequest is supported
+    if (!window.XMLHttpRequest) {
+      return;
+    }
 
-    request.onreadystatechange = function() {
+    // Create a new request
+    var request = new XMLHttpRequest();
+
+    // Setup callbacks
+    request.onreadystatechange = function () {
+
+      // If the request is completed
       if (this.readyState === 4) {
-        if (this.status >= 200 && this.status < 400) {
-          callback(this.responseText);
+
+        // If the request failed
+        if (request.status !== 200) {
+          if (error && typeof(error) === 'function') {
+            error(request.responseText, request);
+          }
+          return;
+        }
+
+        // If the request was successful
+        if (success && typeof(success) === 'function') {
+          success(request.responseText, request);
         }
       }
     };
 
+    // Send the HTML
+    request.open('GET', file, true);
     request.send();
-    request = null;
 
   };
 
