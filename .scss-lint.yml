@@ -17,10 +17,7 @@ linters:
     enabled: true
 
   ColorKeyword:
-    enabled: false
-
-  ColorVariable:
-    enabled: false
+    enabled: true
 
   Comment:
     enabled: false
@@ -40,7 +37,7 @@ linters:
 
   EmptyLineBetweenBlocks:
     enabled: true
-    ignore_single_line_blocks: true
+    ignore_single_line_blocks: false
 
   EmptyRule:
     enabled: true
@@ -61,9 +58,6 @@ linters:
     enabled: true
 
   IdSelector:
-    enabled: true
-
-  ImportantRule:
     enabled: true
 
   ImportPath:
@@ -94,23 +88,15 @@ linters:
     max_depth: 3
 
   PlaceholderInExtend:
-    enabled: true,
-    severity: error
+    enabled: true
 
   PropertySortOrder:
     enabled: false
-    order:
-      - display
-      - position
-      - margin
-      - padding
-    separate_groups: true
+    ignore_unspecified: false
 
   PropertySpelling:
     enabled: true
-    extra_properties: [
-      'font-variant-numeric'
-    ]
+    extra_properties: []
 
   QualifyingElement:
     enabled: true
@@ -124,14 +110,15 @@ linters:
 
   SelectorFormat:
     enabled: true
-    convention: hyphenated_BEM
+    convention: hyphenated_lowercase
+    class_convention: '^(?:u|is|has)\-[a-z][a-zA-Z0-9]*$|^(?!u|is|has)[a-zA-Z][a-zA-Z0-9]*(?:\-[a-z][a-zA-Z0-9]*)?(?:\-\-[a-z][a-zA-Z0-9]*)?$'
 
   Shorthand:
     enabled: true
 
   SingleLinePerProperty:
     enabled: true
-    allow_single_line_rule_sets: true
+    allow_single_line_rule_sets: false
 
   SingleLinePerSelector:
     enabled: true

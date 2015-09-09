@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 $input-padding: 10px;
-$input-border-color: #000;
+$input-border-color: $black;
 $input-text-color: $dark-grey;
 $input-text-size: $base-font-size;
 
@@ -45,7 +45,7 @@ textarea {
     size: font-size($input-text-size);
   }
   color: $input-text-color;
-  background-color: #fff;
+  background-color: $white;
   border: 1px solid $input-border-color;
   border-radius: 0;
   -webkit-appearance: none; /* 1 */
@@ -147,7 +147,7 @@ button {
 .field--error {
   input,
   textarea {
-    color: mix($error-color, black, 40%);
+    color: mix($error-color, $black, 40%);
     background-color: $error-color;
     border: 1px solid darken($error-color, 50%);
   }

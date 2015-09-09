@@ -3,13 +3,14 @@
   "description": "An HTML5, CSS, and Javascript starting point for front-end development.",
   "author": "Oliver Farrell & Jonny Haynes",
   "version": "4.0.0",
+  "license" : "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/powerhouse-industries/front-end-starter"
   },
   "engines": {
-    "node": ">=0.12.0",
-    "npm": ">=2.7.6"
+    "node": ">=4.0.0",
+    "npm": ">=2.14.2"
   },
   "dependencies": {
     "autoprefixer": "^6.0.2",
@@ -39,7 +40,7 @@
   },
   "scripts": {
     "setup": "sh tasks/setup.sh",
-    "server": "cd build && http-server",
+    "start": "cd build && http-server",
     "js": "sh tasks/javascripts.sh",
     "sass": "sh tasks/sass.sh",
     "images": "sh tasks/images.sh",

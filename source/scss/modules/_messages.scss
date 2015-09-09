@@ -13,21 +13,21 @@
   }
 
   &--error {
-    color: mix($error-color, black, 40%);
+    color: mix($error-color, $black, 40%);
     background-color: $error-color;
-    border-color: mix($error-color, black, 75%);
+    border-color: mix($error-color, $black, 75%);
   }
 
   &--warning {
-    color: mix($warning-color, #000, 40%);
+    color: mix($warning-color, $black, 40%);
     background-color: $warning-color;
-    border-color: mix($warning-color, #000, 75%);
+    border-color: mix($warning-color, $black, 75%);
   }
 
   &--success {
-    color: mix($success-color, #000, 40%);
+    color: mix($success-color, $black, 40%);
     background-color: $success-color;
-    border-color: mix($success-color, #000, 75%);
+    border-color: mix($success-color, $black, 75%);
   }
 }
 
