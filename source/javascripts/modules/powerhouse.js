@@ -168,7 +168,7 @@ var PowerHouse = (function () {
 
     /**
      * 3. The document (`html` or `body`) can be shifted from left-upper corner in
-     *     IE. Get the shift.
+     *    IE. Get the shift.
      */
     var clientTop = docElement.clientTop || body.clientTop || 0;
     var clientLeft = docElement.clientLeft || body.clientLeft || 0;

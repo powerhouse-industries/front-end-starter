@@ -45,7 +45,7 @@
     "sass": "sh tasks/sass.sh",
     "images": "sh tasks/images.sh",
     "html": "sh tasks/html.sh",
-    "watch:images": "nodemon --watch source/images -x \"sh tasks/images.sh\"",
+    "watch:images": "nodemon --watch source -x \"sh tasks/images.sh\"",
     "watch:sass": "nodemon -e scss --watch source/ -i node_modules/ -x \"sh tasks/sass.sh\"",
     "watch:js": "nodemon --watch source/javascripts -i build/ -i node_modules/ -e js -x \"sh tasks/javascripts.sh\"",
     "watch:html": "nodemon -i build/ -i node_modules/ -e html -x \"sh tasks/html.sh\"",
