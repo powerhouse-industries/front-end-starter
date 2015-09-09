@@ -21,6 +21,8 @@
 
 	var rAF = window.requestAnimationFrame || setTimeout;
 
+	var setImmediate = window.setImmediate || setTimeout;
+
 	var regPicture = /^picture$/i;
 
 	var loadEvents = ['load', 'error', 'lazyincluded', '_lazyloaded'];
@@ -58,8 +60,6 @@
 
 		event.initCustomEvent(name, !noBubbles, !noCancelable, detail || {});
 
-		event.details =  event.detail;
-
 		elem.dispatchEvent(event);
 		return event;
 	};
@@ -76,7 +76,7 @@
 	};
 
 	var getCSS = function (elem, style){
-		return getComputedStyle(elem, null)[style];
+		return (getComputedStyle(elem, null) || {})[style];
 	};
 
 	var getWidth = function(elem, parent, width){
@@ -100,8 +100,7 @@
 			fn();
 		};
 		var afterAF = function(){
-			//Todo: test setImmediate
-			setTimeout(run);
+			setImmediate(run);
 		};
 		var getAF = function(){
 			rAF(afterAF);
@@ -115,8 +114,8 @@
 
 			running =  true;
 
-			if(delay < 9){
-				delay = 9;
+			if(delay < 6){
+				delay = 6;
 			}
 			setTimeout(getAF, delay);
 		};
@@ -138,7 +137,7 @@
 		var currentExpand = 0;
 
 		var isLoading = 0;
-		var lowRuns = 1;
+		var lowRuns = 0;
 
 		var resetPreloading = function(e){
 			isLoading--;
@@ -189,7 +188,7 @@
 				if(currentExpand < preloadExpand && isLoading < 1 && lowRuns > 3 && loadMode > 2){
 					currentExpand = preloadExpand;
 					lowRuns = 0;
-				} else if(currentExpand != defaultExpand && loadMode > 1 && lowRuns > 2 && isLoading < 6){
+				} else if(loadMode > 1 && lowRuns > 2 && isLoading < 6){
 					currentExpand = defaultExpand;
 				} else {
 					currentExpand = shrinkExpand;
@@ -220,8 +219,10 @@
 						(eLleft = rect.left) <= eLvW &&
 						(eLbottom || eLright || eLleft || eLtop) &&
 						((isCompleted && isLoading < 3 && !elemExpandVal && (loadMode < 3 || lowRuns < 4)) || isNestedVisible(lazyloadElems[i], elemExpand))){
-						unveilElement(lazyloadElems[i], rect.width);
+						unveilElement(lazyloadElems[i]);
 						loadedSomething = true;
+						if(isLoading > 12){break;}
+						if(isLoading > 7){currentExpand = shrinkExpand;}
 					} else if(!loadedSomething && isCompleted && !autoLoadElem &&
 						isLoading < 3 && lowRuns < 4 && loadMode > 2 &&
 						(preloadElems[0] || lazySizesConfig.preloadAfterLoad) &&
@@ -270,16 +271,20 @@
 			};
 		})();
 
-		var unveilElement = function (elem, width){
-			var sources, i, len, sourceSrcset, src, srcset, parent, isPicture, event, firesLoad, customMedia;
+		var unveilElement = function (elem){
+			var sources, i, len, sourceSrcset, src, srcset, parent, isPicture, event, firesLoad, customMedia, width;
 
 			var isImg = regImg.test(elem.nodeName);
 
 			//allow using sizes="auto", but don't use. it's invalid. Use data-sizes="auto" or a valid value for sizes instead (i.e.: sizes="80vw")
-			var sizes = elem.getAttribute(lazySizesConfig.sizesAttr) || elem.getAttribute('sizes');
+			var sizes = isImg && (elem.getAttribute(lazySizesConfig.sizesAttr) || elem.getAttribute('sizes'));
 			var isAuto = sizes == 'auto';
 
 			if( (isAuto || !isCompleted) && isImg && (elem.src || elem.srcset) && !elem.complete && !hasClass(elem, lazySizesConfig.errorClass)){return;}
+
+			if(isAuto){
+				width = elem.offsetWidth;
+			}
 
 			elem._lazyRace = true;
 			isLoading++;
@@ -296,8 +301,8 @@
 
 					if(sizes){
 						if(isAuto){
-							autoSizer.updateElem(elem, true, width);
 							addClass(elem, lazySizesConfig.autosizesClass);
+							autoSizer.updateElem(elem, true, width);
 						} else {
 							elem.setAttribute('sizes', sizes);
 						}
@@ -364,6 +369,7 @@
 		};
 
 		var onload = function(){
+			if(isCompleted){return;}
 			var scrollTimer;
 			var afterScroll = function(){
 				lazySizesConfig.loadMode = 3;
@@ -371,9 +377,10 @@
 			};
 
 			isCompleted = true;
-			lowRuns += 8;
 
 			lazySizesConfig.loadMode = 3;
+
+			lowRuns++;
 
 			addEventListener('scroll', function(){
 				if(lazySizesConfig.loadMode == 3){
@@ -383,6 +390,41 @@
 				scrollTimer = setTimeout(afterScroll, 99);
 			}, true);
 		};
+
+		/*
+		var onload = function(){
+			var scrollTimer, timestamp;
+			var wait = 99;
+			var afterScroll = function(){
+				var last = (Date.now()) - timestamp;
+
+				// if the latest call was less that the wait period ago
+				// then we reset the timeout to wait for the difference
+				if (last < wait) {
+					scrollTimer = setTimeout(afterScroll, wait - last);
+
+					// or if not we can null out the timer and run the latest
+				} else {
+					scrollTimer = null;
+					lazySizesConfig.loadMode = 3;
+					throttledCheckElements();
+				}
+			};
+
+			isCompleted = true;
+			lowRuns += 8;
+
+			lazySizesConfig.loadMode = 3;
+
+			addEventListener('scroll', function(){
+				timestamp = Date.now();
+				if(!scrollTimer){
+					lazySizesConfig.loadMode = 2;
+					scrollTimer = setTimeout(afterScroll, wait);
+				}
+			}, true);
+		};
+		*/
 
 		return {
 			_: function(){
@@ -412,11 +454,12 @@
 					document.addEventListener(name, throttledCheckElements, true);
 				});
 
-				if(!(isCompleted = /d$|^c/.test(document.readyState))){
+				if((/d$|^c/.test(document.readyState))){
+					onload();
+				} else {
 					addEventListener('load', onload);
 					document.addEventListener('DOMContentLoaded', throttledCheckElements);
-				} else {
-					onload();
+					setTimeout(onload, 25000);
 				}
 
 				throttledCheckElements();

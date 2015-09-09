@@ -1,4 +1,5 @@
 exclude: [
+  'source/scss/vendor/**',
   'source/scss/components/**',
   'source/scss/base/_reset.scss',
   'source/scss/_print.scss',

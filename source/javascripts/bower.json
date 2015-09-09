@@ -14,7 +14,7 @@
     "path": "libraries",
     "sources": {
       "modernizr": "components/modernizr/modernizr.js",
-      "inline-svg": "components/inline-svg/inlineSVG.js",
+      "inline-svg": "components/inline-svg/dist/inlineSVG.min.js",
       "media-match": "components/media-match/media.match.min.js",
       "picturefill": "components/picturefill/dist/picturefill.min.js",
       "placeholders": "components/placeholders/dist/placeholders.min.js",
