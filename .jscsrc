@@ -1,6 +1,7 @@
 {
 	"preset": "google",
 	"disallowSpacesInAnonymousFunctionExpression": null,
+  "disallowSpacesInFunctionExpression": null,
 	"disallowMultipleVarDecl": null,
   "maximumLineLength": null
 }
