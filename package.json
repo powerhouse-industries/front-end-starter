@@ -25,7 +25,7 @@
     "http-server": "^0.8.0",
     "imageoptim-cli": "^1.11.6",
     "jshint": "^2.8.0",
-    "jsinspect": "^0.6.1",
+    "jsinspect": "^0.7.0",
     "minifier": "^0.7.1",
     "node-sass": "^3.3.2",
     "nodemon": "^1.4.1",
