@@ -15,26 +15,34 @@
 
 	var docElem = document.documentElement;
 
-	var addEventListener = window.addEventListener;
+	var supportPicture = window.HTMLPictureElement && ('sizes' in document.createElement('img'));
+
+	var _addEventListener = 'addEventListener';
+
+	var addEventListener = window[_addEventListener];
 
 	var setTimeout = window.setTimeout;
 
 	var rAF = window.requestAnimationFrame || setTimeout;
 
-	var setImmediate = window.setImmediate || setTimeout;
-
 	var regPicture = /^picture$/i;
 
 	var loadEvents = ['load', 'error', 'lazyincluded', '_lazyloaded'];
 
+	var regClassCache = {};
+
+	var forEach = Array.prototype.forEach;
+
 	var hasClass = function(ele, cls) {
-		var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-		return ele.className.match(reg) && reg;
+		if(!regClassCache[cls]){
+			regClassCache[cls] = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+		}
+		return regClassCache[cls].test(ele.className) && regClassCache[cls];
 	};
 
 	var addClass = function(ele, cls) {
 		if (!hasClass(ele, cls)){
-			ele.className += ' '+cls;
+			ele.className = ele.className.trim() + ' ' + cls;
 		}
 	};
 
@@ -46,7 +54,7 @@
 	};
 
 	var addRemoveLoadEvents = function(dom, fn, add){
-		var action = add ? 'addEventListener' : 'removeEventListener';
+		var action = add ? _addEventListener : 'removeEventListener';
 		if(add){
 			addRemoveLoadEvents(dom, fn);
 		}
@@ -66,12 +74,10 @@
 
 	var updatePolyfill = function (el, full){
 		var polyfill;
-		if(!window.HTMLPictureElement){
-			if( ( polyfill = (window.picturefill || window.respimage || lazySizesConfig.pf) ) ){
-				polyfill({reevaluate: true, elements: [el]});
-			} else if(full && full.src){
-				el.src = full.src;
-			}
+		if( !supportPicture && ( polyfill = (window.picturefill || lazySizesConfig.pf) ) ){
+			polyfill({reevaluate: true, elements: [el]});
+		} else if(full && full.src){
+			el.src = full.src;
 		}
 	};
 
@@ -100,7 +106,7 @@
 			fn();
 		};
 		var afterAF = function(){
-			setImmediate(run);
+			setTimeout(run);
 		};
 		var getAF = function(){
 			rAF(afterAF);
@@ -110,7 +116,7 @@
 			if(running){
 				return;
 			}
-			var delay = lazySizesConfig.throttle - (Date.now() - lastTime);
+			var delay = 125 - (Date.now() - lastTime);
 
 			running =  true;
 
@@ -121,8 +127,61 @@
 		};
 	};
 
+	/*
+	var throttle = function(fn){
+		var running;
+		var lastTime = 0;
+		var Date = window.Date;
+		var requestIdleCallback = window.requestIdleCallback;
+		var gDelay = 125;
+		var dTimeout = 999;
+		var timeout = dTimeout;
+		var run = function(){
+			running = false;
+			lastTime = Date.now();
+			fn();
+		};
+		var afterAF = function(){
+			setImmediate(run);
+		};
+		var getAF = function(){
+			rAF(afterAF);
+		};
+
+		if(requestIdleCallback){
+			gDelay = 99;
+			getAF = function(){
+				requestIdleCallback(run, timeout);
+				if(timeout !== dTimeout){
+					timeout = dTimeout;
+				}
+			};
+		}
+
+		return function(isPriority){
+
+			if((isPriority = isPriority === true)){
+				timeout = 40;
+			}
+
+			if(running){
+				return;
+			}
+			var delay = gDelay - (Date.now() - lastTime);
+
+			running =  true;
+
+			if(isPriority || delay < 0){
+				getAF();
+			} else {
+				setTimeout(getAF, delay);
+			}
+		};
+	};
+	*/
+
 	var loader = (function(){
-		var lazyloadElems, preloadElems, isCompleted, resetPreloadingTimer, loadMode;
+		var lazyloadElems, preloadElems, isCompleted, resetPreloadingTimer, loadMode, started;
 
 		var eLvW, elvH, eLtop, eLleft, eLright, eLbottom;
 
@@ -221,10 +280,10 @@
 						((isCompleted && isLoading < 3 && !elemExpandVal && (loadMode < 3 || lowRuns < 4)) || isNestedVisible(lazyloadElems[i], elemExpand))){
 						unveilElement(lazyloadElems[i]);
 						loadedSomething = true;
-						if(isLoading > 12){break;}
-						if(isLoading > 7){currentExpand = shrinkExpand;}
+						if(isLoading > 9){break;}
+						if(isLoading > 6){currentExpand = shrinkExpand;}
 					} else if(!loadedSomething && isCompleted && !autoLoadElem &&
-						isLoading < 3 && lowRuns < 4 && loadMode > 2 &&
+						isLoading < 4 && lowRuns < 4 && loadMode > 2 &&
 						(preloadElems[0] || lazySizesConfig.preloadAfterLoad) &&
 						(preloadElems[0] || (!elemExpandVal && ((eLbottom || eLright || eLleft || eLtop) || lazyloadElems[i].getAttribute(lazySizesConfig.sizesAttr) != 'auto')))){
 						autoLoadElem = preloadElems[0] || lazyloadElems[i];
@@ -249,7 +308,27 @@
 			try {
 				elem.contentWindow.location.replace(src);
 			} catch(e){
-				elem.setAttribute('src', src);
+				elem.src = src;
+			}
+		};
+
+		var handleSources = function(source){
+			var customMedia, parent;
+
+			var sourceSrcset = source.getAttribute(lazySizesConfig.srcsetAttr);
+
+			if( (customMedia = lazySizesConfig.customMedia[source.getAttribute('data-media') || source.getAttribute('media')]) ){
+				source.setAttribute('media', customMedia);
+			}
+
+			if(sourceSrcset){
+				source.setAttribute('srcset', sourceSrcset);
+			}
+
+			if(customMedia){
+				parent = source.parentNode;
+				parent.insertBefore(source.cloneNode(), source);
+				parent.removeChild(source);
 			}
 		};
 
@@ -272,7 +351,7 @@
 		})();
 
 		var unveilElement = function (elem){
-			var sources, i, len, sourceSrcset, src, srcset, parent, isPicture, event, firesLoad, customMedia, width;
+			var src, srcset, parent, isPicture, event, firesLoad, width;
 
 			var isImg = regImg.test(elem.nodeName);
 
@@ -290,7 +369,6 @@
 			isLoading++;
 
 			rafBatch(function lazyUnveil(){
-
 				if(elem._lazyRace){
 					delete elem._lazyRace;
 				}
@@ -330,25 +408,16 @@
 					}
 
 					if(isPicture){
-						sources = parent.getElementsByTagName('source');
-						for(i = 0, len = sources.length; i < len; i++){
-							if( (customMedia = lazySizesConfig.customMedia[sources[i].getAttribute('data-media') || sources[i].getAttribute('media')]) ){
-								sources[i].setAttribute('media', customMedia);
-							}
-							sourceSrcset = sources[i].getAttribute(lazySizesConfig.srcsetAttr);
-							if(sourceSrcset){
-								sources[i].setAttribute('srcset', sourceSrcset);
-							}
-						}
+						forEach.call(parent.getElementsByTagName('source'), handleSources);
 					}
 
 					if(srcset){
 						elem.setAttribute('srcset', srcset);
-					} else if(src){
+					} else if(src && !isPicture){
 						if(regIframe.test(elem.nodeName)){
 							changeIframeSrc(elem, src);
 						} else {
-							elem.setAttribute('src', src);
+							elem.src = src;
 						}
 					}
 
@@ -370,6 +439,10 @@
 
 		var onload = function(){
 			if(isCompleted){return;}
+			if(Date.now() - started < 999){
+				setTimeout(onload, 999);
+				return;
+			}
 			var scrollTimer;
 			var afterScroll = function(){
 				lazySizesConfig.loadMode = 3;
@@ -380,7 +453,9 @@
 
 			lazySizesConfig.loadMode = 3;
 
-			lowRuns++;
+			if(!isLoading){
+				throttledCheckElements();
+			}
 
 			addEventListener('scroll', function(){
 				if(lazySizesConfig.loadMode == 3){
@@ -428,12 +503,13 @@
 
 		return {
 			_: function(){
+				started = Date.now();
 
 				lazyloadElems = document.getElementsByClassName(lazySizesConfig.lazyClass);
 				preloadElems = document.getElementsByClassName(lazySizesConfig.lazyClass + ' ' + lazySizesConfig.preloadClass);
 
 				defaultExpand = lazySizesConfig.expand;
-				preloadExpand = Math.round(defaultExpand * lazySizesConfig.expFactor);
+				preloadExpand = defaultExpand * lazySizesConfig.expFactor;
 
 				addEventListener('scroll', throttledCheckElements, true);
 
@@ -442,8 +518,8 @@
 				if(window.MutationObserver){
 					new MutationObserver( throttledCheckElements ).observe( docElem, {childList: true, subtree: true, attributes: true} );
 				} else {
-					docElem.addEventListener('DOMNodeInserted', throttledCheckElements, true);
-					docElem.addEventListener('DOMAttrModified', throttledCheckElements, true);
+					docElem[_addEventListener]('DOMNodeInserted', throttledCheckElements, true);
+					docElem[_addEventListener]('DOMAttrModified', throttledCheckElements, true);
 					setInterval(throttledCheckElements, 999);
 				}
 
@@ -451,18 +527,18 @@
 
 				//, 'fullscreenchange'
 				['focus', 'mouseover', 'click', 'load', 'transitionend', 'animationend', 'webkitAnimationEnd'].forEach(function(name){
-					document.addEventListener(name, throttledCheckElements, true);
+					document[_addEventListener](name, throttledCheckElements, true);
 				});
 
 				if((/d$|^c/.test(document.readyState))){
 					onload();
 				} else {
 					addEventListener('load', onload);
-					document.addEventListener('DOMContentLoaded', throttledCheckElements);
-					setTimeout(onload, 25000);
+					document[_addEventListener]('DOMContentLoaded', throttledCheckElements);
+					setTimeout(onload, 20000);
 				}
 
-				throttledCheckElements();
+				throttledCheckElements(lazyloadElems.length > 0);
 			},
 			checkElems: throttledCheckElements,
 			unveil: unveilElement
@@ -538,12 +614,14 @@
 
 	(function(){
 		var prop;
+
 		var lazySizesDefaults = {
 			lazyClass: 'lazyload',
 			loadedClass: 'lazyloaded',
 			loadingClass: 'lazyloading',
 			preloadClass: 'lazypreload',
 			errorClass: 'lazyerror',
+			//strictClass: 'lazystrict',
 			autosizesClass: 'lazyautosizes',
 			srcAttr: 'data-src',
 			srcsetAttr: 'data-srcset',
@@ -552,10 +630,9 @@
 			minSize: 40,
 			customMedia: {},
 			init: true,
-			expFactor: 2,
-			expand: 359,
-			loadMode: 2,
-			throttle: 125
+			expFactor: 1.7,
+			expand: docElem.clientHeight > 630 ? docElem.clientWidth > 890 ? 500 : 410 : 359,
+			loadMode: 2
 		};
 
 		lazySizesConfig = window.lazySizesConfig || window.lazysizesConfig || {};
