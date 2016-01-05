@@ -12,14 +12,14 @@
     "node": ">=4.2.1"
   },
   "dependencies": {
-    "autoprefixer": "^6.2.1",
-    "bower": "^1.7.1",
+    "autoprefixer": "^6.2.3",
+    "bower": "^1.7.2",
     "bower-installer": "^1.2.0",
-    "clean-css": "^3.4.8",
+    "clean-css": "^3.4.9",
     "critical": "^0.7.0",
     "csscomb": "^3.1.8",
     "cssnano": "^3.4.0",
-    "html-minifier": "^1.0.0",
+    "html-minifier": "^1.1.1",
     "htmlhint": "^0.9.12",
     "http-server": "^0.8.5",
     "imageoptim-cli": "^1.11.6",
@@ -32,7 +32,7 @@
     "parallelshell": "^2.0.0",
     "parker": "^0.1.0",
     "phantomas": "^1.13.0",
-    "postcss-cli": "^2.3.2",
+    "postcss-cli": "^2.3.3",
     "replace": "^0.3.0",
     "svgo": "^0.6.1",
     "ucss": "^0.4.7-beta",
@@ -46,7 +46,6 @@
     "watch:sass": "onchange 'source/scss' -- sh tasks/sass.sh",
     "watch:js": "onchange 'source/javascripts' -- sh tasks/javascripts.sh",
     "watch:html": "onchange 'source/*.html' -- sh tasks/html.sh",
-    "build": "npm-run-all sass js html images",
     "deploy": "sh tasks/deploy.sh",
     "analyse": "sh tasks/analyse.sh"
   }

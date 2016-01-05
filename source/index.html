@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html lang="en" class="no-js ie8 ie9" dir="ltr"><![endif]-->
 <!--[if IE 9]><html lang="en" class="no-js ie9" dir="ltr"><![endif]-->
-<!--[if !(IE 8) | !(IE 9)]><!--><html dir="ltr" lang="en" class="no-js"><!--<![endif]-->
+<!--[if !(IE 9)]><!--><html dir="ltr" lang="en" class="no-js"><!--<![endif]-->
 <head>
 
   <meta charset="UTF-8">
@@ -12,7 +11,7 @@
   <link rel="dns-prefetch" href="//fast.fonts.net">
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//use.typekit.com">
-  <link rel="dns-prefetch" href="/javascripts/templates/cookie-banner.html">
+  <link rel="prefetch" href="/javascripts/templates/cookie-banner.html">
 
   <title>Site Name</title>
   <meta name="description" content="">
@@ -20,30 +19,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <noscript><link rel="stylesheet" href="/css/main.css?cache_buster"></noscript>
-  <!--[if (lt IE 9) & (!IEMobile)]>
-    <link rel="stylesheet" href="/css/ie8.css?cache_buster">
-  <![endif]-->
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="apple-touch-icon-precomposed" href="/images/touch-icon.png">
   <meta name="theme-color" content="#ffce00">
   <meta name="application-name" content="Site Name">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="">
+  <meta name="apple-mobile-web-app-title" content="Site Name">
   <meta name="msapplication-TileColor" content="#000">
   <meta name="msapplication-TileImage" content="/images/ms-tile.png">
 
   <meta name="full-css" content="/css/main.css?cache_buster">
   <meta name="full-js" content="/javascripts/main.js?cache_buster">
 
-  <script>
-    var getContentByMetaTagName=function(e){for(var n=document.getElementsByTagName("meta"),t=0;t<n.length;t++)if(e==n[t].name||e==n[t].getAttribute("property"))return n[t].content;return!1},loadJS=function(e,n){var t=window.document.getElementsByTagName("script")[0],o=window.document.createElement("script");return o.src=e,o.async=!0,t.parentNode.insertBefore(o,t),n&&"function"==typeof n&&(o.onload=n),o};
-
-    var loadCSS=function(e,n,o,t){"use strict";var d=window.document.createElement("link"),i=n||window.document.getElementsByTagName("script")[0],s=window.document.styleSheets;return d.rel="stylesheet",d.href=e,d.media="only x",t&&(d.onload=t),i.parentNode.insertBefore(d,i),d.onloadcssdefined=function(n){for(var o,t=0;t<s.length;t++)s[t].href&&s[t].href.indexOf(e)>-1&&(o=!0);o?n():setTimeout(function(){d.onloadcssdefined(n)})},d.onloadcssdefined(function(){d.media=o||"all"}),d};
-
-    loadCSS(getContentByMetaTagName("full-css"));
-    loadJS(getContentByMetaTagName("full-js"));
-  </script>
+  <script src="/javascripts/libraries/modernizr.js"></script>
 
   <!-- critical_css -->
 
@@ -238,8 +227,8 @@
 
     <picture>
       <!--[if IE 9]><video style="display: none;"><![endif]-->
-      <source data-srcset="http://placehold.it/500x500, http://placehold.it/750x750 2x" media="(min-width: 960px)"></source>
-      <source data-srcset="http://placehold.it/960x960, http://placehold.it/1440x1440 2x" media="(min-width: 600px)"></source>
+      <source data-srcset="http://placehold.it/500x500, http://placehold.it/750x750 2x" media="(min-width: 960px)">
+      <source data-srcset="http://placehold.it/960x960, http://placehold.it/1440x1440 2x" media="(min-width: 600px)">
       <!--[if IE 9]></video><![endif]-->
       <img data-srcset="http://placehold.it/600x600, http://placehold.it/900x900 2x" alt="" class="lazyload">
     </picture>
@@ -274,9 +263,9 @@
       <li>List item</li>
     </ol>
 
-    <div class="embed embed--responsive">
+    <figure class="embed embed--responsive">
       <iframe width="420" height="315" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen class="lazyload"></iframe>
-    </div>
+    </figure>
 
     <p>The following people worked on this project:</p>
 
@@ -297,6 +286,14 @@
     <a href="#" class="btn">This is a button</a>
 
   </div>
+
+  <script>
+    var getContentByMetaTagName=function(e){for(var n=document.getElementsByTagName("meta"),t=0;t<n.length;t++)if(e==n[t].name||e==n[t].getAttribute("property"))return n[t].content;return!1},loadJS=function(e,n){var t=window.document.getElementsByTagName("script")[0],o=window.document.createElement("script");return o.src=e,o.async=!0,t.parentNode.insertBefore(o,t),n&&"function"==typeof n&&(o.onload=n),o};
+    var loadCSS=function(e,n,o,t){"use strict";var d=window.document.createElement("link"),i=n||window.document.getElementsByTagName("script")[0],s=window.document.styleSheets;return d.rel="stylesheet",d.href=e,d.media="only x",t&&(d.onload=t),i.parentNode.insertBefore(d,i),d.onloadcssdefined=function(n){for(var o,t=0;t<s.length;t++)s[t].href&&s[t].href.indexOf(e)>-1&&(o=!0);o?n():setTimeout(function(){d.onloadcssdefined(n)})},d.onloadcssdefined(function(){d.media=o||"all"}),d},loadJS=function(e,n){var t=window.document.getElementsByTagName("script")[0],o=window.document.createElement("script");return o.src=e,o.async=!0,t.parentNode.insertBefore(o,t),n&&"function"==typeof n&&(o.onload=n),o};
+
+    loadCSS(getContentByMetaTagName("full-css"));
+    loadJS(getContentByMetaTagName("full-js"));
+  </script>
 
 </body>
 </html>

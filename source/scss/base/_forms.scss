@@ -74,14 +74,6 @@ select {
   @include svg-background('arrow-down');
   background-repeat: no-repeat;
   background-position: right $input-padding center;
-
-  /**
-   * We might as well default to the browsers UI for selects where IE 8
-   * is concerned
-   */
-  .ie8 & {
-    background-image: none;
-  }
 }
 
 /**

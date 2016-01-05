@@ -3,7 +3,6 @@ exclude: [
   'source/scss/components/**',
   'source/scss/base/_reset.scss',
   'source/scss/_print.scss',
-  'source/scss/ie8.scss',
   'source/scss/main.scss'
 ]
 

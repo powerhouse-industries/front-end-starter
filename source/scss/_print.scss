@@ -40,7 +40,6 @@ $use-rems: false;
    * Hide page elements that aren't
    * relevant for print
    */
-
   nav,
   aside,
   video,
@@ -56,7 +55,6 @@ $use-rems: false;
    * 1. Three consecutive lines at end of page
    * 2. Two lines at start of new page
    */
-
   h1,
   h2,
   h3,
@@ -106,7 +104,6 @@ $use-rems: false;
   /**
    * Optimse tables for print
    */
-
   table {
     border-collapse: collapse;
 
@@ -135,7 +132,6 @@ $use-rems: false;
    * Extend anchors to show detailed
    * information (href) on printout
    */
-
   a {
     &,
     &:visited {
@@ -165,7 +161,6 @@ $use-rems: false;
    * Extend abbr to show detailed information
    * from the title-attribute on printout
    */
-
   abbr {
     border: 0;
 
@@ -180,7 +175,6 @@ $use-rems: false;
   /**
    * Print utility classes
    */
-
   .print-only {
     display: block !important;
   }

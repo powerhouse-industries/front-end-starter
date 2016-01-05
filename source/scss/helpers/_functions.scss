@@ -38,9 +38,9 @@ $use-rems: true !default; // Use rems by default
 @function file-url($file) {
   $url: '';
   @if $use-asset-pipeline {
-    $url: image-url($path+$file);
+    $url: image-url($path + $file);
   } @else {
-    $url: url($path+$file);
+    $url: url($path + $file);
   }
   @return $url;
 }

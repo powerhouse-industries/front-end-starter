@@ -142,11 +142,11 @@ a {
 q {
   quotes: '\201C''\201D''\2018''\2019';
 
-  &:before {
+  &::before {
     content: open-quote;
   }
 
-  &:after {
+  &::after {
     content: close-quote;
   }
 }
@@ -155,11 +155,11 @@ blockquote {
   margin-bottom: 15px;
 
   p {
-    &:before {
+    &::before {
       content: '\201C';
     }
 
-    &:after {
+    &::after {
       content: '\201D';
     }
   }

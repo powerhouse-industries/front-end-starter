@@ -3,21 +3,6 @@
 \*------------------------------------*/
 
 /**
- * Target devices based on pixel ratio
- */
-@mixin device-pixel-ratio($ratio: 2) {
-  @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
-  only screen and (min--moz-device-pixel-ratio: $ratio),
-  only screen and (-o-min-device-pixel-ratio: #{($ratio*10)}/10),
-  only screen and (min-device-pixel-ratio: $ratio),
-  only screen and (min-resolution: #{($ratio*96)}dpi),
-  only screen and (min-resolution: #{$ratio}dppx) {
-    @content;
-  }
-}
-
-
-/**
  * Link states
  *
  * @include states {
@@ -86,22 +71,6 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-
-
-/**
- * SVG background images with fallback
- *
- * .thing { @include svg-background(icon-red); }
- */
-@mixin svg-background($image) {
-  $svg-image: $image + '.svg';
-  $png-image: $image + '.png';
-  background-image: file-url($svg-image);
-
-  .no-svg & {
-    background-image: file-url($png-image);
-  }
 }
 
 
