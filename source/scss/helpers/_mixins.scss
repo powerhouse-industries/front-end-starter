@@ -46,6 +46,7 @@
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  -webkit-filter: blur(0); /* Stops the weird text blurring issue in Chrome */
 }
 
 
@@ -58,6 +59,7 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  -webkit-filter: blur(0); /* Stops the weird text blurring issue in Chrome */
 }
 
 
@@ -71,6 +73,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  -webkit-filter: blur(0); /* Stops the weird text blurring issue in Chrome */
 }
 
 
