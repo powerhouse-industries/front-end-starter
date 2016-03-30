@@ -71,9 +71,11 @@ textarea {
  * `appearance: none;`
  */
 select {
-  @include svg-background('arrow-down');
-  background-repeat: no-repeat;
-  background-position: right $input-padding center;
+  background: {
+    image: file-url('arrow-down.svg');
+    repeat: no-repeat;
+    position: right $input-padding center;
+  }
 }
 
 /**

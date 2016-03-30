@@ -6,14 +6,19 @@ os=`uname`
 # Install all dependencies
 echo "$(tput setaf 5)Installing dependencies...$(tput sgr 0)"
 sudo npm install
-sudo npm install bower -g
-sudo npm install bower-installer -g
 sudo npm install nodemon -g
 sudo npm install parallelshell -g
 sudo npm install jshint -g
 sudo npm install jscs -g
+sudo npm install jsinspect -g
 sudo npm install autoprefixer -g
 sudo npm install jscs -g
+sudo npm install phantomas -g
+sudo npm install postcss-cli -g
+sudo npm install htmlhint -g
+sudo npm install replace -g
+sudo npm install onchange -g
+sudo npm install ucss -g
 sudo npm install phantomas -g
 sudo gem install scss_lint
 
@@ -21,14 +26,6 @@ sudo gem install scss_lint
 if [[ "$os" == 'Darwin' ]]; then
   sudo gem install terminal-notifier
 fi
-
-# Install all the Bower packages
-echo "$(tput setaf 4)Installing bower packages...$(tput sgr 0)"
-cd source/javascripts && bower-installer
-cd ../../
-cd source/scss && bower install
-cd ../../
-rm -rf source/javascripts/components
 
 # Create the `build` folder structure
 echo "$(tput setaf 3)Creating /build directories...$(tput sgr 0)"

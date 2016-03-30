@@ -9,7 +9,7 @@ echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
 # Optimise the images
 echo "$(tput setaf 4)Optimising images...$(tput sgr 0)"
-imageoptim -d build/images
+imageoptim -d build/images --image-alpha --jpeg-mini -q
 echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
 # Optimse SVGs
