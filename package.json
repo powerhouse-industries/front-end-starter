@@ -31,7 +31,7 @@
     "onchange": "^2.2.0",
     "parallelshell": "^2.0.0",
     "parker": "^0.1.0",
-    "phantomas": "^1.15.2",
+    "phantomas": "^1.15.1",
     "postcss-cli": "^2.5.1",
     "replace": "^0.3.0",
     "svgo": "^0.6.3",
