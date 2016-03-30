@@ -168,7 +168,9 @@ linters:
     enabled: true
     identifier_list: base
     include: []
-    exclude: []
+    exclude: [
+      'source/scss/helpers/_mixins.scss'
+    ]
 
   ZeroUnit:
     enabled: true
