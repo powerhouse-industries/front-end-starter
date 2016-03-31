@@ -19,14 +19,17 @@ jshint source/javascripts/main.js && jshint source/javascripts/modules/**.js
 echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
 # Copy some files into /build
-echo "$(tput setaf 6)Copying files to /build/javascripts ...$(tput sgr 0)"
+echo "$(tput setaf 6)Copying files to /build/javascripts...$(tput sgr 0)"
 cp source/javascripts/libraries/*.js build/javascripts/libraries
 cp source/javascripts/templates/* build/javascripts/templates
 echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
-## If there are JavaScript modules
-cp source/javascripts/modules/**/*.html build/javascripts/templates
-uglifyjs source/javascripts/libraries/fastclick.js source/javascripts/libraries/checkmq.js source/javascripts/libraries/cookiedisclaimer.js source/javascripts/libraries/picturefill.js source/javascripts/libraries/powerhouse.js source/javascripts/modules/*.js source/javascripts/main.js -o build/javascripts/main.js
+## Compile the JavaScript
+echo "$(tput setaf 6)Compiling JavaScript with Browserify...$(tput sgr 0)"
+browserify source/javascripts/main.js -o build/javascripts/main.js -t [ babelify --presets [ es2015 ] ]
+
+## Minify the output
+uglifyjs build/javascripts/main.js -o build/javascripts/main.js
 
 # Send a notifcation to the OS
 if [[ "$os" == 'Darwin' ]]; then

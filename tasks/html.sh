@@ -35,11 +35,6 @@ for f in `ls build/*.html`; do
   html-minifier "$f" -o "$f" --remove-comments --remove-empty-attributes --remove-script-type-attributes
 done
 
-for f in `ls build/javascripts/templates/*.html`; do
-  echo "$(tput setaf 6)Minifying $f...$(tput sgr 0)"
-  html-minifier "$f" -o "$f" --remove-comments --remove-empty-attributes --remove-script-type-attributes --collapse-whitespace
-done
-
 # Send a notifcation to the OS
 if [[ "$os" == 'Darwin' ]]; then
   terminal-notifier -group 'html-changes' -title 'HTML' -message 'HTML compiled successfully.'

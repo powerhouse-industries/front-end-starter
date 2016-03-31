@@ -3,7 +3,7 @@
   "description": "PowerHouse is a feature–rich front-end framework for building modern and accessible front-ends.",
   "author": "Oliver Farrell & Jonny Haynes",
   "version": "4.0.0",
-  "license" : "MIT",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/powerhouse-industries/front-end-starter"
@@ -12,7 +12,16 @@
     "node": ">=4.2.1"
   },
   "dependencies": {
+    "powerhouse-js": "^1.0.1",
+    "picturefill": "^3.0.2",
+    "inline-svg": "^2.2.0",
+    "cookie-disclaimer": "^2.0.0",
+    "fastclick": "^1.0.6"
+  },
+  "devDependencies": {
     "autoprefixer": "^6.3.5",
+    "babel-preset-es2015": "^6.6.0",
+    "babelify": "^7.2.0",
     "bower": "^1.7.7",
     "bower-installer": "^1.2.0",
     "clean-css": "^3.4.10",

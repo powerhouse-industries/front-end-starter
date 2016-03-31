@@ -1,9 +1,17 @@
+var PowerHouse = require('powerhouse-js'),
+    picturefill = require('picturefill'),
+    CookieDisclaimer = require('cookie-disclaimer'),
+    attachFastClick = require('fastclick'),
+    testModule = require('./modules/module');
+
 PowerHouse.ready(function () {
+
+  let test = '123';
 
   /**
    * Attach FastClick to the body
    */
-  FastClick.attach(document.body);
+  attachFastClick(document.body);
 
   /**
    * Initialise inlineSVG

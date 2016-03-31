@@ -20,6 +20,7 @@ sudo npm install replace -g
 sudo npm install onchange -g
 sudo npm install ucss -g
 sudo npm install phantomas -g
+sudo npm install npm-run-all -g
 sudo gem install scss_lint
 
 # Only install terminal notifier on OS X
