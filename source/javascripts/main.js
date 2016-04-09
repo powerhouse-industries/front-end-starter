@@ -1,12 +1,9 @@
 var PowerHouse = require('powerhouse-js'),
     picturefill = require('picturefill'),
     CookieDisclaimer = require('cookie-disclaimer'),
-    attachFastClick = require('fastclick'),
-    testModule = require('./modules/module');
+    attachFastClick = require('fastclick');
 
 PowerHouse.ready(function () {
-
-  let test = '123';
 
   /**
    * Attach FastClick to the body
