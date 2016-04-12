@@ -12,11 +12,12 @@
     "node": ">=4.2.1"
   },
   "dependencies": {
-    "powerhouse-js": "^1.0.1",
-    "picturefill": "^3.0.2",
-    "inline-svg": "^2.2.0",
     "cookie-disclaimer": "^2.0.0",
-    "fastclick": "^1.0.6"
+    "fastclick": "^1.0.6",
+    "inline-svg": "^2.2.0",
+    "lazysizes": "^1.5.0",
+    "picturefill": "^3.0.2",
+    "powerhouse-js": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.5",

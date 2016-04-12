@@ -19,5 +19,5 @@ echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
 # Send a notifcation to the OS
 if [[ "$os" == 'Darwin' ]]; then
-  terminal-notifier -group 'image-changes' -title 'Images' -message 'Images optimsed successfully.'
+  terminal-notifier -group 'image-changes' -title 'Images' -message 'Images optimised successfully.'
 fi

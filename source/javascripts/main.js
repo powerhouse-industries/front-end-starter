@@ -1,7 +1,8 @@
 var PowerHouse = require('powerhouse-js'),
     picturefill = require('picturefill'),
     CookieDisclaimer = require('cookie-disclaimer'),
-    attachFastClick = require('fastclick');
+    attachFastClick = require('fastclick'),
+    lazysizes = require('lazysizes');
 
 PowerHouse.ready(function () {
 
@@ -23,11 +24,6 @@ PowerHouse.ready(function () {
   if (!Modernizr.placeholder) {
     loadJS('/javascripts/libraries/placeholders.min.js');
   }
-
-  /**
-   * Initialise LazySizes
-   */
-  loadJS('/javascripts/libraries/lazysizes.js');
 
   /**
    * Initialise Cookie Disclaimer

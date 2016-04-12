@@ -8,12 +8,12 @@ echo "$(tput setaf 6)Checking code formating...$(tput sgr 0)"
 jscs source/javascripts/modules source/javascripts/*.js
 echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
-# Check formatting against styleguide
+# Check for duplicate code
 echo "$(tput setaf 6)Checking for duplicated code...$(tput sgr 0)"
 jsinspect source/javascripts/main.js source/javascripts/modules/**.js
 echo "$(tput setaf 2)Done!$(tput sgr 0)"
 
-# Look for issues
+# Look for any code issues
 echo "$(tput setaf 6)Looking for code errors...$(tput sgr 0)"
 jshint source/javascripts/main.js && jshint source/javascripts/modules/**.js
 echo "$(tput setaf 2)Done!$(tput sgr 0)"
@@ -29,9 +29,11 @@ echo "$(tput setaf 6)Compiling JavaScript with Browserify...$(tput sgr 0)"
 browserify source/javascripts/main.js -o build/javascripts/main.js -t [ babelify --presets [ es2015 ] ]
 
 ## Minify the output
+echo "$(tput setaf 6)Minifying JavaScript...$(tput sgr 0)"
 uglifyjs build/javascripts/main.js -o build/javascripts/main.js
 
 # Send a notifcation to the OS
+echo "$(tput setaf 6)Done$(tput sgr 0)"
 if [[ "$os" == 'Darwin' ]]; then
   terminal-notifier -group 'js-changes' -title 'JavaScript' -message 'JavaScript compiled successfully.'
 fi
