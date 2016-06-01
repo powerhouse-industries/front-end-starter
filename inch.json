@@ -1,8 +1,0 @@
-{
-  "files": {
-    "included": [
-      "source/javascripts/modules/*.js",
-      "source/javascripts/main.js"
-    ]
-  }
-}

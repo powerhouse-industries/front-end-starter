@@ -1,4 +1,0 @@
-javascript:
-  ignore_file: .jshintignore
-scss:
-  config_file: .scss-lint.yml
