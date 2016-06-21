@@ -1,0 +1,22 @@
+{
+  "use": [
+    "postcss-strip-inline-comments",
+    "postcss-easy-import",
+    "postcss-inline-svg",
+    "cssnano",
+    "precss",
+    "postcss-cssnext",
+    "postcss-nested-props"
+  ],
+  "postcss-easy-import": {
+    "prefix": "_",
+    "extensions": [".scss", ".css"]
+  },
+  "postcss-inline-svg": {
+    "path": "app/images"
+  },
+  "postcss-cssnext": {
+    "warnForDuplicates": false
+  },
+  "local-plugins": true
+}

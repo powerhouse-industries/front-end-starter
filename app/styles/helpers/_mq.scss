@@ -1,13 +1,3 @@
 /*------------------------------------*\
-  $MEDIA QUERIES
+   # MEDIA QUERIES
 \*------------------------------------*/
-
-$mq-breakpoints: (
-  mq480:  480px,
-  mq600:  600px,
-  mq768:  768px,
-  mq960:  960px,
-  mq1200: 1200px
-);
-
-@import '../vendor/mq';

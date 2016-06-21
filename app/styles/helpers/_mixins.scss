@@ -1,30 +1,39 @@
 /*------------------------------------*\
-  $MIXINS
+   # MIXINS
 \*------------------------------------*/
 
-/**
- * Link states
- *
- * @include states {
- *   color: blue;
- * }
- */
-@mixin states() {
-  &:hover,
-  &:active,
-  &:focus {
+/// State wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin states($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Hugo Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
     @content;
   }
 }
 
-
-/**
- * Style all headings at once
- *
- * @include headings {
- *   color: red;
- * }
- */
+/// Apply styles to all headings
+/// @author Oliver Farrell
 @mixin headings() {
   h1,
   h2,
@@ -36,56 +45,26 @@
   }
 }
 
-
-/**
- * Vertically align an element inside its container
- *
- * .thing {  @include vertically-align; }
- */
-@mixin vertically-align {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  filter: blur(0); /* Stops the weird text blurring issue in Chrome */
-}
-
-
-/**
- * Horizontally align an element inside its container
- *
- * .thing {  @include horizontally-align; }
- */
-@mixin horizontally-align {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  filter: blur(0); /* Stops the weird text blurring issue in Chrome */
-}
-
-
-/**
- * Centrally align an element inside its container
- *
- * .thing {  @include centrally-align; }
- */
-@mixin centrally-align {
-  position: relative;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  filter: blur(0); /* Stops the weird text blurring issue in Chrome */
-}
-
-
-/**
- * Set the position and top, right, bottom, left values
- *
- * .thing { @include position(relative, 0, 1px, 10px, 0); }
- */
-@mixin position($position, $top, $right, $bottom, $left) {
+/// Align an element vertically, horizontally or centrally
+/// @author Oliver Farrell
+///
+/// @example
+///   @include align(vertically)
+///
+/// @example
+///   @include align(horizontally, absolute)
+@mixin align($alignment: centrally, $position: relative) {
   position: $position;
-  @if $top { top: $top; }
-  @if $right { right: $right; }
-  @if $bottom { bottom: $bottom; }
-  @if $left { left: $left; }
+
+  @if $alignment === centrally {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  } @elseif $alignment === vertically {
+    top: 50%;
+    transform: translateY(-50%);
+  } @elseif $alignment === horizontally {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

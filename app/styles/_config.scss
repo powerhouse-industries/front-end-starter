@@ -1,0 +1,39 @@
+/*------------------------------------*\
+   # CONFIG
+\*------------------------------------*/
+
+
+
+
+
+/// Regular font family
+/// @type List
+$body-font-stack: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+
+/// Heading font family
+/// @type List
+$heading-font-stack: 'Georgia', 'Times', serif !default;
+
+
+
+
+
+/// Main brand color
+/// @type Color
+$brand-color: #f30 !default;
+
+/// Main text color
+/// @type Color
+$text-color: #222 !default;
+
+
+
+
+
+/// Container's width
+/// @type Length
+$max-width: 1200px !default;
+
+/// Container's maximum width
+/// @type Length | Percentage
+$max-width: 90% !default;

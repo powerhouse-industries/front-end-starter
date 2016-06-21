@@ -1,45 +1,13 @@
 /*------------------------------------*\
-	$MAIN
+   # MAIN
 \*------------------------------------*/
 
-// vars
+// Configuration
 @import
-  'vars';
+  'config';
 
-// helpers
+// Tools & Helpers
 @import
-  'helpers/mixins',
   'helpers/functions',
+  'helpers/mixins',
   'helpers/mq';
-
-// base
-@import
-  'base/reset',
-  'base/box-sizing',
-  'base/utilities',
-  'base/accessibility',
-  'base/type',
-  'base/images',
-  'base/lists',
-  'base/tables',
-  'base/forms',
-  'base/page';
-
-// layout
-@import
-  'layout/grid';
-
-// modules
-@import
-  'modules/buttons',
-  'modules/messages',
-  'modules/embeds',
-  'modules/cookies';
-
-// trumps
-@import
-  'trumps';
-
-// print
-@import
-  'print';

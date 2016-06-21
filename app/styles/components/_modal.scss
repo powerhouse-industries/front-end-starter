@@ -1,0 +1,55 @@
+/*------------------------------------*\
+   # MODAL
+
+   <div class="modalContainer">
+     <div class="modal">
+       <button class="modalClose">Close</button>
+       <div class="modalContent">
+         ...
+       </div>
+     </div>
+   </div>
+\*------------------------------------*/
+
+:root {
+  --overlayColor: rgba(0, 0, 0, .25);
+  --modalBackgroundColor: #fff;
+}
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--overlayColor);
+}
+
+.modal {
+  position: relative;
+
+  width: 400px;
+  max-width: 90%;
+
+  height: 400px;
+  max-height: 90%;
+
+  background-color: var(--modalBackgroundColor);
+}
+
+.modalContent {
+  padding: 20px;
+}
+
+.modalClose {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  background: svg-load("../images/test.svg", fill=#000);
+}
