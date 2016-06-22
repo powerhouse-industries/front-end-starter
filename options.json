@@ -10,7 +10,7 @@
   ],
   "postcss-easy-import": {
     "prefix": "_",
-    "extensions": [".scss", ".css"]
+    "extensions": [".css", ".scss"]
   },
   "postcss-inline-svg": {
     "path": "app/images"

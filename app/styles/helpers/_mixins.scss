@@ -5,7 +5,7 @@
 /// State wrapper
 /// @author Harry Roberts
 /// @param {Bool} $self [false] - Whether or not to include current selector
-/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet
 @mixin states($self: false) {
   @if $self {
     &,
@@ -45,7 +45,7 @@
   }
 }
 
-/// Align an element vertically, horizontally or centrally
+/// Align an element vertically, horizontally or centrally inside it's containing element
 /// @author Oliver Farrell
 ///
 /// @example
