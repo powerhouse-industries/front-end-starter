@@ -7,6 +7,5 @@
 /// @param {Number} $font-size
 /// @param {Number} $line-height
 @function font-size($font-size, $line-height: false) {
-  $rem-size: $font-size / 16;
-  @return $rem-size * 1rem;
+  @return ($font-size / 16) * 1rem;
 }
