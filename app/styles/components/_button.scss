@@ -6,5 +6,17 @@
 \*------------------------------------*/
 
 .btn {
+  display: inline-block;
+  vertical-align: middle;
 
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  border: 0;
 }

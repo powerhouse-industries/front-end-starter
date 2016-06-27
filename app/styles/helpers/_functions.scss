@@ -3,7 +3,6 @@
 \*------------------------------------*/
 
 /// Return a font size in rems
-/// @author Jonny Haynes
 /// @param {Number} $font-size
 /// @param {Number} $line-height
 @function font-size($font-size, $line-height: false) {

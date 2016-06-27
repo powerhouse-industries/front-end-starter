@@ -45,6 +45,6 @@
     "start": "npm-run-all --parallel server watch:js watch:sass",
     "server": "http-server dist/",
     "watch:js": "onchange 'app/scripts' 'app/styles' -- webpack -d --progress",
-    "watch:sass": "onchange 'app/styles' -- postcss --parser postcss-scss -c options.json -o dist/styles/main.css app/styles/main.scss"
+    "watch:sass": "onchange 'app/styles' -- postcss -c options.json --parser postcss-scss -o dist/styles/main.css app/styles/main.scss"
   }
 }

@@ -1,0 +1,60 @@
+/*------------------------------------*\
+   # HELPERS
+\*------------------------------------*/
+
+/**
+ * Clear inner floats
+ */
+.cf::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/**
+ * Main content wrappers
+ */
+.wrap {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+
+  width: $wrapper-width; /* 1 */
+  max-width: $wrapper-max-width; /* 1 */
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0; /* 1 */
+
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  overflow: hidden;
+
+  position: absolute;
+
+  margin: -1px;
+  padding: 0;
+
+  width: 1px;
+  height: 1px;
+
+
+  border: 0;
+  clip: rect(0 0 0 0);
+}

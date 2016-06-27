@@ -11,3 +11,30 @@
   'helpers/functions',
   'helpers/mixins',
   'helpers/mq';
+
+// Vendor
+@import
+  'vendor/reset';
+
+// Base
+@import
+  'base/base',
+  'base/typography',
+  'base/helpers';
+
+// Layout
+@import
+  'layout/header',
+  'layout/footer';
+
+// Components
+@import
+  'components/button';
+
+// Page-specific styles
+@import
+  'pages/home';
+
+// Themes
+@import
+  'themes/default';
