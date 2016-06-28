@@ -1,22 +1,21 @@
 {
+  "parser": "postcss-scss",
   "use": [
     "postcss-strip-inline-comments",
-    "postcss-easy-import",
+    "postcss-partial-import",
     "postcss-inline-svg",
+    "postcss-nested-props",
     "cssnano",
     "precss",
     "postcss-cssnext",
-    "postcss-nested-props"
+    "postcss-pxtorem"
   ],
-  "postcss-easy-import": {
+  "postcss-partial-import": {
     "prefix": "_",
-    "extensions": [".css", ".scss"]
+    "extension": "scss"
   },
   "postcss-inline-svg": {
     "path": "app/images"
-  },
-  "postcss-cssnext": {
-    "warnForDuplicates": false
   },
   "local-plugins": true
 }
